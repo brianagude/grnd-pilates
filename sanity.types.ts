@@ -51,6 +51,7 @@ export type Reviews = {
       media?: unknown;
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
+      alt: string;
       _type: "image";
     };
     muxInput?: {
@@ -97,10 +98,46 @@ export type Reviews = {
   };
 };
 
+export type MomenceForm = {
+  _type: "momenceForm";
+  textBlock?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "large" | "h3" | "h4" | "h5" | "h6";
+    listItem?: "bullet";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  photo?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
+  source: string;
+};
+
 export type Momence = {
   _type: "momence";
   title?: string;
-  integration?: "events" | "videos" | "memberships" | "products" | "teachers";
+  integration: "Events" | "Videos" | "Memberships" | "Products" | "Teachers";
 };
 
 export type MidHero = {
@@ -197,6 +234,7 @@ export type Callout = {
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
+    alt: string;
     _type: "image";
   };
   imagePosition: "first" | "last";
@@ -254,6 +292,7 @@ export type ContentType = {
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
+    alt: string;
     _type: "image";
   };
   muxInput?: {
@@ -440,6 +479,8 @@ export type Home = {
     _key: string;
   } & Momence | {
     _key: string;
+  } & MomenceForm | {
+    _key: string;
   } & Reviews | {
     _key: string;
   } & TextOnly>;
@@ -513,6 +554,8 @@ export type PageType = {
   } & MidHero | {
     _key: string;
   } & Momence | {
+    _key: string;
+  } & MomenceForm | {
     _key: string;
   } & Reviews | {
     _key: string;
@@ -748,5 +791,5 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = TextOnly | Reviews | Momence | MidHero | Details | Callout | ContentType | Settings | Home | PageType | BlockContent | MuxVideo | MuxVideoAsset | MuxAssetData | MuxStaticRenditions | MuxStaticRenditionFile | MuxPlaybackId | MuxTrack | MediaTag | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = TextOnly | Reviews | MomenceForm | Momence | MidHero | Details | Callout | ContentType | Settings | Home | PageType | BlockContent | MuxVideo | MuxVideoAsset | MuxAssetData | MuxStaticRenditions | MuxStaticRenditionFile | MuxPlaybackId | MuxTrack | MediaTag | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;

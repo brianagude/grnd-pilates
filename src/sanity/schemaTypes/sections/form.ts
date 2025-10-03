@@ -1,14 +1,18 @@
 import { defineField, defineType } from "sanity";
-import { buttonFields } from "../inputs/button";
 
-export const midHero = defineType({
-  name: "midHero",
-  title: "Mid Hero",
+export const momenceForm = defineType({
+  name: "momenceForm",
+  title: "Form",
   type: "object",
   fields: [
     defineField({
-      name: "backgroundImage",
-      title: "Background Image",
+      name: "textBlock",
+      title: "Text Block",
+      type: "blockContent",
+    }),
+    defineField({
+      name: "photo",
+      title: "Image",
       type: "image",
       options: {
         hotspot: true,
@@ -22,32 +26,20 @@ export const midHero = defineType({
       ],
     }),
     defineField({
-      name: "textBlock",
-      title: "Text Block",
-      type: "blockContent",
-    }),
-    defineField({
-      name: "buttons",
-      title: "Buttons",
-      type: "array",
-      validation: (rule) => rule.max(2),
-      of: [
-        defineField({
-          name: "button",
-          title: "Button",
-          type: "object",
-          fields: [...buttonFields],
-        }),
-      ],
+      name: "source",
+      title: "Source ID",
+      type: "string",
+      validation: (Rule) => Rule.required(),
     }),
   ],
   preview: {
     select: {
       body: 'textBlock',
-      media: "backgroundImage",
+      media: "photo",
+      source: "source"
     },
     prepare(selection) {
-      const { body, media } = selection;
+      const { body = [], media, source } = selection;
       const firstBlock = body[0];
       const text = firstBlock?.children
         ?.map((c: { text: string; }) => c.text)
@@ -58,7 +50,7 @@ export const midHero = defineType({
       
       return {
         title,
-        subtitle: "Mid Hero Section",
+        subtitle: `Form Section | ID: ${source}`,
         media: media,
       };
     },

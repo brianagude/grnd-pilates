@@ -1,12 +1,9 @@
-"use client"
-
-import { typography, spacing } from "@/styles/design-tokens";
-import type { ExpandedSanityImage } from "@/sanity/lib/types";
-import Image from "next/image";
+import { spacing } from "@/styles/design-tokens";
 import { urlFor } from "@/sanity/lib/image";
-import Button from "@/components/inputs/Button";
 import { BlockContent } from "./inputs/PortableTextComponents";
-import type {Callout as CalloutProps} from "@types"
+import Button from "@/components/inputs/Button";
+import Image from "next/image";
+import type { Callout as CalloutProps } from "@types"
 
 export default function Callout({
   photo,
@@ -15,9 +12,21 @@ export default function Callout({
   button,
 }: CalloutProps) {
   return (
-    <section>
-      <div>
-        <p>Callout Section</p>
+    <section className={spacing.section}>
+      <div className={`${spacing.container} md:grid md:grid-cols-2`}>
+        {(textBlock || button) && <div>
+          {textBlock && <BlockContent value={textBlock} />}
+          {button && <Button {...button} />}
+        </div>}
+        {photo && (
+          <Image
+            src={urlFor(photo).url()}
+            alt={photo.alt || "callout image"}
+            width={1000}
+            height={1000}
+            className={`${imagePosition === 'first' ? "order-first" : "order-last"}`}
+          />
+        )}
       </div>
     </section>
   );

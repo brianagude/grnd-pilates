@@ -1,20 +1,15 @@
-"use client"
-
-import { typography, spacing } from "@/styles/design-tokens";
-import type { ExpandedSanityImage } from "@/sanity/lib/types";
-import Image from "next/image";
-import { urlFor } from "@/sanity/lib/image";
-import Button from "@/components/inputs/Button";
+import { spacing } from "@/styles/design-tokens";
 import { BlockContent } from "./inputs/PortableTextComponents";
 import type {TextOnly as TextOnlyProps} from "@types"
 
 export default function TextOnly({
   copy,
 }: TextOnlyProps) {
+  if (!copy) return null;
   return (
-    <section>
-      <div>
-        <p>Text Only Section</p>
+    <section className={`${spacing.section} bg-brown-500`}>
+      <div className={`${spacing.container} py-4 sm:py-8 lg:py-16 bg-white`}>
+        <BlockContent value={copy} classes="columns-2 w-full" />
       </div>
     </section>
   );

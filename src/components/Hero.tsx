@@ -1,11 +1,10 @@
-"use client"
-
-import { typography, spacing } from "@/styles/design-tokens";
+import { spacing } from "@/styles/design-tokens";
 import type { ExpandedSanityImage } from "@/sanity/lib/types";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import Button from "@/components/inputs/Button";
 import { BlockContent } from "./inputs/PortableTextComponents";
+import type { BlockContent as BlockContentType } from "@types"
 
 interface ButtonType {
   _key: string;
@@ -18,6 +17,7 @@ interface ButtonType {
 interface HeroProps {
   backgroundImage?: ExpandedSanityImage;
   mainImage?: ExpandedSanityImage;
+  textBlock?: BlockContentType;
   buttons?: ButtonType[];
 }
 
@@ -28,8 +28,8 @@ export default function Hero({
   buttons,
 }: HeroProps) {
   return (
-    <section className="relative min-h-screen">
-      <div className="relative z-10">
+    <section className={`${spacing.section} min-h-screen`}>
+      <div className={spacing.container}>
         <div className="flex flex-col items-center justify-center space-y-4">
           {mainImage && (
             <Image

@@ -13,10 +13,15 @@ export default function Reviews({
   carouselContent,
   button,
 }: ReviewsProps) {
+  if (!carouselContent || carouselContent.length === 0) return null
+
   return (
-    <section>
-      <div>
-        <p>Reviews Section</p>
+    <section className={spacing.section}>
+      <div className={spacing.container}>
+        <div>
+          {title && <h3 className={typography.h3}>{title}</h3>}
+          {button && <Button {...button} />}
+        </div>
       </div>
     </section>
   );

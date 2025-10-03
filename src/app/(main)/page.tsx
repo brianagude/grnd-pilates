@@ -33,14 +33,13 @@ export default async function HomePage({
       : getCacheOptions(cacheTags, 3600), // 1 hour cache with targeted tags
   );
   if (!data) return notFound();
-  console.log(data)
   const { hero, sections } = data || {};
+  console.log(sections)
 
   return (
     <>
-    {/* <p>home page</p> */}
-    {hero && <Hero {...hero} />}
-    {sections && <Sections sections={sections} />}
+      {hero && <Hero {...hero} />}
+      {sections && <Sections sections={sections} />}
     </>
   );
 }

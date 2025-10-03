@@ -14,13 +14,14 @@ export const momence = defineType({
       name: "integration",
       title: "Integration Type",
       type: "string",
+      validation: (Rule) => Rule.required(),
       options: {
         list: [
-          {title: 'Events', value: 'events'},
-          {title: 'Videos', value: 'videos'},
-          {title: 'Memberships', value: 'memberships'},
-          {title: 'Products', value: 'products'},
-          {title: 'Teachers', value: 'teachers'}
+          {title: 'Events', value: 'Events'},
+          {title: 'Videos', value: 'Videos'},
+          {title: 'Memberships', value: 'Memberships'},
+          {title: 'Products', value: 'Products'},
+          {title: 'Teachers', value: 'Teachers'}
         ],
       }
     }),
@@ -32,8 +33,10 @@ export const momence = defineType({
     },
     prepare(selection) {
       const { title, integration } = selection;
+      const sectionTitle = `Type: ${integration}${title ? ` | ${title}` : ""}`;
+
       return {
-        title: integration || title,
+        title: sectionTitle,
         subtitle: "Momence Integration",
       };
     },

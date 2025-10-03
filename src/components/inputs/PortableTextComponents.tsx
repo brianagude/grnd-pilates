@@ -5,30 +5,40 @@ import { typography } from "@/styles/design-tokens";
 
 const blockContentComponents: PortableTextComponentsType = {
   block: {
+    h3: ({ children }) => (
+      <h3 className={typography.h3}>{children}</h3>
+    ),
+    h4: ({ children }) => (
+      <h4 className={typography.h4}>{children}</h4>
+    ),
+    h5: ({ children }) => (
+      <h5 className={typography.h5}>{children}</h5>
+    ),
+    h6: ({ children }) => (
+      <h6 className={typography.h6}>{children}</h6>
+    ),
     caption: ({ children }) => (
-      <h5 className={`${typography.caption} mb-4`}>{children}</h5>
+      <p className={typography.caption}>{children}</p>
     ),
     captionLarge: ({ children }) => (
-      <h5 className={`${typography.captionLarge} mb-4`}>{children}</h5>
+      <p className={typography.captionLarge}>{children}</p>
     ),
     captionSmall: ({ children }) => (
-      <h6 className={`${typography.caption} mb-4`}>{children}</h6>
+      <p className={typography.captionSmall}>{children}</p>
     ),
     large: ({ children }) => (
-      <p className={`${typography.bodyLarge}`}>{children}</p>
+      <p className={typography.bodyLarge}>{children}</p>
     ),
     normal: ({ children }) => (
-      <p className={`${typography.body}`}>{children}</p>
+      <p className={typography.body}>{children}</p>
     ),
     small: ({ children }) => (
-      <p className={`${typography.bodySmall}`}>{children}</p>
+      <p className={typography.bodySmall}>{children}</p>
     ),
   },
   list: {
     bullet: ({ children }) => (
-      <ul
-        className={`${typography.body} text-block-list list-disc w-full max-w-7xl pl-5 space-y-1 mt-2`}
-      >
+      <ul className={`${typography.body} text-block-list list-disc w-full max-w-7xl pl-5 space-y-1 mt-2`}>
         <span>{children}</span>
       </ul>
     ),
@@ -42,6 +52,9 @@ const blockContentComponents: PortableTextComponentsType = {
     strong: ({ children }) => (
       <strong className="!font-bold">{children}</strong>
     ),
+    sup: ({ children }) => (
+      <sup className="text-[0.5em] align-super">{children}</sup>
+    ),
     em: ({ children }) => <em className="italic">{children}</em>,
   },
 };
@@ -54,7 +67,7 @@ export const BlockContent = ({
   classes?: string;
 }) => {
   return (
-    <div className={`space-y-3 ${classes}`}>
+    <div className={`mt-4 space-y-2 ${classes}`}>
       <PortableText value={value} components={blockContentComponents} />
     </div>
   );
