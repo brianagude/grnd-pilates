@@ -27,12 +27,11 @@ export const typography = {
   link: `underline font-bold hover:italic`,
 };
 
-const buttonBase =
-  "flex p-1 rounded-[64px] border-2 block w-fit hover:bg-white transition-colors cursor-pointer w-full !pointer-events-auto sm:w-fit *:inline-block *:px-10 *:py-4 *:text-center *:w-full *:rounded-[64px] *:border-2 *:text-xl *:font-bold *:leading-[110%] *:uppercase";
+const buttonBase = "text-center py-4 px-10 rounded-full border border-black font-semibold";
 
 export const buttons = {
-  primary: `${buttonBase} border-purple *:border-[#403bbe] *:bg-purple *:text-white hover:*:bg-[#403bbe] *:transition-colors`,
-  secondary: `${buttonBase} border-yellow *:border-[#F2B102] *:bg-yellow hover:*:bg-[#F2B102] *:transition-colors`,
+  primary: `${buttonBase} bg-black text-white`,
+  secondary: `${buttonBase} bg-white text-black`,
   link: `${baseBody} uppercase font-bold text-lg hover:underline`,
 };
 

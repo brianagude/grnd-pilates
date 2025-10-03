@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import {TextIcon} from '@sanity/icons'
 
 export const textOnly = defineType({
   name: "textOnly",
@@ -13,13 +14,22 @@ export const textOnly = defineType({
   ],
   preview: {
     select: {
-      title: "title",
+      body: 'copy',
     },
     prepare(selection) {
-      const { title } = selection;
+      const { body = [] } = selection;
+      const firstBlock = body[0];
+      const text = firstBlock?.children
+        ?.map((c: { text: string; }) => c.text)
+        .join("")
+        .trim();
+
+      const title = text ? `${text.slice(0, 40)}…` : "Missing Text";
+      
       return {
         title,
-        subtitle: "Text Only"
+        subtitle: "Text Only Section",
+        media: TextIcon,
       };
     },
   },

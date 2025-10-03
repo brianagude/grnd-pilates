@@ -1,7 +1,7 @@
 import type { Home } from "@types";
 import { notFound } from "next/navigation";
-// import Sections from "@/components/Sections";
-// import HomeHero from "@/components/HomeHero";
+import Sections from "@/components/Sections";
+import Hero from "@/components/Hero";
 import { client } from "@/sanity/lib/client";
 import { draftMode } from "next/headers";
 import { getPageCacheTags, getCacheOptions } from "@/lib/cache-tags";
@@ -32,14 +32,15 @@ export default async function HomePage({
         }
       : getCacheOptions(cacheTags, 3600), // 1 hour cache with targeted tags
   );
-  // if (!data) return notFound();
-  // const { hero, sections } = data || {};
+  if (!data) return notFound();
+  console.log(data)
+  const { hero, sections } = data || {};
 
   return (
     <>
-    <p>home page</p>
-      {/* {hero && <HomeHero {...hero} />}
-      {sections && <Sections sections={sections} />} */}
+    {/* <p>home page</p> */}
+    {hero && <Hero {...hero} />}
+    {sections && <Sections sections={sections} />}
     </>
   );
 }

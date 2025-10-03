@@ -39,8 +39,8 @@ export type Reviews = {
   _type: "reviews";
   title?: string;
   carouselContent?: Array<{
-    itemType: "class" | "package" | "reviews";
-    mediaType: "image" | "video";
+    itemType: "class" | "package" | "review";
+    mediaType: "image" | "video" | "none";
     photo?: {
       asset?: {
         _ref: string;
@@ -57,6 +57,25 @@ export type Reviews = {
       title?: string;
       muxVideo?: MuxVideo;
     };
+    textBlock?: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "normal" | "large" | "h3" | "h4" | "h5" | "h6";
+      listItem?: "bullet";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }>;
+    attribution?: string;
     _type: "item";
     _key: string;
   }>;
@@ -99,7 +118,6 @@ export type MidHero = {
     alt: string;
     _type: "image";
   };
-  title?: string;
   textBlock?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -140,28 +158,14 @@ export type MidHero = {
 
 export type Details = {
   _type: "details";
+  isCarousel: boolean;
   title?: string;
   carouselContent?: Array<{
-    itemType: "class" | "package" | "reviews";
-    mediaType: "image" | "video";
-    photo?: {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      _type: "image";
-    };
-    muxInput?: {
-      title?: string;
-      muxVideo?: MuxVideo;
-    };
-    _type: "item";
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
     _key: string;
+    [internalGroqTypeReferenceTo]?: "contentType";
   }>;
   button?: {
     text?: string;
@@ -181,29 +185,37 @@ export type Details = {
   };
 };
 
-export type Carousel = {
-  _type: "carousel";
-  title?: string;
-  carouselContent?: Array<{
-    itemType: "class" | "package" | "reviews";
-    mediaType: "image" | "video";
-    photo?: {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      _type: "image";
+export type Callout = {
+  _type: "callout";
+  photo?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
-    muxInput?: {
-      title?: string;
-      muxVideo?: MuxVideo;
-    };
-    _type: "item";
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  imagePosition: "first" | "last";
+  textBlock?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "large" | "h3" | "h4" | "h5" | "h6";
+    listItem?: "bullet";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
     _key: string;
   }>;
   button?: {
@@ -230,8 +242,8 @@ export type ContentType = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  itemType: "class" | "package" | "reviews";
-  mediaType: "image" | "video";
+  itemType: "class" | "package" | "review";
+  mediaType: "image" | "video" | "none";
   photo?: {
     asset?: {
       _ref: string;
@@ -248,6 +260,25 @@ export type ContentType = {
     title?: string;
     muxVideo?: MuxVideo;
   };
+  textBlock?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "large" | "h3" | "h4" | "h5" | "h6";
+    listItem?: "bullet";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  attribution?: string;
 };
 
 export type Settings = {
@@ -401,7 +432,7 @@ export type Home = {
   };
   sections?: Array<{
     _key: string;
-  } & Carousel | {
+  } & Callout | {
     _key: string;
   } & Details | {
     _key: string;
@@ -475,7 +506,7 @@ export type PageType = {
   };
   sections?: Array<{
     _key: string;
-  } & Carousel | {
+  } & Callout | {
     _key: string;
   } & Details | {
     _key: string;
@@ -717,5 +748,5 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = TextOnly | Reviews | Momence | MidHero | Details | Carousel | ContentType | Settings | Home | PageType | BlockContent | MuxVideo | MuxVideoAsset | MuxAssetData | MuxStaticRenditions | MuxStaticRenditionFile | MuxPlaybackId | MuxTrack | MediaTag | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = TextOnly | Reviews | Momence | MidHero | Details | Callout | ContentType | Settings | Home | PageType | BlockContent | MuxVideo | MuxVideoAsset | MuxAssetData | MuxStaticRenditions | MuxStaticRenditionFile | MuxPlaybackId | MuxTrack | MediaTag | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
