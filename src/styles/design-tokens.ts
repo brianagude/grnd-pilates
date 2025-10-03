@@ -3,17 +3,17 @@ export const spacing = {
   container: "relative z-10 w-full max-w-[1720px] mx-auto px-4 gap-10 flex flex-col items-center sm:gap-12 sm:px-8 lg:px-16",
 };
 
-const baseHeading = `text-pretty text-balance font-light font-display leading-tight`;
+const baseHeading = `text-pretty text-balance font-display leading-tight`;
 const baseBody = `text-pretty text-balance`;
 
 export const typography = {
-  h1: `${baseHeading} text-5xl lg:text-7xl`,
-  h2: `${baseHeading} text-4xl lg:text-6xl`,
-  h3: `${baseHeading} text-3xl md:text-5xl`,
-  h4: `${baseHeading} text-3xl md:text-4xl`,
+  h1: `${baseHeading} font-light text-5xl lg:text-7xl`,
+  h2: `${baseHeading} font-light text-4xl lg:text-6xl`,
+  h3: `${baseHeading} font-light text-3xl xl:text-5xl`,
+  h4: `${baseHeading} text-3xl xl:text-4xl`,
   h5: `${baseHeading} text-2xl md:text-3xl`,
   h6: `${baseHeading} text-2xl`,
-  bodyLarge: `${baseBody} text-lg lg:text-2xl`,
+  bodyLarge: `${baseBody} text-xl lg:text-2xl`,
   body: `${baseBody} text-base md:text-xl`,
   bodySmall: `${baseBody} text-base`,
   captionLarge: `${baseBody} uppercase text-lg md:text-2xl`,
@@ -22,16 +22,16 @@ export const typography = {
   link: `underline font-semibold hover:italic`,
 };
 
-const buttonBase = "text-xl block w-full text-center py-4 px-10 rounded-full border border-black font-semibold transition-colors sm:w-fit";
+const buttonBase = "text-xl block w-full text-center py-4 px-10 rounded-full border border-black font-medium transition-all cursor-pointer hover:shadow-lg transform hover:translate-x-[-1px] hover:translate-y-[-1px] sm:w-fit";
 
 export const buttons = {
   primary: `${buttonBase} bg-black text-white hover:bg-brown-800`,
   secondary: `${buttonBase} bg-white text-black hover:bg-brown-100`,
-  link: `${baseBody} uppercase font-bold text-lg hover:underline`,
+  // link: `${baseBody} uppercase font-bold text-lg hover:underline`,
 };
 
 export const forms = {
-  input: `${typography.body} rounded-2xl border-2 border-black bg-white p-4 mb-4 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-yellow placeholder-black/70 text-base disabled:text-black/20 disabled:cursor-not-allowed hover:shadow-lg transform transition hover:translate-x-[-1px] hover:translate-y-[-1px] focus:shadow-lg focus:translate-x-[-1px] focus:translate-y-[-1px]`,
+  input: `${typography.body} rounded-2xl border-2 border-black bg-white p-4 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-yellow placeholder-black/70 text-base disabled:text-black/20 disabled:cursor-not-allowed hover:shadow-lg transform transition hover:translate-x-[-1px] hover:translate-y-[-1px] focus:shadow-lg focus:translate-x-[-1px] focus:translate-y-[-1px]`,
   label: `px-4 ${typography.caption}`,
   fieldset: "flex flex-col gap-1",
 };

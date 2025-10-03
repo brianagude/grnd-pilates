@@ -51,7 +51,7 @@ export type Reviews = {
       media?: unknown;
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
-      alt: string;
+      alt?: string;
       _type: "image";
     };
     muxInput?: {
@@ -128,7 +128,7 @@ export type MomenceForm = {
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
-    alt: string;
+    alt?: string;
     _type: "image";
   };
   source: string;
@@ -152,7 +152,7 @@ export type MidHero = {
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
-    alt: string;
+    alt?: string;
     _type: "image";
   };
   textBlock?: Array<{
@@ -234,7 +234,7 @@ export type Callout = {
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
-    alt: string;
+    alt?: string;
     _type: "image";
   };
   imagePosition: "first" | "last";
@@ -292,7 +292,7 @@ export type ContentType = {
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
-    alt: string;
+    alt?: string;
     _type: "image";
   };
   muxInput?: {
@@ -416,7 +416,7 @@ export type Home = {
       media?: unknown;
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
-      alt: string;
+      alt?: string;
       _type: "image";
     };
     mainImage?: {
@@ -429,7 +429,7 @@ export type Home = {
       media?: unknown;
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
-      alt: string;
+      alt?: string;
       _type: "image";
     };
     textBlock?: Array<{
@@ -505,7 +505,7 @@ export type PageType = {
       media?: unknown;
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
-      alt: string;
+      alt?: string;
       _type: "image";
     };
     textBlock?: Array<{

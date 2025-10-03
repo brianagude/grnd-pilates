@@ -27,23 +27,24 @@ export default function Hero({
   textBlock,
   buttons,
 }: HeroProps) {
+  // console.log(backgroundImage)
   return (
-    <section className={`${spacing.section} min-h-screen`}>
-      <div className={spacing.container}>
-        <div className="flex flex-col items-center justify-center space-y-4">
+    <section className={`${spacing.section} min-h-screen flex flex-col items-center justify-center`}>
+      <div className={`${spacing.container} pb-[200px]`}>
+        <div className="flex flex-col items-center justify-center gap-2">
           {mainImage && (
             <Image
               src={urlFor(mainImage).url()}
-              alt={mainImage.alt || "background image"}
-              width={840}
-              height={520}
+              alt={mainImage.alt || "grnd logo"}
+              width={368}
+              height={100}
               priority
             />
           )}
           {textBlock && <BlockContent value={textBlock} />}
         </div>
         {Array.isArray(buttons) && buttons.length > 0 && (
-          <div className="flex flex-col gap-4 items-center justify-center w-full md:flex-row md:flex-wrap">
+          <div className="flex flex-col gap-4 items-center justify-center w-full sm:flex-row sm:flex-wrap">
             {buttons.map((btn) => (
               <Button key={btn._key} {...btn} />
             ))}
@@ -53,7 +54,7 @@ export default function Hero({
 
       {backgroundImage && (
         <Image
-          src={urlFor(backgroundImage).url()}
+          src={urlFor(backgroundImage).width(1600).height(900).fit('crop').crop("focalpoint").url()}
           alt={backgroundImage.alt || "background image"}
           fill
           priority

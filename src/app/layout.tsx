@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const currentYear = new Date().getFullYear();
 
   return {
-  title: `GRND Pilates ${currentYear} - Atlanta Boutique Pilates Studio`,
+  title: `GRND Pilates`,
   description: `GRND. combines Joseph Pilates’ method with light weight training, resistance work, and cardio for one effective 45-minute class.`,
   keywords: [
     "GRND Pilates",
@@ -39,13 +39,13 @@ export async function generateMetadata(): Promise<Metadata> {
     type: "website",
     locale: "en_US",
     url: "https://www.grndpilates.com/",
-    title: `GRND Pilates ${currentYear} - Atlanta Boutique Pilates Studio`,
+    title: `GRND Pilates`,
     description: `GRND. combines Joseph Pilates’ method with light weight training, resistance work, and cardio for one effective 45-minute class.`,
     siteName: "GRND Pilates",
   },
   twitter: {
     card: "summary_large_image",
-    title: `GRND Pilates ${currentYear} - Atlanta Boutique Pilates Studio`,
+    title: `GRND Pilates`,
     description: `GRND. combines Joseph Pilates’ method with light weight training, resistance work, and cardio for one effective 45-minute class.`,
   },
 };

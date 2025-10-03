@@ -7,7 +7,28 @@ import { draftMode } from "next/headers";
 import { getPageCacheTags, getCacheOptions } from "@/lib/cache-tags";
 
 const query = `*[_type == "home"][0]{
-	...
+	...,
+  sections[] {
+    _key,
+    _type,
+    ...select(
+      _type == "midHero" => { ... },
+      _type == "details" => { 
+        ...,
+        carouselContent[]->{
+          ...,
+          "playbackId": muxInput.muxVideo.asset->playbackId,
+          "videoAlt": muxInput.title,
+        }
+      },
+      _type == "callout" => { ... },
+      _type == "momence" => { ... },
+      _type == "momenceForm" => { ... },
+      _type == "reviews" => { ... },
+      _type == "textOnly" => { ... },
+    )
+
+  }
 }`;
 
 export default async function HomePage({
@@ -34,8 +55,8 @@ export default async function HomePage({
   );
   if (!data) return notFound();
   const { hero, sections } = data || {};
-  console.log(sections)
-
+  // console.log(data)
+ 
   return (
     <>
       {hero && <Hero {...hero} />}

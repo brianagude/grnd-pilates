@@ -42,6 +42,11 @@ export const pageType = defineType({
           type: "image",
           options: {
             hotspot: true,
+            metadata: [
+              'blurhash',
+              'lqip',
+              'palette',
+            ],
           },
           fields: [
             defineField({

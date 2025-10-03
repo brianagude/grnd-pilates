@@ -45,22 +45,23 @@ export default function MomenceForm({ textBlock, photo, source }: FormProps) {
 
   return (
     <section className={spacing.section}>
-      <div className={`${spacing.container} md:grid md:grid-cols-2`}>
+      <div className={`${spacing.container} !items-start md:grid lg:grid-cols-2`}>
         {photo && (
           <Image
             src={urlFor(photo).url()}
             alt={photo.alt || "form image"}
             width={1000}
             height={1000}
+            className="rounded-4xl lg:rounded-[48px]"
           />
         )}
-        <div>
+        <div className="space-y-10 lg:py-10">
           {textBlock && <BlockContent value={textBlock} />}
           {!submitted ? (
             <form
               id="momence_leads_form"
-              style={{ display: "flex", flexDirection: "column", gap: 8 }}
               onSubmit={handleSubmit}
+              className="space-y-5"
             >
               <div className={forms.fieldset}>
                 <label htmlFor="firstName" className={forms.label}>
@@ -99,7 +100,7 @@ export default function MomenceForm({ textBlock, photo, source }: FormProps) {
 
               <button
                 type="submit"
-                className={`${buttons.primary} !w-full`}
+                className={`${buttons.primary} !w-full !mt-10`}
               >
                 Submit
               </button>
