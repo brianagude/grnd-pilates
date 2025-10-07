@@ -1,10 +1,12 @@
 import { defineField, defineType } from "sanity";
 import { buttonFields } from "../inputs/button";
+import {DocumentsIcon} from '@sanity/icons'
 
 export const pageType = defineType({
   name: "pageType",
   title: "Page",
   type: "document",
+  icon: DocumentsIcon,
   fields: [
     defineField({
       name: "pageTitle",

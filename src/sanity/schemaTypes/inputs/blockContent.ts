@@ -11,6 +11,8 @@ export const blockContent = defineType({
       styles: [
         { title: "Normal", value: "normal" },
         { title: "Large", value: "large" },
+        { title: "h1", value: "h1" },
+        { title: "h2", value: "h2" },
         { title: "h3", value: "h3" },
         { title: "h4", value: "h4" },
         { title: "h5", value: "h5" },
@@ -33,8 +35,7 @@ export const blockContent = defineType({
                 title: "Href",
                 name: "href",
                 type: "string",
-                description:
-                  "Can be a URL (https://...), email (mailto:...), or phone (tel:...)",
+                description: "Can be a URL (https://...), email (mailto:...), or phone (tel:...)",
                 validation: (Rule) =>
                   Rule.uri({
                     allowRelative: false,

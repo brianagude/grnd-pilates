@@ -5,6 +5,12 @@ import { typography } from "@/styles/design-tokens";
 
 const blockContentComponents: PortableTextComponentsType = {
   block: {
+    h1: ({ children }) => (
+      <h1 className={typography.h1}>{children}</h1>
+    ),
+    h2: ({ children }) => (
+      <h2 className={typography.h2}>{children}</h2>
+    ),
     h3: ({ children }) => (
       <h3 className={typography.h3}>{children}</h3>
     ),

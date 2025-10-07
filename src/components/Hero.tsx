@@ -19,6 +19,7 @@ interface HeroProps {
   mainImage?: ExpandedSanityImage;
   textBlock?: BlockContentType;
   buttons?: ButtonType[];
+  classes?: string;
 }
 
 export default function Hero({
@@ -26,10 +27,11 @@ export default function Hero({
   mainImage,
   textBlock,
   buttons,
+  classes
 }: HeroProps) {
-  // console.log('backgroundImage:', backgroundImage?.asset?.metadata?.palette)
+  
   return (
-    <section className={`${spacing.section} min-h-screen flex flex-col items-center justify-center`}>
+    <section className={`${spacing.section} min-h-screen flex flex-col items-center justify-center ${classes}`}>
       <div className={`${spacing.container} pb-[200px]`}>
         <div className="flex flex-col items-center justify-center gap-2">
           {mainImage && (
@@ -41,7 +43,7 @@ export default function Hero({
               priority
             />
           )}
-          {textBlock && <BlockContent value={textBlock} />}
+          {textBlock && <BlockContent value={textBlock} classes="text-center" />}
         </div>
         {Array.isArray(buttons) && buttons.length > 0 && (
           <div className="flex flex-col gap-4 items-center justify-center w-full sm:flex-row sm:flex-wrap">

@@ -7,6 +7,11 @@ export const textOnly = defineType({
   type: "object",
   fields: [
     defineField({
+      name: "title",
+      title: "Section Title",
+      type: "string",
+    }),
+    defineField({
       name: "copy",
       title: "Text Block",
       type: "blockContent",

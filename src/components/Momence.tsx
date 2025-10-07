@@ -25,8 +25,6 @@ export default async function Momence({ title, integration }: MomenceProps) {
     console.error(err);
   }
 
-  // console.log('momence: ', items)
-
   if (items.length === 0) return null
 
   return (

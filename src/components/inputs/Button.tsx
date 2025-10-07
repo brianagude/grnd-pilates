@@ -4,11 +4,19 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { buttons } from "@/styles/design-tokens";
 
+interface InternalPage {
+  _id?: string;
+  slug?: string | null;
+}
+
 interface ButtonProps {
   text?: string;
-  url?: string;
-  style?: "primary" | "secondary" | null;
   children?: ReactNode;
+  url?: string;
+  internalPage?: InternalPage;
+  style?: "primary" | "secondary";
+  _type?: "button" | "footerLink" | "menuLink";
+  _key?: string;
   classes?: string;
 }
 
@@ -18,22 +26,36 @@ export default function Button({
   style,
   children,
   classes,
+  internalPage,
 }: ButtonProps) {
-  // Bail only if we have no content OR no url
-  if ((!text && !children) || !url) return null;
-  // if ((!text && !children) || !url) return null;
+  // Bail early if no visible content
+  if ((!text && !children) || (!url && !internalPage)) return null;
 
   const styles = {
     primary: buttons.primary,
     secondary: buttons.secondary,
   };
 
-  // Only apply style class if style is non-null and known
   const className = clsx(style && styles[style], classes);
   const isGlimmer = style === "primary" || style === "secondary";
   const content = <span className={clsx(isGlimmer && "glimmer")}>{children ?? text}</span>;
 
-  if (url.startsWith("/")) {
+  // If internal page exists, always prioritize it
+  if (internalPage?._id) {
+    const internalLink =
+      internalPage._id === "home"
+        ? "/"
+        : `/${internalPage.slug ?? ""}`;
+
+    return (
+      <Link className={className} href={internalLink}>
+        {content}
+      </Link>
+    );
+  }
+
+  // Otherwise, fall back to URL
+  if (url?.startsWith("/")) {
     return (
       <Link href={url} className={className}>
         {content}
@@ -41,8 +63,7 @@ export default function Button({
     );
   }
 
-  // Anchor link
-  if (url.startsWith("#")) {
+  if (url?.startsWith("#")) {
     return (
       <a href={url} className={className}>
         {content}
@@ -50,8 +71,7 @@ export default function Button({
     );
   }
 
-  // Email link
-  if (url.startsWith("mailto:") || url.includes("@")) {
+  if (url?.startsWith("mailto:") || url?.includes("@")) {
     const email = url.startsWith("mailto:") ? url : `mailto:${url}`;
     return (
       <a href={email} className={className}>
@@ -60,8 +80,7 @@ export default function Button({
     );
   }
 
-  // Telephone link
-  if (url.startsWith("tel:")) {
+  if (url?.startsWith("tel:")) {
     return (
       <a href={url} className={className}>
         {content}
@@ -69,8 +88,7 @@ export default function Button({
     );
   }
 
-  // External link
-  if (url.startsWith("http")) {
+  if (url?.startsWith("http")) {
     return (
       <a
         href={url}
@@ -83,7 +101,6 @@ export default function Button({
     );
   }
 
-  // Fallback: just render a span (invalid URL)
   return (
     <span className={`${className} opacity-35`}>
       {content}

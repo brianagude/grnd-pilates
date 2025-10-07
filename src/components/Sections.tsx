@@ -16,36 +16,6 @@ import type {
   TextOnly as TextOnlyType,
 } from "@types";
 
-// // Add _key string property to extended types
-// type CollaborationType = Omit<AutoCollaboration, "collab"> & {
-//   collab?: Collaborator[];
-//   _key: string;
-// };
-
-// type EventsType = Omit<AutoEvents, "eventsList"> & {
-//   eventsList?: Event[];
-//   _key: string;
-// };
-
-// type FeaturedArtistsType = Omit<AutoFeaturedArtists, "artists"> & {
-//   artists?: Artist[];
-//   _key: string;
-// };
-
-// type TicketsType = Omit<AutoTickets, "tickets"> & {
-//   tickets?: Ticket[];
-//   _key: string;
-// };
-
-// // Add _key similarly for other types as needed if they don't already have it
-// type CountdownExtended = CountdownType & { _key: string };
-// type FAQsExtended = FAQsType & { _key: string };
-// type FeaturedImageExtended = FeaturedImageType & { _key: string };
-// type MarqueeExtended = MarqueeType & { _key: string };
-// type PromoBannerExtended = PromoBannerType & { _key: string };
-// type SocialMediaExtended = SocialMediaType & { _key: string };
-// type SponsorshipsExtended = SponsorshipsType & { _key: string };
-
 type SectionModule =
   | CalloutType
   | DetailsType
@@ -63,7 +33,7 @@ export default function Sections({ sections }: SectionsProps) {
   if (!sections || sections.length < 1) return null;
 
   return (
-    <div className="bg-fancy-gradient min-h-screen">
+    <div>
       {sections.map((module) => {
         switch (module._type) {
           case "callout":

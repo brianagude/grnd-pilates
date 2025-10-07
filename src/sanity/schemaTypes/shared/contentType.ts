@@ -1,11 +1,10 @@
 import { defineField, defineType } from "sanity";
-import { InlineElementIcon, ImageIcon } from '@sanity/icons'
+import { ImageIcon } from '@sanity/icons'
 
 export const contentType = defineType({
   name: "contentType",
   title: "Featured Content",
   type: "document",
-  icon: InlineElementIcon,
   fields: [
     defineField({
       name: "itemType",
@@ -20,6 +19,11 @@ export const contentType = defineType({
         ],
         layout: "radio"
       }
+    }),
+    defineField({
+      name: "url",
+      title: "Link to Content",
+      type: "string",
     }),
     defineField({
       name: "mediaType",

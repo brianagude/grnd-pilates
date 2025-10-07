@@ -15,7 +15,6 @@ export default function MidHero({
   buttons,
   title
 }: MidHeroWithTitle) {
-  // console.log('backgroundImage:', backgroundImage?.asset?.metadata?.palette)
   const palette = backgroundImage?.asset?.metadata?.palette?.dominant;
   let textClass = "text-black"; // default
 

@@ -7,11 +7,8 @@ import { draftMode } from "next/headers";
 import { DisableDraftMode } from "@/components/DisableDraftMode";
 import { getCacheOptions, CACHE_TAGS } from "@/lib/cache-tags";
 import Script from "next/script";
+import { SETTINGS_QUERY } from "@/sanity/lib/queries"
 
-// ---------- GROQ Query ----------
-const query = `*[_type == "settings"][0]{
-  ...
-}`;
 
 // ---------- ISR / Revalidation options ----------
 // Increased from 30 seconds to 1 hour for better performance
@@ -22,10 +19,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const settings = await client.fetch(query, {}, options);
-  // const { footer, header, mailchimp } = settings;
-
-  // console.log('settings', settings)
+  const settings = await client.fetch(SETTINGS_QUERY, {}, options);
   const { footer, header, socialMedia } = settings;
 
   return (

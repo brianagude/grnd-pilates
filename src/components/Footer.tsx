@@ -9,28 +9,22 @@ import Button from "@/components/inputs/Button";
 import { BlockContent } from "./inputs/PortableTextComponents";
 
 type FooterType = NonNullable<Settings["footer"]>;
-
-// Explicit prop types for footer links to avoid implicit any
-interface FooterLink {
-  _key: string;
-  text?: string;
-  url?: string;
-}
+type SocialType = NonNullable<Settings["socialMedia"]>;
 
 interface FooterProps {
   footer: FooterType;
+  socialMedia: SocialType;
 }
 
 export default function Footer({ footer, socialMedia }: FooterProps) {
   const year = new Date().getFullYear();
   const {copyrightText, footerLinks, logo, supportText } = footer
-  // console.log(footer)
 
   return (
     <footer className="w-full">
-      <div className="flex flex-col px-4 py-10 justify-center md:px-8 md:py-12 lg:flex-row lg:px-16 lg:py-20 lg:justify-between">
+      <div className="flex flex-col px-4 py-12 justify-center gap-16 md:px-8 md:py-12 lg:flex-row lg:px-16 lg:py-20 lg:justify-between">
         {logo && 
-          <Link href="/">
+          <Link href="/" className="mx-auto lg:ml-0">
             <Image
               src={urlFor(logo).url()}
               width={480}
@@ -40,15 +34,23 @@ export default function Footer({ footer, socialMedia }: FooterProps) {
           </Link>
         }
 
-        <div className="flex flex-col gap-6 md:flex-row">
+        <div className="flex flex-col gap-10 md:mx-auto md:flex-row lg:mr-0">
           { footerLinks && 
-            <div className="space-y-4">
+            <div className="space-y-3 md:min-w-xs">
               <h6 className={`${typography.caption} mb-4 pb-4 border-b-2`}>Navigation</h6>
-              <BlockContent value={supportText} />
+              <nav className="grid grid-cols-2 gap-x-6 gap-y-3 lg:gap-x-16">
+              {footerLinks.map((item) => (
+                  <Button
+                    key={item._key}
+                    {...item}
+                    classes="text-lg font-medium"
+                  />
+                ))}
+              </nav>
             </div> 
           }
           { supportText && 
-            <div className="space-y-4">
+            <div className="space-y-3 md:min-w-xs">
               <h6 className={`${typography.caption} mb-4 pb-4 border-b-2`}>Support</h6>
               <BlockContent value={supportText} />
             </div> 

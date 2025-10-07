@@ -4,8 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { urlFor } from "@/sanity/lib/image";
 import Button from "@/components/inputs/Button";
-import React, { useState, useRef, useEffect } from "react";
-import { typography } from "@/styles/design-tokens";
+import React from "react";
 import type { Settings } from "@types";
 import { Drawer } from 'vaul';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
@@ -16,8 +15,6 @@ export default function Header(props: HeaderType) {
   const { logo, mainCTA, menuList } = props ?? {};
   const [isOpen, setIsOpen] = React.useState(false);
   const logoUrl = logo ? urlFor(logo).url() : "/logo.svg";
-
-  // console.log(menuList)
 
   return (
     <Drawer.Root direction="right" open={isOpen} onOpenChange={setIsOpen}>
@@ -34,17 +31,18 @@ export default function Header(props: HeaderType) {
             />
           </Link>
           <div className="flex items-center gap-6">
-            {menuList && <nav>
+            {menuList && <nav className="items-center gap-4 hidden xl:flex">
               {menuList.map((item) => (
                   <Button
                     key={item._key}
                     {...item}
+                    classes="text-lg font-medium hover:border-b-2"
                   />
                 ))}
               </nav>
             }
             {mainCTA && <Button {...mainCTA} classes="hidden sm:block" />}
-            <Drawer.Trigger>
+            <Drawer.Trigger className="xl:hidden">
               <Bars3Icon className="size-16 text-black cursor-pointer hover:text-brown-700 transition-colors"/>
             </Drawer.Trigger>
           </div>
@@ -56,7 +54,7 @@ export default function Header(props: HeaderType) {
           className="right-2 top-2 bottom-2 fixed outline-none w-[310px] flex z-50"
           // The gap between the edge of the screen and the drawer is 8px in this case.
           style={{ '--initial-transform': 'calc(100% + 8px)' } as React.CSSProperties}>
-          <div className="bg-zinc-50 h-full w-full grow p-5 flex flex-col gap-10 rounded-2xl">
+          <div className="bg-white h-full w-full grow p-5 flex flex-col gap-10 rounded-2xl">
             <button
               type="button"
               className="ml-auto"
@@ -64,21 +62,12 @@ export default function Header(props: HeaderType) {
             >
               <XMarkIcon className="size-10 text-black cursor-pointer hover:text-brown-700 transition-colors"/>
             </button>
-            <Link href="/">
-              <Image
-                src={logoUrl}
-                width={200}
-                height={120}
-                alt="grnd pilates logo"
-                priority
-                className="object-fit h-20 w-auto sm:h-fit"
-              />
-            </Link>
-            {menuList && <nav>
+            {menuList && <nav className="flex flex-col gap-4">
               {menuList.map((item) => (
                   <Button
                     key={item._key}
                     {...item}
+                    classes="text-lg font-semibold"
                   />
                 ))}
               </nav>
