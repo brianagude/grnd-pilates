@@ -78,7 +78,15 @@ const momenceFormFragment = `
 
 const reviewsFragment = `
   ...,
-  button {${linkFragment}}
+  button {${linkFragment}},
+  reviewsContent[]{
+    _key,
+    "data": @->{
+      ...,
+      "playbackId": muxInput.muxVideo.asset->playbackId,
+      "videoAlt": muxInput.title
+    }
+  }
 `
 
 const textOnlyFragment = `

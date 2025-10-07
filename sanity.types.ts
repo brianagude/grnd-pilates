@@ -36,51 +36,60 @@ export type TextOnly = {
   }>;
 };
 
+export type ReviewType = {
+  _id: string;
+  _type: "reviewType";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  mediaType: "image" | "video" | "none";
+  photo?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  muxInput?: {
+    title?: string;
+    muxVideo?: MuxVideo;
+  };
+  textBlock?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "large" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+    listItem?: "bullet";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  attribution?: string;
+};
+
 export type Reviews = {
   _type: "reviews";
   title?: string;
-  carouselContent?: Array<{
-    itemType: "class" | "package" | "review";
-    url?: string;
-    mediaType: "image" | "video" | "none";
-    photo?: {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      alt?: string;
-      _type: "image";
-    };
-    muxInput?: {
-      title?: string;
-      muxVideo?: MuxVideo;
-    };
-    textBlock?: Array<{
-      children?: Array<{
-        marks?: Array<string>;
-        text?: string;
-        _type: "span";
-        _key: string;
-      }>;
-      style?: "normal" | "large" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-      listItem?: "bullet";
-      markDefs?: Array<{
-        href?: string;
-        _type: "link";
-        _key: string;
-      }>;
-      level?: number;
-      _type: "block";
-      _key: string;
-    }>;
-    attribution?: string;
-    _type: "item";
+  reviewsContent?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
     _key: string;
+    [internalGroqTypeReferenceTo]?: "reviewType";
   }>;
   button?: {
     text?: string;
@@ -282,7 +291,6 @@ export type ContentType = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  itemType: "class" | "package" | "review";
   url?: string;
   mediaType: "image" | "video" | "none";
   photo?: {
@@ -320,7 +328,6 @@ export type ContentType = {
     _type: "block";
     _key: string;
   }>;
-  attribution?: string;
 };
 
 export type Settings = {
@@ -828,5 +835,5 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = TextOnly | Reviews | MomenceForm | Momence | MidHero | Details | Callout | ContentType | Settings | Home | PageType | BlockContent | MuxVideo | MuxVideoAsset | MuxAssetData | MuxStaticRenditions | MuxStaticRenditionFile | MuxPlaybackId | MuxTrack | MediaTag | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = TextOnly | ReviewType | Reviews | MomenceForm | Momence | MidHero | Details | Callout | ContentType | Settings | Home | PageType | BlockContent | MuxVideo | MuxVideoAsset | MuxAssetData | MuxStaticRenditions | MuxStaticRenditionFile | MuxPlaybackId | MuxTrack | MediaTag | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
