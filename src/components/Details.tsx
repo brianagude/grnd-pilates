@@ -1,21 +1,31 @@
 "use client";
 
 import React, { useCallback, useEffect, useState } from "react";
-import useEmblaCarousel from "embla-carousel-react";
 import { typography, spacing } from "@/styles/design-tokens";
-import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
-import Button from "@/components/inputs/Button";
 import { BlockContent } from "./inputs/PortableTextComponents";
+import type { UpdatedDetails } from "@/sanity/lib/types";
+import useEmblaCarousel from "embla-carousel-react";
+import Image from "next/image";
+import Button from "@/components/inputs/Button";
 import Video from "./inputs/Video";
-import type { Details as DetailsProps } from "@types";
 import { ArrowLongLeftIcon, ArrowLongRightIcon } from '@heroicons/react/24/outline'
 
-type DetailsForButton = Omit<DetailsProps, "button"> & {
-  button?: Omit<DetailsProps["button"], "internalPage"> & {
-    internalPage?: { _id?: string; slug?: string | null }
-  }
-}
+// type DetailsForButton = Omit<DetailsProps, "button"> & {
+//   button?: Omit<DetailsProps["button"], "internalPage"> & {
+//     internalPage?: { _id?: string; slug?: string | null }
+//   }
+// }
+
+// export type DataType = Omit<ContentTypeProps, "_id" | "_type" | "_createdAt" | "_updatedAt" | "_rev"> & {
+//   playbackId?: string;
+//   videoAlt?: string;
+//   link?: string;
+// };
+
+// type CarouselItem = 
+//   | { _key: string; data: DataType }
+//   | { _key: string; _ref: string; _type: "reference" };
 
 
 export default function Details({
@@ -23,7 +33,7 @@ export default function Details({
   title,
   carouselContent,
   button,
-}: DetailsForButton) {
+}: UpdatedDetails) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -83,16 +93,7 @@ export default function Details({
             <div className="flex">
               {carouselCards.map((item, index) => {
                 const { data } = item;
-                const {
-                  photo,
-                  mediaType,
-                  playbackId,
-                  videoAlt,
-                  textBlock,
-                  attribution,
-                  itemType,
-                  link
-                } = data;
+                const { photo, mediaType, playbackId, videoAlt, textBlock, link } = data;
 
                 const isActive = index === selectedIndex;
 
@@ -152,7 +153,8 @@ export default function Details({
         {/* Grid view for non-carousel */}
         {!isCarousel && (
           <div className="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-6">
-            {carouselContent.map((item) => {
+            {carouselContent.map((item:CarouselItem) => {
+              if (!("data" in item)) return null;
               const { data } = item;
               const { photo, mediaType, playbackId, videoAlt, textBlock, link } = data;
 

@@ -291,7 +291,7 @@ export type ContentType = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  url?: string;
+  link?: string;
   mediaType: "image" | "video" | "none";
   photo?: {
     asset?: {

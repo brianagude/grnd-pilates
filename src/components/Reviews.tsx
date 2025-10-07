@@ -5,19 +5,37 @@ import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import Button from "@/components/inputs/Button";
 import { BlockContent } from "./inputs/PortableTextComponents";
-import type {Reviews as ReviewsProps} from "@types"
+import type { UpdatedReviews } from "@/sanity/lib/types"
 import { ArrowLongLeftIcon, ArrowLongRightIcon } from '@heroicons/react/24/outline'
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Video from "./inputs/Video";
 
+// type ReviewItem = {
+//   _key: string;
+//   data: ReviewType & {
+//     playbackId?: string;
+//     videoAlt?: string;
+//   };
+// };
+
+// type UpdatedReviews = Omit<ReviewsProps, "button" | "reviewsContent"> & {
+//   button?: Omit<ReviewsProps["button"], "internalPage"> & {
+//     internalPage?: { _id?: string; slug?: string | null };
+//   };
+//   reviewsContent?: ReviewItem[];
+// };
+
+
 export default function Reviews({
   title,
   reviewsContent,
   button,
-}: ReviewsProps) {
+}: UpdatedReviews) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start", skipSnaps: false });
   const [selectedIndex, setSelectedIndex] = useState(0);
+
+  console.log('reviewsContent:', reviewsContent)
 
   // Update selected index when carousel changes
   const onSelect = useCallback(() => {
@@ -28,7 +46,7 @@ export default function Reviews({
   useEffect(() => {
     if (!emblaApi) return;
     emblaApi.on("select", onSelect);
-    onSelect(); // initialize
+    onSelect();
   }, [emblaApi, onSelect]);
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
@@ -65,17 +83,9 @@ export default function Reviews({
         <div ref={emblaRef} className="overflow-hidden">
           <div className="flex gap-4">
             {reviewsContent.map((item) => {
+              console.log('item:', item)
               const { data } = item;
-              const {
-                photo,
-                mediaType,
-                playbackId,
-                videoAlt,
-                textBlock,
-                attribution,
-                itemType,
-              } = data;
-
+              const { photo, mediaType, playbackId, videoAlt, textBlock, attribution } = data;
 
               return (
                 <div

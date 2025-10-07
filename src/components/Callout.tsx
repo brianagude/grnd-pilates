@@ -5,12 +5,18 @@ import Button from "@/components/inputs/Button";
 import Image from "next/image";
 import type { Callout as CalloutProps } from "@types"
 
+type UpdatedCallout = Omit<CalloutProps, "button"> & {
+  button?: Omit<CalloutProps["button"], "internalPage"> & {
+    internalPage?: { _id?: string; slug?: string | null }
+  }
+}
+
 export default function Callout({
   photo,
   imagePosition,
   textBlock,
   button,
-}: CalloutProps) {
+}: UpdatedCallout) {
   return (
     <section className={spacing.section}>
       <div className={`${spacing.container} lg:grid lg:grid-cols-2`}>

@@ -2019,7 +2019,7 @@
           "type": "string"
         }
       },
-      "url": {
+      "link": {
         "type": "objectAttribute",
         "value": {
           "type": "string"

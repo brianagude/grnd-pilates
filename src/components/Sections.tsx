@@ -7,23 +7,23 @@ import Reviews from "@/components/Reviews";
 import TextOnly from "@/components/TextOnly";
 
 import type {
-  Callout as CalloutType,
-  Details as DetailsType,
-  MidHero as MidHeroType,
-  Momence as MomenceType,
-  MomenceForm as MomenceFormType,
-  Reviews as ReviewsType,
-  TextOnly as TextOnlyType,
-} from "@types";
+  UpdatedReviews,
+  UpdatedCallout,
+  UpdatedMomence,
+  UpdatedMomenceForm,
+  UpdatedTextOnly,
+  UpdatedMidHero,
+  UpdatedDetails,
+} from "@/sanity/lib/types";
 
 type SectionModule =
-  | CalloutType
-  | DetailsType
-  | MidHeroType
-  | MomenceType
-  | MomenceFormType
-  | ReviewsType
-  | TextOnlyType
+  | UpdatedCallout
+  | UpdatedDetails
+  | UpdatedMidHero
+  | UpdatedMomence
+  | UpdatedMomenceForm
+  | UpdatedReviews
+  | UpdatedTextOnly
 
 type SectionsProps = {
   sections: SectionModule[];
