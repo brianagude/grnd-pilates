@@ -24,24 +24,24 @@ const blockContentComponents: PortableTextComponentsType = {
       <h6 className={typography.h6}>{children}</h6>
     ),
     caption: ({ children }) => (
-      <p className={typography.caption}>{children}</p>
+      <p className={`${typography.caption} max-w-prose`}>{children}</p>
     ),
     captionLarge: ({ children }) => (
-      <p className={typography.captionLarge}>{children}</p>
+      <p className={`${typography.captionLarge} max-w-prose`}>{children}</p>
     ),
     captionSmall: ({ children }) => (
-      <p className={typography.captionSmall}>{children}</p>
+      <p className={`${typography.captionSmall} max-w-prose`}>{children}</p>
     ),
     large: ({ children }) => (
-      <p className={typography.bodyLarge}>{children}</p>
+      <p className={`${typography.bodyLarge} max-w-prose`}>{children}</p>
     ),
     normal: ({ children }) => (
-      <p className={typography.body}>{children}</p>
+      <p className={`${typography.body} max-w-prose`}>{children}</p>
     ),
   },
   list: {
     bullet: ({ children }) => (
-      <ul className={`${typography.body} text-block-list list-disc w-full max-w-7xl pl-5 space-y-1 mt-2`}>
+      <ul className={`${typography.body} text-block-list list-disc w-full max-w-prose pl-5 space-y-1 mt-2`}>
         <span>{children}</span>
       </ul>
     ),

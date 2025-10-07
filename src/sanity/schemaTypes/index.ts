@@ -5,6 +5,7 @@ import { settings } from "@/sanity/schemaTypes/pages/settings";
 import { pageType } from "@/sanity/schemaTypes/pages/page";
 import { blockContent } from "@/sanity/schemaTypes/inputs/blockContent";
 import { contentType } from "@/sanity/schemaTypes/shared/contentType";
+import { reviewType } from "@/sanity/schemaTypes/shared/review";
 import { callout } from "@/sanity/schemaTypes/sections/callout";
 import { details } from "@/sanity/schemaTypes/sections/details";
 import { midHero } from "@/sanity/schemaTypes/sections/midHero";
@@ -26,6 +27,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     momence,
     momenceForm,
     reviews,
+    reviewType,
     textOnly
   ],
 };

@@ -15,6 +15,7 @@
 // Source: schema.json
 export type TextOnly = {
   _type: "textOnly";
+  title?: string;
   copy?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -22,7 +23,7 @@ export type TextOnly = {
       _type: "span";
       _key: string;
     }>;
-    style?: "normal" | "large" | "h3" | "h4" | "h5" | "h6";
+    style?: "normal" | "large" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -40,6 +41,7 @@ export type Reviews = {
   title?: string;
   carouselContent?: Array<{
     itemType: "class" | "package" | "review";
+    url?: string;
     mediaType: "image" | "video" | "none";
     photo?: {
       asset?: {
@@ -65,7 +67,7 @@ export type Reviews = {
         _type: "span";
         _key: string;
       }>;
-      style?: "normal" | "large" | "h3" | "h4" | "h5" | "h6";
+      style?: "normal" | "large" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
       listItem?: "bullet";
       markDefs?: Array<{
         href?: string;
@@ -107,7 +109,7 @@ export type MomenceForm = {
       _type: "span";
       _key: string;
     }>;
-    style?: "normal" | "large" | "h3" | "h4" | "h5" | "h6";
+    style?: "normal" | "large" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -162,7 +164,7 @@ export type MidHero = {
       _type: "span";
       _key: string;
     }>;
-    style?: "normal" | "large" | "h3" | "h4" | "h5" | "h6";
+    style?: "normal" | "large" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -245,7 +247,7 @@ export type Callout = {
       _type: "span";
       _key: string;
     }>;
-    style?: "normal" | "large" | "h3" | "h4" | "h5" | "h6";
+    style?: "normal" | "large" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -281,6 +283,7 @@ export type ContentType = {
   _updatedAt: string;
   _rev: string;
   itemType: "class" | "package" | "review";
+  url?: string;
   mediaType: "image" | "video" | "none";
   photo?: {
     asset?: {
@@ -306,7 +309,7 @@ export type ContentType = {
       _type: "span";
       _key: string;
     }>;
-    style?: "normal" | "large" | "h3" | "h4" | "h5" | "h6";
+    style?: "normal" | "large" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -419,7 +422,7 @@ export type Settings = {
         _type: "span";
         _key: string;
       }>;
-      style?: "normal" | "large" | "h3" | "h4" | "h5" | "h6";
+      style?: "normal" | "large" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
       listItem?: "bullet";
       markDefs?: Array<{
         href?: string;
@@ -473,7 +476,7 @@ export type Home = {
         _type: "span";
         _key: string;
       }>;
-      style?: "normal" | "large" | "h3" | "h4" | "h5" | "h6";
+      style?: "normal" | "large" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
       listItem?: "bullet";
       markDefs?: Array<{
         href?: string;
@@ -549,7 +552,7 @@ export type PageType = {
         _type: "span";
         _key: string;
       }>;
-      style?: "normal" | "large" | "h3" | "h4" | "h5" | "h6";
+      style?: "normal" | "large" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
       listItem?: "bullet";
       markDefs?: Array<{
         href?: string;
@@ -603,7 +606,7 @@ export type BlockContent = Array<{
     _type: "span";
     _key: string;
   }>;
-  style?: "normal" | "large" | "h3" | "h4" | "h5" | "h6";
+  style?: "normal" | "large" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   listItem?: "bullet";
   markDefs?: Array<{
     href?: string;

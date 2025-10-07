@@ -12,6 +12,13 @@
             "value": "textOnly"
           }
         },
+        "title": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
         "copy": {
           "type": "objectAttribute",
           "value": {
@@ -78,6 +85,14 @@
                       {
                         "type": "string",
                         "value": "large"
+                      },
+                      {
+                        "type": "string",
+                        "value": "h1"
+                      },
+                      {
+                        "type": "string",
+                        "value": "h2"
                       },
                       {
                         "type": "string",
@@ -229,6 +244,13 @@
                     ]
                   },
                   "optional": false
+                },
+                "url": {
+                  "type": "objectAttribute",
+                  "value": {
+                    "type": "string"
+                  },
+                  "optional": true
                 },
                 "mediaType": {
                   "type": "objectAttribute",
@@ -417,6 +439,14 @@
                               {
                                 "type": "string",
                                 "value": "large"
+                              },
+                              {
+                                "type": "string",
+                                "value": "h1"
+                              },
+                              {
+                                "type": "string",
+                                "value": "h2"
                               },
                               {
                                 "type": "string",
@@ -731,6 +761,14 @@
                       {
                         "type": "string",
                         "value": "large"
+                      },
+                      {
+                        "type": "string",
+                        "value": "h1"
+                      },
+                      {
+                        "type": "string",
+                        "value": "h2"
                       },
                       {
                         "type": "string",
@@ -1129,6 +1167,14 @@
                       {
                         "type": "string",
                         "value": "large"
+                      },
+                      {
+                        "type": "string",
+                        "value": "h1"
+                      },
+                      {
+                        "type": "string",
+                        "value": "h2"
                       },
                       {
                         "type": "string",
@@ -1705,6 +1751,14 @@
                       },
                       {
                         "type": "string",
+                        "value": "h1"
+                      },
+                      {
+                        "type": "string",
+                        "value": "h2"
+                      },
+                      {
+                        "type": "string",
                         "value": "h3"
                       },
                       {
@@ -1963,6 +2017,13 @@
         },
         "optional": false
       },
+      "url": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
       "mediaType": {
         "type": "objectAttribute",
         "value": {
@@ -2150,6 +2211,14 @@
                     {
                       "type": "string",
                       "value": "large"
+                    },
+                    {
+                      "type": "string",
+                      "value": "h1"
+                    },
+                    {
+                      "type": "string",
+                      "value": "h2"
                     },
                     {
                       "type": "string",
@@ -2885,6 +2954,14 @@
                           },
                           {
                             "type": "string",
+                            "value": "h1"
+                          },
+                          {
+                            "type": "string",
+                            "value": "h2"
+                          },
+                          {
+                            "type": "string",
                             "value": "h3"
                           },
                           {
@@ -3247,6 +3324,14 @@
                           {
                             "type": "string",
                             "value": "large"
+                          },
+                          {
+                            "type": "string",
+                            "value": "h1"
+                          },
+                          {
+                            "type": "string",
+                            "value": "h2"
                           },
                           {
                             "type": "string",
@@ -3793,6 +3878,14 @@
                           },
                           {
                             "type": "string",
+                            "value": "h1"
+                          },
+                          {
+                            "type": "string",
+                            "value": "h2"
+                          },
+                          {
+                            "type": "string",
                             "value": "h3"
                           },
                           {
@@ -4203,6 +4296,14 @@
                 {
                   "type": "string",
                   "value": "large"
+                },
+                {
+                  "type": "string",
+                  "value": "h1"
+                },
+                {
+                  "type": "string",
+                  "value": "h2"
                 },
                 {
                   "type": "string",

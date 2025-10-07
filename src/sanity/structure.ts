@@ -20,6 +20,7 @@ export const structure: StructureResolver = (S) =>
         ),
       S.documentTypeListItem("pageType").title("Pages"),
       S.documentTypeListItem("contentType").title("Featured Content"),
+      S.documentTypeListItem("reviewType").title("Featured Reviews"),
       S.listItem()
         .id("settings")
         .schemaType("settings")
@@ -40,7 +41,8 @@ export const structure: StructureResolver = (S) =>
             "home",
             "settings",
             "pageType",
-            "contentType"
+            "contentType",
+            "reviewType"
           ].includes(item.getId() || ""),
       ),
     ]);

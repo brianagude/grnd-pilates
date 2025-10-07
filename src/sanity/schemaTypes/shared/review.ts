@@ -1,16 +1,11 @@
 import { defineField, defineType } from "sanity";
 import { ImageIcon } from '@sanity/icons'
 
-export const contentType = defineType({
-  name: "contentType",
-  title: "Featured Content",
+export const reviewType = defineType({
+  name: "reviewType",
+  title: "Reviews",
   type: "document",
   fields: [
-    defineField({
-      name: "url",
-      title: "Link to Content",
-      type: "string",
-    }),
     defineField({
       name: "mediaType",
       title: "Media Type",
@@ -63,14 +58,20 @@ export const contentType = defineType({
       title: "Text Block",
       type: "blockContent",
     }),
+    defineField({
+      name: "attribution",
+      title: "Attribution",
+      type: "string",
+    }),
   ],
   preview: {
     select: {
       body: 'textBlock',
       media: "photo",
+      type: "itemType",
     },
     prepare(selection) {
-      const { body, media } = selection;
+      const { body, media, type } = selection;
       const firstBlock = body[0];
       const text = firstBlock?.children
         ?.map((c: { text: string; }) => c.text)
@@ -81,6 +82,7 @@ export const contentType = defineType({
       
       return {
         title,
+        subtitle: type,
         media: media || ImageIcon,
       };
     },

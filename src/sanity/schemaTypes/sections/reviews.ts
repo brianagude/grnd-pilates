@@ -12,14 +12,16 @@ export const reviews = defineType({
       type: "string",
     }),
     defineField({
-      name: "carouselContent",
+      name: "reviewsContent",
       title: "Content",
       type: "array",
       of: [
         defineArrayMember({
           name: "item",
           title: "Item",
-          type: "contentType",
+          type: 'reference',
+          weak: true,
+          to: [{type: 'reviewType'}],
         }),
       ]
     }),

@@ -52,10 +52,14 @@ const midHeroFragment = `
 
 const detailsFragment = `
   ...,
-  carouselContent[]->{
-    ...,
-    "playbackId": muxInput.muxVideo.asset->playbackId,
-    "videoAlt": muxInput.title,
+  button {${linkFragment}},
+  carouselContent[]{
+    _key,
+    "data": @->{
+      ...,
+      "playbackId": muxInput.muxVideo.asset->playbackId,
+      "videoAlt": muxInput.title
+    }
   }
 `
 
