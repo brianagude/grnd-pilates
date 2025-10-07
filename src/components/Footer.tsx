@@ -97,18 +97,6 @@ export default function Footer({ footer, socialMedia }: FooterProps) {
             )}
           </div>
         )}
-
-
-        {/* {footer.footerLinks && footer.footerLinks.length > 0 && (
-          <nav
-            aria-label="Footer navigation"
-            className="flex flex-wrap items-center justify-center gap-3 md:justify-end"
-          >
-            {footer.footerLinks.map((link: FooterLink) => (
-              <Button key={link._key} {...link} classes={buttons.link} />
-            ))}
-          </nav>
-        )} */}
       </div>
     </footer>
   );

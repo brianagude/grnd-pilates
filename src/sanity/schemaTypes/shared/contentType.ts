@@ -7,9 +7,12 @@ export const contentType = defineType({
   type: "document",
   fields: [
     defineField({
-      name: "url",
+      name: "link",
       title: "Link to Content",
-      type: "string",
+      type: "url",
+      validation: Rule => Rule.uri({
+        scheme: ['http', 'https']
+      })
     }),
     defineField({
       name: "mediaType",

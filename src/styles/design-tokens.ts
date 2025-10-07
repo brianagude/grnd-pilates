@@ -14,7 +14,7 @@ export const typography = {
   h5: `${baseHeading} text-2xl md:text-3xl`,
   h6: `${baseHeading} text-2xl`,
   bodyLarge: `${baseBody} text-xl lg:text-2xl`,
-  body: `${baseBody} text-base`,
+  body: `${baseBody} text-base lg:text-xl`,
   captionLarge: `${baseBody} font-medium uppercase text-lg md:text-2xl`,
   caption: `${baseBody} font-medium uppercase text-lg md:text-xl`,
   captionSmall: `${baseBody} font-medium uppercase text-base md:text-lg`,

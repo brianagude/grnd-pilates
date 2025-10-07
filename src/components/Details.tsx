@@ -11,13 +11,20 @@ import Video from "./inputs/Video";
 import type { Details as DetailsProps } from "@types";
 import { ArrowLongLeftIcon, ArrowLongRightIcon } from '@heroicons/react/24/outline'
 
+type DetailsForButton = Omit<DetailsProps, "button"> & {
+  button?: Omit<DetailsProps["button"], "internalPage"> & {
+    internalPage?: { _id?: string; slug?: string | null }
+  }
+}
+
+
 export default function Details({
   isCarousel,
   title,
   carouselContent,
   button,
-}: DetailsProps) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start", skipSnaps: false });
+}: DetailsForButton) {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   // Update selected index when carousel changes
@@ -36,6 +43,9 @@ export default function Details({
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   if (!carouselContent || carouselContent.length === 0) return null;
+  const carouselCards = carouselContent.length < 4
+    ? [...carouselContent, ...carouselContent]
+    : carouselContent;
 
   return (
     <section className={spacing.section}>
@@ -71,7 +81,7 @@ export default function Details({
         {isCarousel && (
           <div ref={emblaRef} className="overflow-hidden">
             <div className="flex">
-              {carouselContent.map((item, index) => {
+              {carouselCards.map((item, index) => {
                 const { data } = item;
                 const {
                   photo,
@@ -81,6 +91,7 @@ export default function Details({
                   textBlock,
                   attribution,
                   itemType,
+                  link
                 } = data;
 
                 const isActive = index === selectedIndex;
@@ -107,14 +118,9 @@ export default function Details({
 
                     {/* Text only for active card */}
                     {isActive && (
-                      <div className="p-4 bg-brown-100 rounded-4xl flex items-center space-y-2 md:p-5 lg:p-10">
+                      <div className="p-4 bg-brown-100 rounded-4xl flex flex-col gap-3 items-center justify-center md:p-5 lg:p-10">
                         {textBlock && <BlockContent value={textBlock} />}
-                        {itemType === "reviews" && (
-                          <div>
-                            {attribution && <p>{attribution}</p>}
-                            <p>stars</p>
-                          </div>
-                        )}
+                        {link && <a href={link} className={`${typography.link} ${typography.caption} w-full mt-2`} target="_blank" rel="noopener noreferrer">Learn More</a>}
                       </div>
                     )}
                   </div>
@@ -148,7 +154,7 @@ export default function Details({
           <div className="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-6">
             {carouselContent.map((item) => {
               const { data } = item;
-              const { photo, mediaType, playbackId, videoAlt, textBlock, attribution, itemType } = data;
+              const { photo, mediaType, playbackId, videoAlt, textBlock, link } = data;
 
               return (
                 <div key={item._key} className="space-y-8">
@@ -165,14 +171,9 @@ export default function Details({
                       <Video playbackId={playbackId} title={videoAlt} />
                     )}
                   </div>
-                  <div className="px-3 md:px-5">
+                  <div className="px-3 flex flex-col gap-3 md:px-5">
                     {textBlock && <BlockContent value={textBlock} />}
-                    {itemType === "reviews" && (
-                      <div>
-                        {attribution && <p>{attribution}</p>}
-                        <p>stars</p>
-                      </div>
-                    )}
+                    {link && <a href={link} className={`${typography.link} ${typography.caption} w-full mt-2`} target="_blank" rel="noopener noreferrer">Learn More</a>}
                   </div>
                 </div>
               );

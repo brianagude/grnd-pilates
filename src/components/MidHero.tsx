@@ -45,11 +45,13 @@ export default function MidHero({
 
       {backgroundImage && (
         <Image
-          src={urlFor(backgroundImage).url()}
+          src={urlFor(backgroundImage).quality(100).url()}
           alt={backgroundImage.alt || "background image"}
           fill
           priority
           className="object-cover"
+          sizes="100vw"
+          quality={100}
         />
       )}
     </section>

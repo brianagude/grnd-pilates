@@ -36,10 +36,12 @@ export default function Hero({
         <div className="flex flex-col items-center justify-center gap-2">
           {mainImage && (
             <Image
-              src={urlFor(mainImage).url()}
+              src={urlFor(mainImage).quality(100).url()}
               alt={mainImage.alt || "grnd logo"}
               width={368}
               height={100}
+              sizes="100vw"
+              quality={100}
               priority
             />
           )}
