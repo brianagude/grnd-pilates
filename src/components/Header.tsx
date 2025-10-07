@@ -5,13 +5,11 @@ import Link from "next/link";
 import { urlFor } from "@/sanity/lib/image";
 import Button from "@/components/inputs/Button";
 import React from "react";
-import type { Settings } from "@types";
-import { Drawer } from 'vaul';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import type { UpdatedHeader } from "@/sanity/lib/types";
+import { Drawer } from "vaul";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
-type HeaderType = Settings["header"];
-
-export default function Header(props: HeaderType) {
+export default function Header(props: UpdatedHeader) {
   const { logo, mainCTA, menuList } = props ?? {};
   const [isOpen, setIsOpen] = React.useState(false);
   const logoUrl = logo ? urlFor(logo).url() : "/logo.svg";
@@ -31,8 +29,9 @@ export default function Header(props: HeaderType) {
             />
           </Link>
           <div className="flex items-center gap-6">
-            {menuList && <nav className="items-center gap-4 hidden xl:flex">
-              {menuList.map((item) => (
+            {menuList && (
+              <nav className="items-center gap-4 hidden xl:flex">
+                {menuList.map((item) => (
                   <Button
                     key={item._key}
                     {...item}
@@ -40,30 +39,34 @@ export default function Header(props: HeaderType) {
                   />
                 ))}
               </nav>
-            }
+            )}
             {mainCTA && <Button {...mainCTA} classes="hidden sm:block" />}
             <Drawer.Trigger className="xl:hidden">
-              <Bars3Icon className="size-16 text-black cursor-pointer hover:text-brown-700 transition-colors"/>
+              <Bars3Icon className="size-16 text-black cursor-pointer hover:text-brown-700 transition-colors" />
             </Drawer.Trigger>
           </div>
         </div>
       </header>
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 bg-black/40 z-40" />
-        <Drawer.Content 
+        <Drawer.Content
           className="right-2 top-2 bottom-2 fixed outline-none w-[310px] flex z-50"
           // The gap between the edge of the screen and the drawer is 8px in this case.
-          style={{ '--initial-transform': 'calc(100% + 8px)' } as React.CSSProperties}>
+          style={
+            { "--initial-transform": "calc(100% + 8px)" } as React.CSSProperties
+          }
+        >
           <div className="bg-white h-full w-full grow p-5 flex flex-col gap-10 rounded-2xl">
             <button
               type="button"
               className="ml-auto"
               onClick={() => setIsOpen(false)}
             >
-              <XMarkIcon className="size-10 text-black cursor-pointer hover:text-brown-700 transition-colors"/>
+              <XMarkIcon className="size-10 text-black cursor-pointer hover:text-brown-700 transition-colors" />
             </button>
-            {menuList && <nav className="flex flex-col gap-4">
-              {menuList.map((item) => (
+            {menuList && (
+              <nav className="flex flex-col gap-4">
+                {menuList.map((item) => (
                   <Button
                     key={item._key}
                     {...item}
@@ -71,7 +74,7 @@ export default function Header(props: HeaderType) {
                   />
                 ))}
               </nav>
-            }
+            )}
             {mainCTA && <Button {...mainCTA} classes="block !w-full" />}
           </div>
         </Drawer.Content>

@@ -9,24 +9,10 @@ import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
 import Button from "@/components/inputs/Button";
 import Video from "./inputs/Video";
-import { ArrowLongLeftIcon, ArrowLongRightIcon } from '@heroicons/react/24/outline'
-
-// type DetailsForButton = Omit<DetailsProps, "button"> & {
-//   button?: Omit<DetailsProps["button"], "internalPage"> & {
-//     internalPage?: { _id?: string; slug?: string | null }
-//   }
-// }
-
-// export type DataType = Omit<ContentTypeProps, "_id" | "_type" | "_createdAt" | "_updatedAt" | "_rev"> & {
-//   playbackId?: string;
-//   videoAlt?: string;
-//   link?: string;
-// };
-
-// type CarouselItem = 
-//   | { _key: string; data: DataType }
-//   | { _key: string; _ref: string; _type: "reference" };
-
+import {
+  ArrowLongLeftIcon,
+  ArrowLongRightIcon,
+} from "@heroicons/react/24/outline";
 
 export default function Details({
   isCarousel,
@@ -53,15 +39,18 @@ export default function Details({
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   if (!carouselContent || carouselContent.length === 0) return null;
-  const carouselCards = carouselContent.length < 4
-    ? [...carouselContent, ...carouselContent]
-    : carouselContent;
+  const carouselCards =
+    carouselContent.length < 4
+      ? [...carouselContent, ...carouselContent]
+      : carouselContent;
 
   return (
     <section className={spacing.section}>
-      <div className={`${spacing.container} ${isCarousel && '!px-0'}`}>
+      <div className={`${spacing.container} ${isCarousel && "!px-0"}`}>
         {/* Header */}
-        <div className={`flex flex-col w-full gap-4 md:flex-row md:justify-between items-start ${isCarousel && 'px-4 sm:px-8 lg:px-16'}`}>
+        <div
+          className={`flex flex-col w-full gap-4 md:flex-row md:justify-between items-start ${isCarousel && "px-4 sm:px-8 lg:px-16"}`}
+        >
           {title && <h3 className={typography.h3}>{title}</h3>}
 
           <div className="flex gap-4">
@@ -72,14 +61,14 @@ export default function Details({
                   onClick={scrollPrev}
                   className="cursor-pointer"
                 >
-                  <ArrowLongLeftIcon className="size-16 text-black hover:-translate-y-0.5 transition-all"/>
+                  <ArrowLongLeftIcon className="size-16 text-black hover:-translate-y-0.5 transition-all" />
                 </button>
                 <button
                   type="button"
                   onClick={scrollNext}
                   className="cursor-pointer"
                 >
-                  <ArrowLongRightIcon className="size-16 text-black hover:-translate-y-0.5 transition-all"/>
+                  <ArrowLongRightIcon className="size-16 text-black hover:-translate-y-0.5 transition-all" />
                 </button>
               </div>
             )}
@@ -93,14 +82,21 @@ export default function Details({
             <div className="flex">
               {carouselCards.map((item, index) => {
                 const { data } = item;
-                const { photo, mediaType, playbackId, videoAlt, textBlock, link } = data;
+                const {
+                  photo,
+                  mediaType,
+                  playbackId,
+                  videoAlt,
+                  textBlock,
+                  link,
+                } = data;
 
                 const isActive = index === selectedIndex;
 
                 return (
                   <div
                     key={item._key}
-                    className={`flex-shrink-0 overflow-hidden px-4 ${isActive ? 'grid flex-[0_0_100%] sm:grid-cols-2 md:flex-[0_0_90%] xl:flex-[0_0_60%] 2xl:flex-[0_0_50%]' : 'flex-[0_0_100%] sm:flex-[0_0_50%] md:flex-[0_0_45%] xl:flex-[0_0_30%] 2xl:flex-[0_0_25%]'}`}
+                    className={`flex-shrink-0 overflow-hidden px-4 ${isActive ? "grid flex-[0_0_100%] sm:grid-cols-2 md:flex-[0_0_90%] xl:flex-[0_0_60%] 2xl:flex-[0_0_50%]" : "flex-[0_0_100%] sm:flex-[0_0_50%] md:flex-[0_0_45%] xl:flex-[0_0_30%] 2xl:flex-[0_0_25%]"}`}
                   >
                     {/* Media */}
                     <div className="relative aspect-[3/4] w-full h-auto rounded-4xl overflow-hidden">
@@ -121,7 +117,16 @@ export default function Details({
                     {isActive && (
                       <div className="p-4 bg-brown-100 rounded-4xl flex flex-col gap-3 items-center justify-center md:p-5 lg:p-10">
                         {textBlock && <BlockContent value={textBlock} />}
-                        {link && <a href={link} className={`${typography.link} ${typography.caption} w-full mt-2`} target="_blank" rel="noopener noreferrer">Learn More</a>}
+                        {link && (
+                          <a
+                            href={link}
+                            className={`${typography.link} ${typography.caption} w-full mt-2`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Learn More
+                          </a>
+                        )}
                       </div>
                     )}
                   </div>
@@ -138,14 +143,14 @@ export default function Details({
               onClick={scrollPrev}
               className="cursor-pointer"
             >
-              <ArrowLongLeftIcon className="size-16 text-black hover:-translate-y-0.5 transition-all"/>
+              <ArrowLongLeftIcon className="size-16 text-black hover:-translate-y-0.5 transition-all" />
             </button>
             <button
               type="button"
               onClick={scrollNext}
               className="cursor-pointer"
             >
-              <ArrowLongRightIcon className="size-16 text-black hover:-translate-y-0.5 transition-all"/>
+              <ArrowLongRightIcon className="size-16 text-black hover:-translate-y-0.5 transition-all" />
             </button>
           </div>
         )}
@@ -153,10 +158,16 @@ export default function Details({
         {/* Grid view for non-carousel */}
         {!isCarousel && (
           <div className="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-6">
-            {carouselContent.map((item:CarouselItem) => {
-              if (!("data" in item)) return null;
+            {carouselContent.map((item) => {
               const { data } = item;
-              const { photo, mediaType, playbackId, videoAlt, textBlock, link } = data;
+              const {
+                photo,
+                mediaType,
+                playbackId,
+                videoAlt,
+                textBlock,
+                link,
+              } = data;
 
               return (
                 <div key={item._key} className="space-y-8">
@@ -175,7 +186,16 @@ export default function Details({
                   </div>
                   <div className="px-3 flex flex-col gap-3 md:px-5">
                     {textBlock && <BlockContent value={textBlock} />}
-                    {link && <a href={link} className={`${typography.link} ${typography.caption} w-full mt-2`} target="_blank" rel="noopener noreferrer">Learn More</a>}
+                    {link && (
+                      <a
+                        href={link}
+                        className={`${typography.link} ${typography.caption} w-full mt-2`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Learn More
+                      </a>
+                    )}
                   </div>
                 </div>
               );

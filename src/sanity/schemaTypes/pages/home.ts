@@ -22,8 +22,8 @@ export const home = defineType({
           type: "image",
           options: {
             hotspot: true,
-            metadata: ['lqip', 'palette'],
-            accept: 'image/*',
+            metadata: ["lqip", "palette"],
+            accept: "image/*",
           },
           fields: [
             defineField({

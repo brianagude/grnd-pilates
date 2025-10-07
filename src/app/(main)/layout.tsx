@@ -7,8 +7,7 @@ import { draftMode } from "next/headers";
 import { DisableDraftMode } from "@/components/DisableDraftMode";
 import { getCacheOptions, CACHE_TAGS } from "@/lib/cache-tags";
 import Script from "next/script";
-import { SETTINGS_QUERY } from "@/sanity/lib/queries"
-
+import { SETTINGS_QUERY } from "@/sanity/lib/queries";
 
 // ---------- ISR / Revalidation options ----------
 // Increased from 30 seconds to 1 hour for better performance
@@ -27,7 +26,7 @@ export default async function RootLayout({
       <Header {...header} />
       <main>
         {children}
-        <Footer footer={footer} socialMedia={socialMedia} />
+        <Footer {...footer} socialMedia={socialMedia} />
       </main>
       {process.env.NODE_ENV === "development" && <TailwindHelper />}
       {(await draftMode()).isEnabled && (

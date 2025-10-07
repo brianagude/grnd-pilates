@@ -28,12 +28,12 @@ export const callout = defineType({
       validation: (Rule) => Rule.required(),
       options: {
         list: [
-          { title: 'Image First', value: 'first' },
-          { title: 'Image Last', value: 'last' },
+          { title: "Image First", value: "first" },
+          { title: "Image Last", value: "last" },
         ],
         layout: "radio",
-        direction: "horizontal"
-      }
+        direction: "horizontal",
+      },
     }),
     defineField({
       name: "textBlock",
@@ -44,24 +44,24 @@ export const callout = defineType({
       name: "button",
       title: "Button",
       type: "object",
-      fields: [...buttonFields]
+      fields: [...buttonFields],
     }),
   ],
   preview: {
     select: {
-      body: 'textBlock',
+      body: "textBlock",
       media: "photo",
     },
     prepare(selection) {
       const { body = [], media } = selection;
       const firstBlock = body[0];
       const text = firstBlock?.children
-        ?.map((c: { text: string; }) => c.text)
+        ?.map((c: { text: string }) => c.text)
         .join("")
         .trim();
 
       const title = text ? `${text.slice(0, 40)}…` : "Missing Text";
-      
+
       return {
         title,
         subtitle: "Callout Section",

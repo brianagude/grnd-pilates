@@ -1,5 +1,5 @@
 import { defineField, defineType } from "sanity";
-import { ImageIcon } from '@sanity/icons'
+import { ImageIcon } from "@sanity/icons";
 
 export const contentType = defineType({
   name: "contentType",
@@ -10,9 +10,10 @@ export const contentType = defineType({
       name: "link",
       title: "Link to Content",
       type: "url",
-      validation: Rule => Rule.uri({
-        scheme: ['http', 'https']
-      })
+      validation: (Rule) =>
+        Rule.uri({
+          scheme: ["http", "https"],
+        }),
     }),
     defineField({
       name: "mediaType",
@@ -21,19 +22,19 @@ export const contentType = defineType({
       validation: (Rule) => Rule.required(),
       options: {
         list: [
-          {title: 'Image', value: 'image'},
-          {title: 'Video', value: 'video'},
-          {title: 'None', value: 'none'},
+          { title: "Image", value: "image" },
+          { title: "Video", value: "video" },
+          { title: "None", value: "none" },
         ],
         layout: "radio",
-        direction: "horizontal"
-      }
+        direction: "horizontal",
+      },
     }),
     defineField({
       name: "photo",
       title: "Image",
       type: "image",
-      options: { hotspot: true, },
+      options: { hotspot: true },
       fields: [
         defineField({
           name: "alt",
@@ -41,25 +42,25 @@ export const contentType = defineType({
           type: "string",
         }),
       ],
-      hidden: ({document}) => document?.mediaType !== 'image',
+      hidden: ({ document }) => document?.mediaType !== "image",
     }),
     defineField({
       title: "Video",
       name: "muxInput",
       type: "document",
-      hidden: ({document}) => document?.mediaType !== 'video',
+      hidden: ({ document }) => document?.mediaType !== "video",
       fields: [
-        defineField({ 
-          title: "Title", 
-          name: "title", 
-          type: "string" 
+        defineField({
+          title: "Title",
+          name: "title",
+          type: "string",
         }),
         defineField({
           title: "Video file",
           name: "muxVideo",
-          type: "mux.video"
-        })
-      ]
+          type: "mux.video",
+        }),
+      ],
     }),
     defineField({
       name: "textBlock",
@@ -69,19 +70,19 @@ export const contentType = defineType({
   ],
   preview: {
     select: {
-      body: 'textBlock',
+      body: "textBlock",
       media: "photo",
     },
     prepare(selection) {
       const { body, media } = selection;
       const firstBlock = body[0];
       const text = firstBlock?.children
-        ?.map((c: { text: string; }) => c.text)
+        ?.map((c: { text: string }) => c.text)
         .join("")
         .trim();
 
       const title = text ? `${text.slice(0, 40)}…` : "Missing Text";
-      
+
       return {
         title,
         media: media || ImageIcon,

@@ -38,14 +38,14 @@ export default function Button({
 
   const className = clsx(style && styles[style], classes);
   const isGlimmer = style === "primary" || style === "secondary";
-  const content = <span className={clsx(isGlimmer && "glimmer")}>{children ?? text}</span>;
+  const content = (
+    <span className={clsx(isGlimmer && "glimmer")}>{children ?? text}</span>
+  );
 
   // If internal page exists, always prioritize it
   if (internalPage?._id) {
     const internalLink =
-      internalPage._id === "home"
-        ? "/"
-        : `/${internalPage.slug ?? ""}`;
+      internalPage._id === "home" ? "/" : `/${internalPage.slug ?? ""}`;
 
     return (
       <Link className={className} href={internalLink}>
@@ -101,9 +101,5 @@ export default function Button({
     );
   }
 
-  return (
-    <span className={`${className} opacity-35`}>
-      {content}
-    </span>
-  );
+  return <span className={`${className} opacity-35`}>{content}</span>;
 }

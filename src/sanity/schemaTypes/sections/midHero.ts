@@ -43,19 +43,19 @@ export const midHero = defineType({
   ],
   preview: {
     select: {
-      body: 'textBlock',
+      body: "textBlock",
       media: "backgroundImage",
     },
     prepare(selection) {
       const { body, media } = selection;
       const firstBlock = body[0];
       const text = firstBlock?.children
-        ?.map((c: { text: string; }) => c.text)
+        ?.map((c: { text: string }) => c.text)
         .join("")
         .trim();
 
       const title = text ? `${text.slice(0, 40)}…` : "Missing Text";
-      
+
       return {
         title,
         subtitle: "Mid Hero Section",

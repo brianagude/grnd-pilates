@@ -4,7 +4,7 @@ const linkFragment = `
     _id,
     "slug": slug.current
   }
-`
+`;
 
 const heroFragment = `
   ...,
@@ -26,7 +26,7 @@ const heroFragment = `
     crop { top, bottom, left, right },
     hotspot { x, y, width, height }
   }
-`
+`;
 
 const midHeroFragment = `
   ...,
@@ -48,7 +48,7 @@ const midHeroFragment = `
     crop { top, bottom, left, right },
     hotspot { x, y, width, height }
   }
-`
+`;
 
 const detailsFragment = `
   ...,
@@ -61,20 +61,20 @@ const detailsFragment = `
       "videoAlt": muxInput.title
     }
   }
-`
+`;
 
 const calloutFragment = `
   ...,
   button {${linkFragment}}
-`
+`;
 
 const momenceFragment = `
   ...,
-`
+`;
 
 const momenceFormFragment = `
   ...,
-`
+`;
 
 const reviewsFragment = `
   ...,
@@ -87,12 +87,11 @@ const reviewsFragment = `
       "videoAlt": muxInput.title
     }
   }
-`
+`;
 
 const textOnlyFragment = `
   ...,
-`
-
+`;
 
 export const HOME_QUERY = `*[_type == "home"][0]{
   hero {${heroFragment}},
@@ -111,7 +110,6 @@ export const HOME_QUERY = `*[_type == "home"][0]{
   }
 }`;
 
-
 export const PAGE_QUERY = `*[_type == "pageType" && slug.current == $slug][0]{
   hero {${heroFragment}},
   sections[] {
@@ -128,7 +126,6 @@ export const PAGE_QUERY = `*[_type == "pageType" && slug.current == $slug][0]{
     )
   }
 }`;
-
 
 export const SETTINGS_QUERY = `*[_type == "settings"][0]{
   ...,

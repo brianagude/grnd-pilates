@@ -1,12 +1,15 @@
-"use client"
+"use client";
 
 import { typography, spacing } from "@/styles/design-tokens";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import Button from "@/components/inputs/Button";
 import { BlockContent } from "./inputs/PortableTextComponents";
-import type { UpdatedReviews } from "@/sanity/lib/types"
-import { ArrowLongLeftIcon, ArrowLongRightIcon } from '@heroicons/react/24/outline'
+import type { UpdatedReviews } from "@/sanity/lib/types";
+import {
+  ArrowLongLeftIcon,
+  ArrowLongRightIcon,
+} from "@heroicons/react/24/outline";
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Video from "./inputs/Video";
@@ -26,16 +29,19 @@ import Video from "./inputs/Video";
 //   reviewsContent?: ReviewItem[];
 // };
 
-
 export default function Reviews({
   title,
   reviewsContent,
   button,
 }: UpdatedReviews) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start", skipSnaps: false });
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    align: "start",
+    skipSnaps: false,
+  });
   const [selectedIndex, setSelectedIndex] = useState(0);
 
-  console.log('reviewsContent:', reviewsContent)
+  console.log("reviewsContent:", reviewsContent);
 
   // Update selected index when carousel changes
   const onSelect = useCallback(() => {
@@ -52,7 +58,7 @@ export default function Reviews({
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
-  if (!reviewsContent || reviewsContent.length === 0) return null
+  if (!reviewsContent || reviewsContent.length === 0) return null;
 
   return (
     <section className={spacing.section}>
@@ -66,14 +72,14 @@ export default function Reviews({
                 onClick={scrollPrev}
                 className="cursor-pointer"
               >
-                <ArrowLongLeftIcon className="size-16 text-black hover:-translate-y-0.5 transition-all"/>
+                <ArrowLongLeftIcon className="size-16 text-black hover:-translate-y-0.5 transition-all" />
               </button>
               <button
                 type="button"
                 onClick={scrollNext}
                 className="cursor-pointer"
               >
-                <ArrowLongRightIcon className="size-16 text-black hover:-translate-y-0.5 transition-all"/>
+                <ArrowLongRightIcon className="size-16 text-black hover:-translate-y-0.5 transition-all" />
               </button>
             </div>
             {button && <Button {...button} />}
@@ -83,16 +89,23 @@ export default function Reviews({
         <div ref={emblaRef} className="overflow-hidden">
           <div className="flex gap-4">
             {reviewsContent.map((item) => {
-              console.log('item:', item)
+              console.log("item:", item);
               const { data } = item;
-              const { photo, mediaType, playbackId, videoAlt, textBlock, attribution } = data;
+              const {
+                photo,
+                mediaType,
+                playbackId,
+                videoAlt,
+                textBlock,
+                attribution,
+              } = data;
 
               return (
                 <div
                   key={item._key}
                   className="rounded-4xl text-white bg-black flex-shrink-0 overflow-hidden flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_33%] xl:flex-[0_0_25%]"
                 >
-                  {(mediaType !== "none" && (photo || playbackId)) && (
+                  {mediaType !== "none" && (photo || playbackId) && (
                     <div className="relative aspect-square w-full h-auto">
                       {mediaType === "image" && photo && (
                         <Image
@@ -109,8 +122,12 @@ export default function Reviews({
                   )}
 
                   <div className="p-6 flex flex-col gap-2">
-                    {textBlock && <BlockContent value={textBlock} classes="!mt-0" />}
-                    {attribution && <p className={typography.captionSmall}>{attribution}</p>}
+                    {textBlock && (
+                      <BlockContent value={textBlock} classes="!mt-0" />
+                    )}
+                    {attribution && (
+                      <p className={typography.captionSmall}>{attribution}</p>
+                    )}
                   </div>
                 </div>
               );

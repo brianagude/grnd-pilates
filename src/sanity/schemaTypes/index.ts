@@ -28,6 +28,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     momenceForm,
     reviews,
     reviewType,
-    textOnly
+    textOnly,
   ],
 };

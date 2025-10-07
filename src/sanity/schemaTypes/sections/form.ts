@@ -34,20 +34,20 @@ export const momenceForm = defineType({
   ],
   preview: {
     select: {
-      body: 'textBlock',
+      body: "textBlock",
       media: "photo",
-      source: "source"
+      source: "source",
     },
     prepare(selection) {
       const { body = [], media, source } = selection;
       const firstBlock = body[0];
       const text = firstBlock?.children
-        ?.map((c: { text: string; }) => c.text)
+        ?.map((c: { text: string }) => c.text)
         .join("")
         .trim();
 
       const title = text ? `${text.slice(0, 40)}…` : "Missing Text";
-      
+
       return {
         title,
         subtitle: `Form Section | ID: ${source}`,

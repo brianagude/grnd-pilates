@@ -12,17 +12,16 @@ export const buttonFields = [
     name: "url",
     title: "URL",
     type: "string",
-    description: 'Can be a URL (https://...), email (mailto:...), or phone (tel:...)',
+    description:
+      "Can be a URL (https://...), email (mailto:...), or phone (tel:...)",
   }),
   defineField({
-    name: 'internalPage',
-    title: 'Internal Page Reference',
-    type: 'reference',
-    description: 'If you want to link to an internal page, select the page here. This will overrite any URL that is already set.',
-    to: [
-      { type: 'pageType' },
-      { type: 'home' },
-    ],
+    name: "internalPage",
+    title: "Internal Page Reference",
+    type: "reference",
+    description:
+      "If you want to link to an internal page, select the page here. This will overrite any URL that is already set.",
+    to: [{ type: "pageType" }, { type: "home" }],
   }),
   defineField({
     title: "Button Style",
@@ -34,7 +33,7 @@ export const buttonFields = [
         { title: "Secondary", value: "secondary" },
       ],
       layout: "radio",
-      direction: "horizontal"
+      direction: "horizontal",
     },
   }),
 ];

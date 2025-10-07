@@ -8,9 +8,9 @@ const nextConfig: NextConfig = {
         hostname: "cdn.sanity.io",
       },
       {
-				protocol: "https",
-				hostname: "image.mux.com",
-			},
+        protocol: "https",
+        hostname: "image.mux.com",
+      },
     ],
   },
   // typescript: {

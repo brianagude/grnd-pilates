@@ -17,20 +17,20 @@ export const momence = defineType({
       validation: (Rule) => Rule.required(),
       options: {
         list: [
-          {title: 'Classes', value: 'Classes'},
-          {title: 'Events', value: 'Events'},
-          {title: 'Videos', value: 'Videos'},
-          {title: 'Memberships', value: 'Memberships'},
-          {title: 'Products', value: 'Products'},
-          {title: 'Teachers', value: 'Teachers'}
+          { title: "Classes", value: "Classes" },
+          { title: "Events", value: "Events" },
+          { title: "Videos", value: "Videos" },
+          { title: "Memberships", value: "Memberships" },
+          { title: "Products", value: "Products" },
+          { title: "Teachers", value: "Teachers" },
         ],
-      }
+      },
     }),
   ],
   preview: {
     select: {
       title: "title",
-      integration: "integration"
+      integration: "integration",
     },
     prepare(selection) {
       const { title, integration } = selection;

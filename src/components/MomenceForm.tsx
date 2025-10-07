@@ -29,7 +29,7 @@ export default function MomenceForm({ textBlock, photo, source }: FormProps) {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(values),
-        }
+        },
       );
 
       if (!res.ok) {
@@ -45,7 +45,9 @@ export default function MomenceForm({ textBlock, photo, source }: FormProps) {
 
   return (
     <section className={spacing.section}>
-      <div className={`${spacing.container} !items-start md:grid lg:grid-cols-2`}>
+      <div
+        className={`${spacing.container} !items-start md:grid lg:grid-cols-2`}
+      >
         {photo && (
           <Image
             src={urlFor(photo).url()}
@@ -67,35 +69,62 @@ export default function MomenceForm({ textBlock, photo, source }: FormProps) {
                 <label htmlFor="firstName" className={forms.label}>
                   First name*
                 </label>
-                <input type="text" name="firstName" id="firstName" required className={forms.input} />
+                <input
+                  type="text"
+                  name="firstName"
+                  id="firstName"
+                  required
+                  className={forms.input}
+                />
               </div>
 
               <div className={forms.fieldset}>
                 <label htmlFor="lastName" className={forms.label}>
                   Last name
                 </label>
-                <input type="text" name="lastName" id="lastName" className={forms.input} />
+                <input
+                  type="text"
+                  name="lastName"
+                  id="lastName"
+                  className={forms.input}
+                />
               </div>
 
               <div className={forms.fieldset}>
                 <label htmlFor="email" className={forms.label}>
                   E-mail*
                 </label>
-                <input type="email" name="email" id="email" required className={forms.input} />
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  required
+                  className={forms.input}
+                />
               </div>
 
               <div className={forms.fieldset}>
                 <label htmlFor="phoneNumber" className={forms.label}>
                   Phone number
                 </label>
-                <input type="text" name="phoneNumber" id="phoneNumber" className={forms.input} />
+                <input
+                  type="text"
+                  name="phoneNumber"
+                  id="phoneNumber"
+                  className={forms.input}
+                />
               </div>
 
               <div className={forms.fieldset}>
                 <label htmlFor="discoveryAnswer" className={forms.label}>
                   How did you find out about us?
                 </label>
-                <input type="text" name="discoveryAnswer" id="discoveryAnswer" className={forms.input} />
+                <input
+                  type="text"
+                  name="discoveryAnswer"
+                  id="discoveryAnswer"
+                  className={forms.input}
+                />
               </div>
 
               <button
@@ -106,10 +135,7 @@ export default function MomenceForm({ textBlock, photo, source }: FormProps) {
               </button>
             </form>
           ) : (
-            <div
-              id="momence_leads_form_submit_success"
-              
-            >
+            <div id="momence_leads_form_submit_success">
               <p className={typography.body}>Thank you!</p>
             </div>
           )}

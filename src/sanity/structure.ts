@@ -42,7 +42,7 @@ export const structure: StructureResolver = (S) =>
             "settings",
             "pageType",
             "contentType",
-            "reviewType"
+            "reviewType",
           ].includes(item.getId() || ""),
       ),
     ]);

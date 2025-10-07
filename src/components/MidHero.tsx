@@ -3,20 +3,20 @@ import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import Button from "@/components/inputs/Button";
 import { BlockContent } from "./inputs/PortableTextComponents";
-import type { UpdatedMidHero } from "@/sanity/lib/types"
+import type { UpdatedMidHero } from "@/sanity/lib/types";
 
 export default function MidHero({
   backgroundImage,
   textBlock,
   buttons,
 }: UpdatedMidHero) {
-  const palette = backgroundImage?.asset?.metadata?.palette?.dominant;
-  let textClass = "text-black"; // default
+  // const palette = backgroundImage?.asset?.metadata?.palette?.dominant;
+  let textClass = "text-black";
 
-  if (palette?.foreground) {
-    // Use Sanity’s recommended foreground color
-    textClass = palette.foreground === "#fff" ? "!text-white" : "!text-black";
-  }
+  // if (palette?.foreground) {
+  //   // Use Sanity’s recommended foreground color
+  //   textClass = palette.foreground === "#fff" ? "!text-white" : "!text-black";
+  // }
 
   return (
     <section className={`${spacing.section} min-h-[80vh]`}>

@@ -14,13 +14,11 @@ export const linkFields = [
     type: "string",
   }),
   defineField({
-    name: 'internalPage',
-    title: 'Internal Page Reference',
-    type: 'reference',
-    description: 'If you want to link to an internal page, select the page here.',
-    to: [
-      { type: 'pageType' },
-      { type: 'home' },
-    ],
+    name: "internalPage",
+    title: "Internal Page Reference",
+    type: "reference",
+    description:
+      "If you want to link to an internal page, select the page here.",
+    to: [{ type: "pageType" }, { type: "home" }],
   }),
 ];

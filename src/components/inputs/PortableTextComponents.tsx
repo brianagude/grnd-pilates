@@ -5,24 +5,12 @@ import { typography } from "@/styles/design-tokens";
 
 const blockContentComponents: PortableTextComponentsType = {
   block: {
-    h1: ({ children }) => (
-      <h1 className={typography.h1}>{children}</h1>
-    ),
-    h2: ({ children }) => (
-      <h2 className={typography.h2}>{children}</h2>
-    ),
-    h3: ({ children }) => (
-      <h3 className={typography.h3}>{children}</h3>
-    ),
-    h4: ({ children }) => (
-      <h4 className={typography.h4}>{children}</h4>
-    ),
-    h5: ({ children }) => (
-      <h5 className={typography.h5}>{children}</h5>
-    ),
-    h6: ({ children }) => (
-      <h6 className={typography.h6}>{children}</h6>
-    ),
+    h1: ({ children }) => <h1 className={typography.h1}>{children}</h1>,
+    h2: ({ children }) => <h2 className={typography.h2}>{children}</h2>,
+    h3: ({ children }) => <h3 className={typography.h3}>{children}</h3>,
+    h4: ({ children }) => <h4 className={typography.h4}>{children}</h4>,
+    h5: ({ children }) => <h5 className={typography.h5}>{children}</h5>,
+    h6: ({ children }) => <h6 className={typography.h6}>{children}</h6>,
     caption: ({ children }) => (
       <p className={`${typography.caption} max-w-prose`}>{children}</p>
     ),
@@ -41,7 +29,9 @@ const blockContentComponents: PortableTextComponentsType = {
   },
   list: {
     bullet: ({ children }) => (
-      <ul className={`${typography.body} text-block-list list-disc w-full max-w-prose pl-5 space-y-1 mt-2`}>
+      <ul
+        className={`${typography.body} text-block-list list-disc w-full max-w-prose pl-5 space-y-1 mt-2`}
+      >
         <span>{children}</span>
       </ul>
     ),

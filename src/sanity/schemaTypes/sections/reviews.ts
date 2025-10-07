@@ -19,17 +19,17 @@ export const reviews = defineType({
         defineArrayMember({
           name: "item",
           title: "Item",
-          type: 'reference',
+          type: "reference",
           weak: true,
-          to: [{type: 'reviewType'}],
+          to: [{ type: "reviewType" }],
         }),
-      ]
+      ],
     }),
     defineField({
       name: "button",
       title: "Buttons",
       type: "object",
-      fields: [...buttonFields]
+      fields: [...buttonFields],
     }),
   ],
   preview: {

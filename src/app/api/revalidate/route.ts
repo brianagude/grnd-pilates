@@ -19,10 +19,10 @@ export async function POST(req: NextRequest) {
 
     // Get specific pages that need revalidation based on document type
     const pagesToRevalidate = getPagesToRevalidate(body._type);
-    
+
     // Revalidate specific pages instead of all pages
-    const revalidationPromises = pagesToRevalidate.map((path) => 
-      revalidatePath(path)
+    const revalidationPromises = pagesToRevalidate.map((path) =>
+      revalidatePath(path),
     );
 
     // Also revalidate the document type tag for any components that might use it
@@ -36,10 +36,10 @@ export async function POST(req: NextRequest) {
 
     await Promise.all(revalidationPromises);
 
-    return NextResponse.json({ 
-      revalidated: true, 
+    return NextResponse.json({
+      revalidated: true,
       pages: pagesToRevalidate,
-      tags: [body._type, ...(slug ? [`${body._type}:${slug}`] : [])]
+      tags: [body._type, ...(slug ? [`${body._type}:${slug}`] : [])],
     });
   } catch (error: unknown) {
     let message = "Unknown error";

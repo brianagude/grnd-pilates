@@ -1,6 +1,7 @@
 export const spacing = {
   section: "relative scroll-mt-2 py-10 md:py-12 lg:py-20",
-  container: "relative z-20 w-full max-w-[1720px] mx-auto px-4 gap-10 flex flex-col items-center sm:gap-12 sm:px-8 lg:px-16",
+  container:
+    "relative z-20 w-full max-w-[1720px] mx-auto px-4 gap-10 flex flex-col items-center sm:gap-12 sm:px-8 lg:px-16",
 };
 
 const baseHeading = `text-pretty text-balance font-display leading-tight`;
@@ -21,7 +22,8 @@ export const typography = {
   link: `underline font-semibold`,
 };
 
-const buttonBase = "text-xl block w-full text-center py-4 px-10 rounded-full border border-black font-medium transition-all cursor-pointer hover:shadow-lg transform hover:translate-x-[-1px] hover:translate-y-[-1px] sm:w-fit";
+const buttonBase =
+  "text-xl block w-full text-center py-4 px-10 rounded-full border border-black font-medium transition-all cursor-pointer hover:shadow-lg transform hover:translate-x-[-1px] hover:translate-y-[-1px] sm:w-fit";
 
 export const buttons = {
   primary: `${buttonBase} bg-black text-white hover:bg-brown-800`,

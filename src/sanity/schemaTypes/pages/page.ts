@@ -1,6 +1,6 @@
 import { defineField, defineType } from "sanity";
 import { buttonFields } from "../inputs/button";
-import {DocumentsIcon} from '@sanity/icons'
+import { DocumentsIcon } from "@sanity/icons";
 
 export const pageType = defineType({
   name: "pageType",
@@ -15,18 +15,16 @@ export const pageType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      title: 'Slug',
-      name: 'slug',
-      type: 'slug',
+      title: "Slug",
+      name: "slug",
+      type: "slug",
       validation: (Rule) => Rule.required(),
       options: {
-        source: 'title',
+        source: "title",
         maxLength: 200,
-        slugify: input => input
-          .toLowerCase()
-          .replace(/\s+/g, '-')
-          .slice(0, 200)
-      }
+        slugify: (input) =>
+          input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
+      },
     }),
     // Hero Section
     defineField({
@@ -44,11 +42,7 @@ export const pageType = defineType({
           type: "image",
           options: {
             hotspot: true,
-            metadata: [
-              'blurhash',
-              'lqip',
-              'palette',
-            ],
+            metadata: ["blurhash", "lqip", "palette"],
           },
           fields: [
             defineField({
@@ -99,7 +93,7 @@ export const pageType = defineType({
   preview: {
     select: {
       media: "hero.backgroundImage",
-      title: "pageTitle"
+      title: "pageTitle",
     },
     prepare(selection) {
       const { media, title } = selection;

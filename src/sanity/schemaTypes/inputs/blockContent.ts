@@ -35,7 +35,8 @@ export const blockContent = defineType({
                 title: "Href",
                 name: "href",
                 type: "string",
-                description: "Can be a URL (https://...), email (mailto:...), or phone (tel:...)",
+                description:
+                  "Can be a URL (https://...), email (mailto:...), or phone (tel:...)",
                 validation: (Rule) =>
                   Rule.uri({
                     allowRelative: false,

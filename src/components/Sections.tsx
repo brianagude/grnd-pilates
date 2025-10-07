@@ -23,7 +23,7 @@ type SectionModule =
   | UpdatedMomence
   | UpdatedMomenceForm
   | UpdatedReviews
-  | UpdatedTextOnly
+  | UpdatedTextOnly;
 
 type SectionsProps = {
   sections: SectionModule[];

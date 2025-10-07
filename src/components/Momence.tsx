@@ -1,6 +1,6 @@
 import { typography, spacing } from "@/styles/design-tokens";
 import type { Momence as MomenceProps } from "@types";
-import MembershipCard from "./cards/Membership";
+// import MembershipCard from "./cards/Membership";
 import ClassesCard from "./cards/Classes";
 
 export default async function Momence({ title, integration }: MomenceProps) {
@@ -25,18 +25,15 @@ export default async function Momence({ title, integration }: MomenceProps) {
     console.error(err);
   }
 
-  if (items.length === 0) return null
+  if (items.length === 0) return null;
 
   return (
     <section className={spacing.section}>
       <div className={spacing.container}>
         {title && <h3 className={typography.h3}>{title}</h3>}
         <div className="momence-wrapper">
-          {integration === "Memberships" && (
-            <MembershipCard items={items} />
-          )}
-
-          { integration === "Classes" && <ClassesCard />}
+          {/* {integration === "Memberships" && <MembershipCard items={items} />} */}
+          {integration === "Classes" && <ClassesCard />}
           {/* {items.map((item, i) => (
             <MembershipCard key={item.id} item={item} />
           ))} */}
