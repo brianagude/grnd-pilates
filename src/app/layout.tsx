@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const currentYear = new Date().getFullYear();
 
   return {
-  title: `GRND Pilates`,
+  title: `GRND. Pilates`,
   description: `GRND. combines Joseph Pilates’ method with light weight training, resistance work, and cardio for one effective 45-minute class.`,
   keywords: [
     "GRND Pilates",
@@ -32,20 +32,20 @@ export async function generateMetadata(): Promise<Metadata> {
   authors: [
     { name: "Briana Gude", url: "https://www.brianagude.com/" },
     { name: "Dianthe Studio", url: "https://www.dianthe.studio/" },
-    { name: "GRND Pilates Team", url: "https://www.grndpilates.com/" },
+    { name: "GRND. Pilates Team", url: "https://www.grndpilates.com/" },
   ],
   metadataBase: new URL("https://www.grndpilates.com/"),
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://www.grndpilates.com/",
-    title: `GRND Pilates`,
+    title: `GRND. Pilates`,
     description: `GRND. combines Joseph Pilates’ method with light weight training, resistance work, and cardio for one effective 45-minute class.`,
     siteName: "GRND Pilates",
   },
   twitter: {
     card: "summary_large_image",
-    title: `GRND Pilates`,
+    title: `GRND. Pilates`,
     description: `GRND. combines Joseph Pilates’ method with light weight training, resistance work, and cardio for one effective 45-minute class.`,
   },
 };

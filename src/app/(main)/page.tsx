@@ -8,11 +8,46 @@ import { getPageCacheTags, getCacheOptions } from "@/lib/cache-tags";
 
 const query = `*[_type == "home"][0]{
 	...,
+  hero {
+    ...,
+    backgroundImage {
+      alt,
+      asset->{
+        _id,
+        url,
+        metadata {
+          lqip,
+          palette {
+            dominant { background, foreground, population, title },
+          }
+        }
+      },
+      crop { top, bottom, left, right },
+      hotspot { x, y, width, height }
+    }
+  },
   sections[] {
     _key,
     _type,
     ...select(
-      _type == "midHero" => { ... },
+      _type == "midHero" => { 
+        ...,
+        backgroundImage {
+          alt,
+          asset->{
+            _id,
+            url,
+            metadata {
+              lqip,
+              palette {
+                dominant { background, foreground, population, title },
+              }
+            }
+          },
+          crop { top, bottom, left, right },
+          hotspot { x, y, width, height }
+        }
+      },
       _type == "details" => { 
         ...,
         carouselContent[]->{

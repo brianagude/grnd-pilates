@@ -16,7 +16,7 @@ export default function Details({
   button,
 }: DetailsProps) {
   if (!carouselContent || carouselContent.length === 0) return null;
-  console.log(carouselContent)
+  // console.log(carouselContent)
 
   return (
     <section className={spacing.section}>

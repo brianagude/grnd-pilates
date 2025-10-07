@@ -21,6 +21,7 @@ export default function Button({
 }: ButtonProps) {
   // Bail only if we have no content OR no url
   if ((!text && !children) || !url) return null;
+  // if ((!text && !children) || !url) return null;
 
   const styles = {
     primary: buttons.primary,

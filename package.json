@@ -13,6 +13,7 @@
     "typegen": "sanity schema extract --enforce-required-fields && sanity typegen generate"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
     "@mux/mux-player": "^3.6.1",
     "@mux/mux-player-react": "^3.4.0",
     "@portabletext/react": "^3.2.1",
@@ -29,12 +30,14 @@
     "sanity": "^4.6.1",
     "sanity-plugin-media": "^3.0.2",
     "sanity-plugin-mux-input": "^2.8.0",
-    "styled-components": "^6.1.19"
+    "styled-components": "^6.1.19",
+    "vaul": "^1.1.2"
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.0",
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@types/css-modules": "^1.0.5",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

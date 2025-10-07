@@ -88,6 +88,11 @@ export const settings = defineType({
       type: "object",
       fields: [
         defineField({
+          name: "logo",
+          title: "Logo",
+          type: "image",
+        }),
+        defineField({
           name: "copyrightText",
           title: "Copyright Text",
           type: "string",

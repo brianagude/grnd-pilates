@@ -15,10 +15,19 @@ export default function MidHero({
   buttons,
   title
 }: MidHeroWithTitle) {
+  // console.log('backgroundImage:', backgroundImage?.asset?.metadata?.palette)
+  const palette = backgroundImage?.asset?.metadata?.palette?.dominant;
+  let textClass = "text-black"; // default
+
+  if (palette?.foreground) {
+    // Use Sanity’s recommended foreground color
+    textClass = palette.foreground === "#fff" ? "!text-white" : "!text-black";
+  }
+
   return (
     <section className={`${spacing.section} min-h-[80vh]`}>
-      <div className={spacing.container}>
-        <div>
+      <div className={`${spacing.container} !items-start`}>
+        <div className={`${textClass} max-w-2xl`}>
           {title && <h1 className={typography.h1}>{title}</h1>}
           {textBlock && <BlockContent value={textBlock} />}
         </div>
@@ -30,6 +39,10 @@ export default function MidHero({
           </div>
         )}
       </div>
+
+      {/* {backgroundImage && (
+        <div className="absolute inset-0 bg-gradient-to-br from-[#000]/80 to-transparent z-10" />
+      )} */}
 
       {backgroundImage && (
         <Image

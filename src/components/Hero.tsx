@@ -27,7 +27,7 @@ export default function Hero({
   textBlock,
   buttons,
 }: HeroProps) {
-  // console.log(backgroundImage)
+  // console.log('backgroundImage:', backgroundImage?.asset?.metadata?.palette)
   return (
     <section className={`${spacing.section} min-h-screen flex flex-col items-center justify-center`}>
       <div className={`${spacing.container} pb-[200px]`}>

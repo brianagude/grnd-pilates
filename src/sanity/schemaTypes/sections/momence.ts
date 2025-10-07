@@ -17,6 +17,7 @@ export const momence = defineType({
       validation: (Rule) => Rule.required(),
       options: {
         list: [
+          {title: 'Classes', value: 'Classes'},
           {title: 'Events', value: 'Events'},
           {title: 'Videos', value: 'Videos'},
           {title: 'Memberships', value: 'Memberships'},

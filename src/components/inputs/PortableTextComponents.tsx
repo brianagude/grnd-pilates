@@ -32,9 +32,6 @@ const blockContentComponents: PortableTextComponentsType = {
     normal: ({ children }) => (
       <p className={typography.body}>{children}</p>
     ),
-    small: ({ children }) => (
-      <p className={typography.bodySmall}>{children}</p>
-    ),
   },
   list: {
     bullet: ({ children }) => (

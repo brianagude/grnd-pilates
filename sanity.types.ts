@@ -137,7 +137,7 @@ export type MomenceForm = {
 export type Momence = {
   _type: "momence";
   title?: string;
-  integration: "Events" | "Videos" | "Memberships" | "Products" | "Teachers";
+  integration: "Classes" | "Events" | "Videos" | "Memberships" | "Products" | "Teachers";
 };
 
 export type MidHero = {
@@ -358,6 +358,17 @@ export type Settings = {
     menuList?: Array<{
       text?: string;
       url?: string;
+      internalPage?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "pageType";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "home";
+      };
       _type: "menuLink";
       _key: string;
     }>;
@@ -371,10 +382,33 @@ export type Settings = {
     linkedin?: string;
   };
   footer?: {
+    logo?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+    };
     copyrightText?: string;
     footerLinks?: Array<{
       text?: string;
       url?: string;
+      internalPage?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "pageType";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "home";
+      };
       _type: "footerLink";
       _key: string;
     }>;
