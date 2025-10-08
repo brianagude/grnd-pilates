@@ -1,16 +1,16 @@
 import type {
-  Home as HomeType,
-  PageType as NewPageType,
   Callout as CalloutType,
+  ContentType,
   Details as DetailsType,
+  Home as HomeType,
   MidHero as MidHeroType,
-  Momence as MomenceType,
   MomenceForm as MomenceFormType,
+  Momence as MomenceType,
+  PageType as NewPageType,
   Reviews as ReviewsType,
-  TextOnly as TextOnlyType,
-  Settings as SettingsType,
   ReviewType,
-  ContentType
+  Settings as SettingsType,
+  TextOnly as TextOnlyType,
 } from "@types";
 
 export type ExpandedSanityImage = {
@@ -30,7 +30,10 @@ type ReviewItem = {
   };
 };
 
-type DetailDataType = Omit<ContentType, "_id" | "_type" | "_createdAt" | "_updatedAt" | "_rev"> & {
+type DetailDataType = Omit<
+  ContentType,
+  "_id" | "_type" | "_createdAt" | "_updatedAt" | "_rev"
+> & {
   playbackId?: string;
   videoAlt?: string;
   link?: string;
@@ -128,7 +131,10 @@ export type UpdatedHeader = {
 };
 
 // Reuse the UpdatedButton type for links that need the internalPage update
-export type UpdatedFooterLink = Omit<NonNullable<FooterBase["footerLinks"]>[number], "internalPage"> & {
+export type UpdatedFooterLink = Omit<
+  NonNullable<FooterBase["footerLinks"]>[number],
+  "internalPage"
+> & {
   internalPage?: { _id?: string; slug?: string | null };
 };
 

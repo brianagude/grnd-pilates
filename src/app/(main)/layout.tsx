@@ -1,12 +1,13 @@
-import Header from "@/components/Header";
+import { Analytics } from "@vercel/analytics/next";
+import { draftMode } from "next/headers";
+import { VisualEditing } from "next-sanity";
+import { DisableDraftMode } from "@/components/DisableDraftMode";
 import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import MomenceWebchat from "@/components/MomenceWebchat";
 import { TailwindHelper } from "@/components/TailwindHelper";
+import { CACHE_TAGS, getCacheOptions } from "@/lib/cache-tags";
 import { client } from "@/sanity/lib/client";
-import { VisualEditing } from "next-sanity";
-import { draftMode } from "next/headers";
-import { DisableDraftMode } from "@/components/DisableDraftMode";
-import { getCacheOptions, CACHE_TAGS } from "@/lib/cache-tags";
 import { SETTINGS_QUERY } from "@/sanity/lib/queries";
 
 // ---------- ISR / Revalidation options ----------
@@ -27,8 +28,8 @@ export default async function RootLayout({
         {children}
         <Footer {...footer} socialMedia={socialMedia} />
       </main>
-      <MomenceWebchat/>
-
+      <MomenceWebchat />
+      <Analytics/>
       {process.env.NODE_ENV === "development" && <TailwindHelper />}
       {(await draftMode()).isEnabled && (
         <>

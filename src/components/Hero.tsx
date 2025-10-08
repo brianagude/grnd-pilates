@@ -1,10 +1,11 @@
-import { spacing } from "@/styles/design-tokens";
-import type { ExpandedSanityImage } from "@/sanity/lib/types";
-import Image from "next/image";
-import { urlFor } from "@/sanity/lib/image";
-import Button from "@/components/inputs/Button";
-import { BlockContent } from "./inputs/PortableTextComponents";
 import type { BlockContent as BlockContentType } from "@types";
+import Image from "next/image";
+import Button from "@/components/inputs/Button";
+import { urlFor } from "@/sanity/lib/image";
+import type { ExpandedSanityImage } from "@/sanity/lib/types";
+import { spacing } from "@/styles/design-tokens";
+import HeroBackground from "./inputs/HeroBackground";
+import { BlockContent } from "./inputs/PortableTextComponents";
 
 interface ButtonType {
   _key: string;
@@ -59,7 +60,9 @@ export default function Hero({
         )}
       </div>
 
-      {backgroundImage && (
+      {backgroundImage && <HeroBackground image={backgroundImage} />}
+
+      {/* {backgroundImage && (
         <Image
           src={urlFor(backgroundImage)
             .width(1600)
@@ -72,7 +75,7 @@ export default function Hero({
           priority
           className="object-cover"
         />
-      )}
+      )} */}
     </section>
   );
 }
