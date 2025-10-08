@@ -46,7 +46,7 @@ const blockContentComponents: PortableTextComponentsType = {
       <strong className="!font-bold">{children}</strong>
     ),
     sup: ({ children }) => (
-      <sup className="text-[0.5em] align-super">{children}</sup>
+      <sup className="text-[0.4em] align-super">{children}</sup>
     ),
     em: ({ children }) => <em className="italic">{children}</em>,
   },

@@ -61,21 +61,6 @@ export default function Hero({
       </div>
 
       {backgroundImage && <HeroBackground image={backgroundImage} />}
-
-      {/* {backgroundImage && (
-        <Image
-          src={urlFor(backgroundImage)
-            .width(1600)
-            .height(900)
-            .fit("crop")
-            .crop("focalpoint")
-            .url()}
-          alt={backgroundImage.alt || "background image"}
-          fill
-          priority
-          className="object-cover"
-        />
-      )} */}
     </section>
   );
 }
