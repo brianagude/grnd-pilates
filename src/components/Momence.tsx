@@ -33,7 +33,7 @@ export default async function Momence({ title, integration }: MomenceProps) {
   return (
     <section className={spacing.section}>
       <div className={spacing.container}>
-        {title && <h3 className={typography.h3}>{title}</h3>}
+        {title && <h3 className={`${typography.h3} ${integration !== "Memberships" && "w-full text-left"}`}>{title}</h3>}
         {integration === "Memberships" && <MembershipCard items={items} />}
         {integration === "Events" && <EventCard items={items} />}
         {integration === "Teachers" && <TeacherCard items={items} />}
