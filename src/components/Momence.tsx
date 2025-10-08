@@ -1,7 +1,9 @@
 import { typography, spacing } from "@/styles/design-tokens";
 import type { Momence as MomenceProps } from "@types";
-// import MembershipCard from "./cards/Membership";
-import ClassesCard from "./cards/Classes";
+import MembershipCard from "./cards/Membership";
+import EventCard from "./cards/Event";
+import TeacherCard from "./cards/Teachers";
+import ProductsCard from "./cards/Products";
 
 export default async function Momence({ title, integration }: MomenceProps) {
   if (!integration) return null;
@@ -26,18 +28,16 @@ export default async function Momence({ title, integration }: MomenceProps) {
   }
 
   if (items.length === 0) return null;
+  console.log('event items:', items)
 
   return (
     <section className={spacing.section}>
       <div className={spacing.container}>
         {title && <h3 className={typography.h3}>{title}</h3>}
-        <div className="momence-wrapper">
-          {/* {integration === "Memberships" && <MembershipCard items={items} />} */}
-          {integration === "Classes" && <ClassesCard />}
-          {/* {items.map((item, i) => (
-            <MembershipCard key={item.id} item={item} />
-          ))} */}
-        </div>
+        {integration === "Memberships" && <MembershipCard items={items} />}
+        {integration === "Events" && <EventCard items={items} />}
+        {integration === "Teachers" && <TeacherCard items={items} />}
+        {integration === "Products" && <ProductsCard items={items} />}
       </div>
     </section>
   );

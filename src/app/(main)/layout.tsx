@@ -1,16 +1,15 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import MomenceWebchat from "@/components/MomenceWebchat";
 import { TailwindHelper } from "@/components/TailwindHelper";
 import { client } from "@/sanity/lib/client";
 import { VisualEditing } from "next-sanity";
 import { draftMode } from "next/headers";
 import { DisableDraftMode } from "@/components/DisableDraftMode";
 import { getCacheOptions, CACHE_TAGS } from "@/lib/cache-tags";
-import Script from "next/script";
 import { SETTINGS_QUERY } from "@/sanity/lib/queries";
 
 // ---------- ISR / Revalidation options ----------
-// Increased from 30 seconds to 1 hour for better performance
 const options = getCacheOptions([CACHE_TAGS.SETTINGS], 3600);
 
 export default async function RootLayout({
@@ -28,6 +27,8 @@ export default async function RootLayout({
         {children}
         <Footer {...footer} socialMedia={socialMedia} />
       </main>
+      <MomenceWebchat/>
+
       {process.env.NODE_ENV === "development" && <TailwindHelper />}
       {(await draftMode()).isEnabled && (
         <>
@@ -35,15 +36,6 @@ export default async function RootLayout({
           <DisableDraftMode />
         </>
       )}
-      <Script
-        async
-        type="module"
-        src="https://momence.com/plugin/webchat/webchat.js"
-        strategy="afterInteractive"
-        data-host-id="107640"
-        data-token="3mX0LbY9Xk"
-        data-position="bottom-right"
-      />
     </>
   );
 }

@@ -5,18 +5,31 @@ import Button from "@/components/inputs/Button";
 import { BlockContent } from "./inputs/PortableTextComponents";
 import type { UpdatedMidHero } from "@/sanity/lib/types";
 
+function getCroppedImageUrl(image) {
+  const { width, height } = image.asset.metadata.dimensions;
+  const crop = image.crop || { left: 0, top: 0, right: 0, bottom: 0 };
+
+  const left = Math.floor(width * crop.left);
+  const top = Math.floor(height * crop.top);
+  const croppedWidth = Math.floor(width - width * (crop.left + crop.right));
+  const croppedHeight = Math.floor(height - height * (crop.top + crop.bottom));
+
+  return urlFor(image).rect(left, top, croppedWidth, croppedHeight).quality(100).url();
+}
+
+
 export default function MidHero({
   backgroundImage,
   textBlock,
   buttons,
 }: UpdatedMidHero) {
-  // const palette = backgroundImage?.asset?.metadata?.palette?.dominant;
+  console.log('backgroundImage:', backgroundImage)
+  const palette = backgroundImage?.asset?.metadata?.palette?.dominant;
   let textClass = "text-black";
 
-  // if (palette?.foreground) {
-  //   // Use Sanity’s recommended foreground color
-  //   textClass = palette.foreground === "#fff" ? "!text-white" : "!text-black";
-  // }
+  if (palette?.foreground) {
+    textClass = palette.foreground === "#fff" ? "!text-white" : "!text-black";
+  }
 
   return (
     <section className={`${spacing.section} min-h-[80vh]`}>

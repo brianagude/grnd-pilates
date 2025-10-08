@@ -11,6 +11,14 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "image.mux.com",
       },
+      {
+        protocol: "https",
+        hostname: "images.momence.com",
+      },
+      {
+        protocol: "https",
+        hostname: "ribbon-technologes-images.s3.us-east-2.amazonaws.com",
+      },
     ],
   },
   // typescript: {

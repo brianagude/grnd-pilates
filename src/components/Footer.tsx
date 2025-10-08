@@ -45,7 +45,7 @@ export default function Footer({ logo, copyrightText, footerLinks, supportText, 
             </div>
           )}
           {supportText && (
-            <div className="space-y-3 md:min-w-xs">
+            <div className="md:min-w-xs">
               <h6 className={`${typography.caption} mb-4 pb-4 border-b-2`}>
                 Support
               </h6>

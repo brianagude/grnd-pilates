@@ -14,21 +14,6 @@ import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Video from "./inputs/Video";
 
-// type ReviewItem = {
-//   _key: string;
-//   data: ReviewType & {
-//     playbackId?: string;
-//     videoAlt?: string;
-//   };
-// };
-
-// type UpdatedReviews = Omit<ReviewsProps, "button" | "reviewsContent"> & {
-//   button?: Omit<ReviewsProps["button"], "internalPage"> & {
-//     internalPage?: { _id?: string; slug?: string | null };
-//   };
-//   reviewsContent?: ReviewItem[];
-// };
-
 export default function Reviews({
   title,
   reviewsContent,
@@ -40,8 +25,6 @@ export default function Reviews({
     skipSnaps: false,
   });
   const [selectedIndex, setSelectedIndex] = useState(0);
-
-  console.log("reviewsContent:", reviewsContent);
 
   // Update selected index when carousel changes
   const onSelect = useCallback(() => {
@@ -63,7 +46,7 @@ export default function Reviews({
   return (
     <section className={spacing.section}>
       <div className={spacing.container}>
-        <div>
+        <div className="w-full flex">
           {title && <h3 className={typography.h3}>{title}</h3>}
           <div>
             <div className="hidden gap-2 mt-2 lg:flex lg:mt-0">
@@ -86,10 +69,9 @@ export default function Reviews({
           </div>
         </div>
 
-        <div ref={emblaRef} className="overflow-hidden">
+        <div ref={emblaRef} className="overflow-hidden w-full">
           <div className="flex gap-4">
             {reviewsContent.map((item) => {
-              console.log("item:", item);
               const { data } = item;
               const {
                 photo,
@@ -103,7 +85,7 @@ export default function Reviews({
               return (
                 <div
                   key={item._key}
-                  className="rounded-4xl text-white bg-black flex-shrink-0 overflow-hidden flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_33%] xl:flex-[0_0_25%]"
+                  className="rounded-4xl text-white bg-black flex-shrink-0 overflow-hidden flex-[0_0_100%] sm:flex-[0_0_48%] lg:flex-[0_0_33%] xl:flex-[0_0_25%]"
                 >
                   {mediaType !== "none" && (photo || playbackId) && (
                     <div className="relative aspect-square w-full h-auto">

@@ -25,6 +25,9 @@
 :root {
   --background: #f4e6df;
   --foreground: #261008;
+  --momenceColorBackground: #f4e6df;
+  --momenceColorPrimary: 38, 16, 8;
+  --momenceColorBlack: 38, 16, 8;
 }
 
 @media (prefers-color-scheme: dark) {
