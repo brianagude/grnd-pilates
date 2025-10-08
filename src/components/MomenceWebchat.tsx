@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 
 export default function MomenceWebchat() {
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null); // Explicitly type the ref as HTMLDivElement
 
   useEffect(() => {
     window.React = React;

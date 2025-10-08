@@ -64,13 +64,6 @@ export type UpdatedCallout = Omit<CalloutType, "button"> & {
   _key?: string;
 };
 
-export type UpdatedMomence = Omit<MomenceType, "button"> & {
-  button?: Omit<DetailsType["button"], "internalPage"> & {
-    internalPage?: { _id?: string; slug?: string | null };
-  };
-  _key?: string;
-};
-
 export type UpdatedMomenceForm = MomenceFormType & {
   _key?: string;
 };
@@ -148,5 +141,79 @@ export type UpdatedFooter = {
   socialMedia?: SettingsType["socialMedia"];
 };
 
+export interface Event {
+  id: number;
+  title: string;
+  description: string;
+  type: string;
+  link: string;
+  dateTime: string;
+  image1: string;
+  image2: string;
+  duration: number;
+  fixedPrice: number;
+  online: boolean;
+  location: string;
+  streamLink: string;
+  streamPassword: string;
+  isCancelled: boolean;
+  isDeleted: boolean;
+  allowWaitlist: boolean;
+  capacity: number;
+  spotsRemaining: number;
+  ticketsSold: number;
+  tags: string[];
+  hostId: number;
+  published: boolean;
+  teacherId: number;
+  originalTeacherId: number;
+  originalTeacher: string;
+  teacher: string;
+  additionalTeachers: string[];
+}
 
+export interface Membership {
+  id: number;
+  name: string;
+  description: string;
+  type: string;
+  link: string;
+  price: number;
+  freeTrialExists: boolean;
+  isFeatured: boolean;
+  isDeleted: boolean;
+  isDisabled: boolean;
+  isAutoRenewing: boolean;
+}
 
+export interface Product {
+  id: number;
+  name: string;
+  description: string;
+  link: string;
+  imageLink: string;
+  price: number;
+  leftInStock: number | null;
+  isDeleted: boolean;
+  availableForShipping: boolean;
+  variants: string[];
+}
+
+export interface Teacher {
+  id: number;
+  firstName: string;
+  lastName: string;
+  bio: string;
+  profileImage: string;
+  isDeleted: boolean;
+}
+
+type IntegrationType = "Memberships" | "Events" | "Teachers" | "Products";
+
+export type UpdatedMomence = Omit<MomenceType, "button" | "integration"> & {
+  button?: Omit<DetailsType["button"], "internalPage"> & {
+    internalPage?: { _id?: string; slug?: string | null };
+  };
+  integration: IntegrationType;
+  _key?: string;
+};

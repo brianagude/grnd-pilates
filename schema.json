@@ -1006,15 +1006,7 @@
             "of": [
               {
                 "type": "string",
-                "value": "Classes"
-              },
-              {
-                "type": "string",
                 "value": "Events"
-              },
-              {
-                "type": "string",
-                "value": "Videos"
               },
               {
                 "type": "string",

@@ -46,7 +46,7 @@ export default function Reviews({
   return (
     <section className={spacing.section}>
       <div className={spacing.container}>
-        <div className="w-full flex">
+        <div className="flex flex-col w-full gap-4 md:flex-row md:justify-between items-start">
           {title && <h3 className={typography.h3}>{title}</h3>}
           <div>
             <div className="hidden gap-2 mt-2 lg:flex lg:mt-0">

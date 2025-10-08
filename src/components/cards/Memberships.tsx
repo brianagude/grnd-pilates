@@ -1,32 +1,18 @@
-// MembershipCard.tsx
-import React from "react";
+import type { Membership } from "@/sanity/lib/types";
 import { buttons, typography } from "@/styles/design-tokens";
-
-interface Membership {
-  id: number;
-  name: string;
-  description: string;
-  type: string;
-  link: string;
-  price: number;
-  freeTrialExists: boolean;
-  isFeatured: boolean;
-  isDeleted: boolean;
-  isDisabled: boolean;
-  isAutoRenewing: boolean;
-}
 
 interface MembershipCardProps {
   items: Membership[];
 }
 
-const MembershipCard: React.FC<MembershipCardProps> = ({ items }) => {
+export default function MembershipCards({ items }: MembershipCardProps) {
   if (items.length < 1) {
     return (
       <div className="text-center space-y-3">
         <h2 className={typography.h5}>Nothing here… yet!</h2>
         <p className={typography.body}>
-          We don’t have any available memberships at the moment. Check back soon!
+          We don’t have any available memberships at the moment. Check back
+          soon!
         </p>
       </div>
     );
@@ -42,13 +28,6 @@ const MembershipCard: React.FC<MembershipCardProps> = ({ items }) => {
           rel="noopener noreferrer"
         >
           <h3 className={typography.h6}>{item.name}</h3>
-          {/* <p className="whitespace-pre-line">{item.description}</p> */}
-          {/* <p className={typography.caption}>
-            ${item.price.toLocaleString()}
-            {item.freeTrialExists && <span> | Free trial available!</span>}
-          </p> */}
-          {/* <p>Type: {item.type}</p> */}
-          {/* {item.freeTrialExists && <p>Free trial available!</p>} */}
           <button
             type="button"
             className={`${buttons.secondary} whitespace-nowrap !bg-brown-100 text-black group-hover:!bg-black group-hover:!text-white`}
@@ -59,6 +38,4 @@ const MembershipCard: React.FC<MembershipCardProps> = ({ items }) => {
       ))}
     </div>
   );
-};
-
-export default MembershipCard;
+}

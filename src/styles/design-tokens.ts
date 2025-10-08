@@ -8,15 +8,15 @@ const baseHeading = `text-pretty text-balance font-display leading-tight`;
 const baseBody = `text-pretty text-balance`;
 
 export const typography = {
-  h1: `${baseHeading} font-light text-5xl lg:text-7xl`,
-  h2: `${baseHeading} font-light text-4xl lg:text-6xl`,
-  h3: `${baseHeading} font-light text-3xl lg:text-5xl`,
+  h1: `${baseHeading} font-light text-5xl sm:text-6xl lg:text-7xl`,
+  h2: `${baseHeading} font-light text-4xl sm:text-5xl lg:text-6xl`,
+  h3: `${baseHeading} font-light text-3xl sm:text-4xl lg:text-5xl`,
   h4: `${baseHeading} text-3xl xl:text-4xl`,
-  h5: `${baseHeading} text-2xl md:text-3xl`,
+  h5: `${baseHeading} text-2xl sm:text-3xl`,
   h6: `${baseHeading} text-2xl`,
   bodyLarge: `${baseBody} text-xl lg:text-2xl`,
-  body: `${baseBody} text-base lg:text-xl`,
-  bodySmall: `${baseBody} text-base`,
+  body: `${baseBody} text-base sm:text-lg`,
+  bodySmall: `${baseBody} text-sm sm:text-base`,
   captionLarge: `${baseBody} font-medium uppercase text-lg md:text-2xl`,
   caption: `${baseBody} font-medium uppercase text-lg md:text-xl`,
   captionSmall: `${baseBody} font-medium uppercase text-base md:text-lg`,

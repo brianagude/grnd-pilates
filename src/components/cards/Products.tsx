@@ -1,27 +1,12 @@
-// ProductsCard.tsx
-import React from "react";
-import Image from "next/image"
-import { buttons, typography } from "@/styles/design-tokens"
-import { BanknotesIcon } from "@heroicons/react/24/solid";
-
-export interface Product {
-  id: number;
-  name: string;
-  description: string;
-  link: string;
-  imageLink: string;
-  price: number;
-  leftInStock: number | null;
-  isDeleted: boolean;
-  availableForShipping: boolean;
-  variants: string[];
-}
+import Image from "next/image";
+import type { Product } from "@/sanity/lib/types";
+import { buttons, typography } from "@/styles/design-tokens";
 
 interface ProductsCardProps {
   items: Product[];
 }
 
-const ProductsCard: React.FC<ProductsCardProps> = ({ items }) => {
+export default function ProductCards({ items }: ProductsCardProps) {
   if (items.length < 1) {
     return (
       <div className="text-center space-y-3">
@@ -34,7 +19,6 @@ const ProductsCard: React.FC<ProductsCardProps> = ({ items }) => {
   }
 
   return (
-    
     <div className="w-full grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {items
         .filter((item) => !item.isDeleted)
@@ -42,29 +26,30 @@ const ProductsCard: React.FC<ProductsCardProps> = ({ items }) => {
           <div key={item.id} className="w-full group space-y-4">
             {item.imageLink && (
               <div className="relative aspect-square w-full rounded-2xl overflow-hidden">
-                <Image 
-                  src={item.imageLink} 
+                <Image
+                  src={item.imageLink}
                   alt={item.name}
-                  fill 
+                  fill
                   className="object-cover transition-transform duration-300 ease-in-out transform group-hover:scale-105"
                 />
               </div>
             )}
             <div className="space-y-2">
               <h3 className={`${typography.h6} line-clamp-1`}>{item.name}</h3>
-              <p className={`${typography.bodySmall} line-clamp-3`}>{item.description}</p>
-              {/* <div className="flex gap-1 items-center">
-                <BanknotesIcon className="size-4 text-black" />
-                <span>{item.price ? `$${item.price}` : "Free"}</span>
-              </div> */}
+              <p className={`${typography.bodySmall} line-clamp-3`}>
+                {item.description}
+              </p>
             </div>
-            <a href={item.link} target="_blank" rel="noopener noreferrer" className={`${buttons.secondary} !w-full`}>
+            <a
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${buttons.secondary} !w-full`}
+            >
               Purchase &mdash; {item.price ? `$${item.price}` : "Free"}
             </a>
           </div>
         ))}
     </div>
   );
-};
-
-export default ProductsCard;
+}

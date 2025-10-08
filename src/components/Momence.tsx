@@ -1,11 +1,11 @@
 import { typography, spacing } from "@/styles/design-tokens";
-import type { Momence as MomenceProps } from "@types";
-import MembershipCard from "./cards/Membership";
-import EventCard from "./cards/Event";
-import TeacherCard from "./cards/Teachers";
-import ProductsCard from "./cards/Products";
+import MembershipCards from "./cards/Memberships";
+import EventCards from "./cards/Events";
+import TeacherCards from "./cards/Teachers";
+import ProductsCards from "./cards/Products";
+import type { UpdatedMomence, Membership, Event, Teacher, Product } from "@/sanity/lib/types";
 
-export default async function Momence({ title, integration }: MomenceProps) {
+export default async function Momence({ title, integration }: UpdatedMomence) {
   if (!integration) return null;
 
   const hostId = process.env.MOMENCE_HOST_ID;
@@ -18,26 +18,39 @@ export default async function Momence({ title, integration }: MomenceProps) {
 
   const endpoint = `https://api.momence.com/api/v1/${integration}?hostId=${hostId}&token=${token}`;
 
-  let items: { title: string }[] = [];
+    let items: Membership[] | Event[] | Teacher[] | Product[] = [];
 
   try {
     const res = await fetch(endpoint);
-    items = await res.json();
+    if (!res.ok) throw new Error("Network response was not ok");
+    const data = await res.json();
+
+    switch (integration) {
+      case "Memberships":
+        items = data as Membership[];
+        break;
+      case "Events":
+        items = data as Event[];
+        break;
+      case "Teachers":
+        items = data as Teacher[];
+        break;
+      case "Products":
+        items = data as Product[];
+        break;
+    }
   } catch (err) {
     console.error(err);
   }
-
-  if (items.length === 0) return null;
-  console.log('event items:', items)
 
   return (
     <section className={spacing.section}>
       <div className={spacing.container}>
         {title && <h3 className={`${typography.h3} ${integration !== "Memberships" && "w-full text-left"}`}>{title}</h3>}
-        {integration === "Memberships" && <MembershipCard items={items} />}
-        {integration === "Events" && <EventCard items={items} />}
-        {integration === "Teachers" && <TeacherCard items={items} />}
-        {integration === "Products" && <ProductsCard items={items} />}
+        {integration === "Memberships" && <MembershipCards items={items as Membership[]} />}
+        {integration === "Events" && <EventCards items={items as Event[]} />}
+        {integration === "Teachers" && <TeacherCards items={items as Teacher[]} />}
+        {integration === "Products" && <ProductsCards items={items as Product[]} />}
       </div>
     </section>
   );

@@ -1,45 +1,21 @@
 // EventCard.tsx
-import React from "react";
-import Image from "next/image";
-import { buttons, typography } from "@/styles/design-tokens";
-import { MapPinIcon, ClockIcon, CalendarDaysIcon, BanknotesIcon, ComputerDesktopIcon } from "@heroicons/react/24/solid";
 
-export interface Event {
-  id: number;
-  title: string;
-  description: string;
-  type: string;
-  link: string;
-  dateTime: string;
-  image1: string;
-  image2: string;
-  duration: number;
-  fixedPrice: number;
-  online: boolean;
-  location: string;
-  streamLink: string;
-  streamPassword: string;
-  isCancelled: boolean;
-  isDeleted: boolean;
-  allowWaitlist: boolean;
-  capacity: number;
-  spotsRemaining: number;
-  ticketsSold: number;
-  tags: string[];
-  hostId: number;
-  published: boolean;
-  teacherId: number;
-  originalTeacherId: number;
-  originalTeacher: string;
-  teacher: string;
-  additionalTeachers: string[];
-}
+import {
+  BanknotesIcon,
+  CalendarDaysIcon,
+  ClockIcon,
+  ComputerDesktopIcon,
+  MapPinIcon,
+} from "@heroicons/react/24/solid";
+import Image from "next/image";
+import type { Event } from "@/sanity/lib/types";
+import { buttons, typography } from "@/styles/design-tokens";
 
 interface EventCardProps {
   items: Event[];
 }
 
-const EventCard: React.FC<EventCardProps> = ({ items }) => {
+export default function EventCards({ items }: EventCardProps) {
   if (items.length < 1) {
     return (
       <div className="text-center space-y-3">
@@ -53,17 +29,22 @@ const EventCard: React.FC<EventCardProps> = ({ items }) => {
   // Filter out deleted, cancelled, and past events
   const upcomingEvents = items
     .filter((item) => !item.isDeleted && !item.isCancelled)
-    .filter((item) => item.type === 'Regular')
+    .filter((item) => item.type === "Regular")
     .filter((item) => new Date(item.dateTime) >= new Date()) // future events only
-    .sort((a, b) => new Date(a.dateTime).getTime() - new Date(b.dateTime).getTime()); // sort by date
+    .sort(
+      (a, b) => new Date(a.dateTime).getTime() - new Date(b.dateTime).getTime(),
+    ); // sort by date
 
   // Group events by date (yyyy-mm-dd string)
-  const groupedEvents = upcomingEvents.reduce<Record<string, Event[]>>((acc, event) => {
-    const dateKey = new Date(event.dateTime).toDateString(); // e.g., "Wed Nov 23 2025"
-    if (!acc[dateKey]) acc[dateKey] = [];
-    acc[dateKey].push(event);
-    return acc;
-  }, {});
+  const groupedEvents = upcomingEvents.reduce<Record<string, Event[]>>(
+    (acc, event) => {
+      const dateKey = new Date(event.dateTime).toDateString(); // e.g., "Wed Nov 23 2025"
+      if (!acc[dateKey]) acc[dateKey] = [];
+      acc[dateKey].push(event);
+      return acc;
+    },
+    {},
+  );
 
   return (
     <div className="space-y-20">
@@ -78,12 +59,16 @@ const EventCard: React.FC<EventCardProps> = ({ items }) => {
         return (
           <div key={dateStr} className="space-y-4">
             {/* Date Divider */}
-            <h2 className={`${typography.caption} border-b pb-2`}>{dateLabel}</h2>
+            <h2 className={`${typography.caption} border-b pb-2`}>
+              {dateLabel}
+            </h2>
 
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {events.map((item) => {
                 const startDate = new Date(item.dateTime);
-                const endDate = new Date(startDate.getTime() + item.duration * 60000);
+                const endDate = new Date(
+                  startDate.getTime() + item.duration * 60000,
+                );
 
                 return (
                   <div key={item.id} className="space-y-6 group">
@@ -98,15 +83,29 @@ const EventCard: React.FC<EventCardProps> = ({ items }) => {
                       </div>
                     )}
                     <div>
-                      <h3 className={`${typography.h6} line-clamp-1`}>{item.title}</h3>
-                      <p className={`${typography.bodySmall} mt-2 line-clamp-3`}>{item.description}</p>
+                      <h3 className={`${typography.h6} line-clamp-1`}>
+                        {item.title}
+                      </h3>
+                      <p
+                        className={`${typography.bodySmall} mt-2 line-clamp-3`}
+                      >
+                        {item.description}
+                      </p>
 
                       <ul className="space-y-1 mt-4">
                         <li className="flex gap-1 items-center">
                           <ClockIcon className="size-4 text-black" />
                           <span>
-                            {startDate.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" })} -{" "}
-                            {endDate.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" })} ({item.duration} min)
+                            {startDate.toLocaleTimeString(undefined, {
+                              hour: "numeric",
+                              minute: "2-digit",
+                            })}{" "}
+                            -{" "}
+                            {endDate.toLocaleTimeString(undefined, {
+                              hour: "numeric",
+                              minute: "2-digit",
+                            })}{" "}
+                            ({item.duration} min)
                           </span>
                         </li>
                         <li className="flex gap-1 items-center">
@@ -126,14 +125,16 @@ const EventCard: React.FC<EventCardProps> = ({ items }) => {
                         </li>
                         <li className="flex gap-1 items-center">
                           <BanknotesIcon className="size-4 text-black" />
-                          <span>{item.fixedPrice ? `$${item.fixedPrice}` : "Free"}</span>
+                          <span>
+                            {item.fixedPrice ? `$${item.fixedPrice}` : "Free"}
+                          </span>
                         </li>
-                        {item.online && 
+                        {item.online && (
                           <li className="flex gap-1 items-center">
                             <ComputerDesktopIcon className="size-4 text-black" />
                             <span>Online Class</span>
                           </li>
-                        }
+                        )}
                       </ul>
                     </div>
                     <div>
@@ -145,7 +146,9 @@ const EventCard: React.FC<EventCardProps> = ({ items }) => {
                       >
                         Book Now
                       </a>
-                      <p className="text-center w-full mt-1">{item.spotsRemaining} Spots Open</p>
+                      <p className="text-center w-full mt-1">
+                        {item.spotsRemaining} Spots Open
+                      </p>
                     </div>
                   </div>
                 );
@@ -156,6 +159,4 @@ const EventCard: React.FC<EventCardProps> = ({ items }) => {
       })}
     </div>
   );
-};
-
-export default EventCard;
+}
