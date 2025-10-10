@@ -6,13 +6,22 @@ import {
 } from "@heroicons/react/24/outline";
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
-import React, { useCallback, useState } from "react";
+import { useCallback } from "react";
 import Button from "@/components/inputs/Button";
 import { urlFor } from "@/sanity/lib/image";
 import type { UpdatedDetails } from "@/sanity/lib/types";
 import { spacing, typography } from "@/styles/design-tokens";
 import { BlockContent } from "./inputs/PortableTextComponents";
 import Video from "./inputs/Video";
+
+type ItemType = NonNullable<UpdatedDetails["carouselContent"]>[number];
+
+
+type ReviewCardProps = {
+  item: ItemType;
+  classes?: string;
+};
+
 
 export default function Details({
   isCarousel,
@@ -85,7 +94,7 @@ export default function Details({
 }
 
 
-const ReviewCard = ({ item, classes = "" }) => {
+const ReviewCard: React.FC<ReviewCardProps> = ({ item, classes = "" }) => {
   const { data } = item;
   const { photo, mediaType, playbackId, videoAlt, textBlock, link } = data;
 
