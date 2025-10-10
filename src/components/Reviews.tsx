@@ -1,23 +1,25 @@
 "use client";
 
-import { typography, spacing } from "@/styles/design-tokens";
-import Image from "next/image";
-import { urlFor } from "@/sanity/lib/image";
-import Button from "@/components/inputs/Button";
-import { BlockContent } from "./inputs/PortableTextComponents";
-import type { UpdatedReviews } from "@/sanity/lib/types";
 import {
   ArrowLongLeftIcon,
   ArrowLongRightIcon,
 } from "@heroicons/react/24/outline";
-import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
+import Image from "next/image";
+import { useCallback, useEffect, useState } from "react";
+import Button from "@/components/inputs/Button";
+import { urlFor } from "@/sanity/lib/image";
+import type { UpdatedReviews } from "@/sanity/lib/types";
+import { spacing, typography } from "@/styles/design-tokens";
+import HeroBackground from "./inputs/HeroBackground";
+import { BlockContent } from "./inputs/PortableTextComponents";
 import Video from "./inputs/Video";
 
 export default function Reviews({
   title,
   reviewsContent,
   button,
+  backgroundImage
 }: UpdatedReviews) {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
@@ -44,9 +46,9 @@ export default function Reviews({
   if (!reviewsContent || reviewsContent.length === 0) return null;
 
   return (
-    <section className={spacing.section}>
-      <div className={spacing.container}>
-        <div className="flex flex-col w-full gap-4 md:flex-row md:justify-between items-start">
+    <section className={`${spacing.section} min-h-[80vh] relative`}>
+      <div className={`${spacing.container} !px-0`}>
+        <div className="flex flex-col w-full gap-4 px-4 sm:px-8  md:flex-row md:justify-between items-start lg:px-16">
           {title && <h3 className={typography.h3}>{title}</h3>}
           <div>
             <div className="hidden gap-2 mt-2 lg:flex lg:mt-0">
@@ -69,7 +71,7 @@ export default function Reviews({
           </div>
         </div>
 
-        <div ref={emblaRef} className="overflow-hidden w-full">
+        <div ref={emblaRef} className="overflow-hidden w-full px-4 sm:px-8 lg:px-16">
           <div className="flex gap-4">
             {reviewsContent.map((item) => {
               const { data } = item;
@@ -85,10 +87,10 @@ export default function Reviews({
               return (
                 <div
                   key={item._key}
-                  className="rounded-4xl text-white bg-black flex-shrink-0 overflow-hidden flex-[0_0_100%] sm:flex-[0_0_48%] lg:flex-[0_0_33%] xl:flex-[0_0_25%]"
+                  className="px-4 flex-shrink-0 overflow-hidden flex-[0_0_100%] sm:flex-[0_0_48%] lg:flex-[0_0_33%] 3xl:flex-[0_0_25%]"
                 >
                   {mediaType !== "none" && (photo || playbackId) && (
-                    <div className="relative aspect-square w-full h-auto">
+                    <div className="relative aspect-video w-full h-auto rounded-2xl overflow-hidden mb-4">
                       {mediaType === "image" && photo && (
                         <Image
                           src={urlFor(photo).url()}
@@ -97,18 +99,29 @@ export default function Reviews({
                           className="object-cover w-full h-full"
                         />
                       )}
+
                       {mediaType === "video" && playbackId && (
                         <Video playbackId={playbackId} title={videoAlt} />
                       )}
                     </div>
                   )}
 
-                  <div className="p-6 flex flex-col gap-2">
+                  <div>
                     {textBlock && (
                       <BlockContent value={textBlock} classes="!mt-0" />
                     )}
+                    <div className="w-full border ml-auto mt-4"/>
+                    <Image
+                      src="/stars.svg"
+                      alt="5 stars"
+                      width={100}
+                      height={18}
+                      className="ml-auto mt-3"
+                    />
                     {attribution && (
-                      <p className={typography.captionSmall}>{attribution}</p>
+                      <p className={`${typography.captionSmall} text-end mt-1`}>
+                        {attribution}
+                      </p>
                     )}
                   </div>
                 </div>
@@ -117,6 +130,9 @@ export default function Reviews({
           </div>
         </div>
       </div>
+      {backgroundImage && (
+        <HeroBackground image={backgroundImage} />
+      )}
     </section>
   );
 }

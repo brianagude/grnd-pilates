@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
-import { spacing, forms, buttons, typography } from "@/styles/design-tokens";
-import { urlFor } from "@/sanity/lib/image";
-import { BlockContent } from "./inputs/PortableTextComponents";
-import Image from "next/image";
 import type { MomenceForm as FormProps } from "@types";
+import Image from "next/image";
+import { useState } from "react";
+import { urlFor } from "@/sanity/lib/image";
+import { buttons, forms, spacing, typography } from "@/styles/design-tokens";
+import { BlockContent } from "./inputs/PortableTextComponents";
 
 export default function MomenceForm({ textBlock, photo, source }: FormProps) {
   const [submitted, setSubmitted] = useState(false);
@@ -54,7 +54,7 @@ export default function MomenceForm({ textBlock, photo, source }: FormProps) {
             alt={photo.alt || "form image"}
             width={1000}
             height={1000}
-            className="rounded-4xl lg:rounded-[48px]"
+            className="rounded-3xl lg:rounded-3xl"
           />
         )}
         <div className="space-y-10 lg:py-10">

@@ -12,25 +12,25 @@ const blockContentComponents: PortableTextComponentsType = {
     h5: ({ children }) => <h5 className={typography.h5}>{children}</h5>,
     h6: ({ children }) => <h6 className={typography.h6}>{children}</h6>,
     caption: ({ children }) => (
-      <p className={`${typography.caption} max-w-prose`}>{children}</p>
+      <p className={`${typography.caption}`}>{children}</p>
     ),
     captionLarge: ({ children }) => (
-      <p className={`${typography.captionLarge} max-w-prose`}>{children}</p>
+      <p className={`${typography.captionLarge}`}>{children}</p>
     ),
     captionSmall: ({ children }) => (
-      <p className={`${typography.captionSmall} max-w-prose`}>{children}</p>
+      <p className={`${typography.captionSmall}`}>{children}</p>
     ),
     large: ({ children }) => (
-      <p className={`${typography.bodyLarge} max-w-prose`}>{children}</p>
+      <p className={typography.bodyLarge}>{children}</p>
     ),
     normal: ({ children }) => (
-      <p className={`${typography.body} max-w-prose`}>{children}</p>
+      <p className={typography.body}>{children}</p>
     ),
   },
   list: {
     bullet: ({ children }) => (
       <ul
-        className={`${typography.body} text-block-list list-disc w-full max-w-prose pl-5 space-y-1 mt-2`}
+        className={`${typography.body} text-block-list list-disc w-full pl-5 space-y-1 mt-2`}
       >
         <span>{children}</span>
       </ul>
@@ -60,7 +60,7 @@ export const BlockContent = ({
   classes?: string;
 }) => {
   return (
-    <div className={`mt-4 space-y-2 ${classes}`}>
+    <div className={`mt-4 space-y-2 max-w-[55ch] ${classes}`}>
       <PortableText value={value} components={blockContentComponents} />
     </div>
   );

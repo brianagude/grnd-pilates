@@ -25,7 +25,7 @@ export default function TeacherCards({ items }: TeacherCardProps) {
         .map((item) => (
           <div key={item.id} className="grid sm:grid-cols-2">
             {item.profileImage && (
-              <div className="relative aspect-[3/4] w-full h-auto rounded-4xl overflow-hidden">
+              <div className="relative aspect-[3/4] w-full h-auto rounded-3xl overflow-hidden">
                 <Image
                   src={item.profileImage}
                   alt={`${item.firstName} ${item.lastName}`}
@@ -34,7 +34,7 @@ export default function TeacherCards({ items }: TeacherCardProps) {
                 />
               </div>
             )}
-            <div className="px-4 py-6 bg-brown-100 rounded-4xl flex flex-col gap-3 items-start justify-center text-left md:p-8 2xl:p-10">
+            <div className="px-4 py-6 bg-brown-100 rounded-3xl flex flex-col gap-3 items-start justify-center text-left md:p-8 2xl:p-10">
               <h3 className={typography.h6}>
                 {item.firstName} {item.lastName}
               </h3>

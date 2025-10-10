@@ -1,4 +1,5 @@
-import { defineField, defineType, defineArrayMember } from "sanity";
+import { ImageIcon } from "@sanity/icons";
+import { defineArrayMember, defineField, defineType } from "sanity";
 import { buttonFields } from "../inputs/button";
 
 export const reviews = defineType({
@@ -31,16 +32,33 @@ export const reviews = defineType({
       type: "object",
       fields: [...buttonFields],
     }),
+    defineField({
+      name: "backgroundImage",
+      title: "Background Image",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        defineField({
+          name: "alt",
+          title: "Alt Text",
+          type: "string",
+        }),
+      ],
+    }),
   ],
   preview: {
     select: {
       title: "title",
+      image: "backgroundImage",
     },
     prepare(selection) {
-      const { title } = selection;
+      const { title, image } = selection;
       return {
         title,
         subtitle: "Reviews Section",
+        media: image || ImageIcon,
       };
     },
   },

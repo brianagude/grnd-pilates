@@ -1,5 +1,5 @@
-import { defineField, defineType } from "sanity";
 import { ImageIcon } from "@sanity/icons";
+import { defineField, defineType } from "sanity";
 
 export const reviewType = defineType({
   name: "reviewType",
@@ -26,6 +26,8 @@ export const reviewType = defineType({
       title: "Image",
       type: "image",
       options: { hotspot: true },
+      description:
+        "This image will automatically be cropped to 16:9 aspect ratio.",
       fields: [
         defineField({
           name: "alt",

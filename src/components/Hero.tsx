@@ -48,7 +48,7 @@ export default function Hero({
             />
           )}
           {textBlock && (
-            <BlockContent value={textBlock} classes="text-center" />
+            <BlockContent value={textBlock} classes="text-center mx-auto" />
           )}
         </div>
         {Array.isArray(buttons) && buttons.length > 0 && (

@@ -1,33 +1,34 @@
 "use client";
 
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
-import { urlFor } from "@/sanity/lib/image";
-import Button from "@/components/inputs/Button";
 import React from "react";
-import type { UpdatedHeader } from "@/sanity/lib/types";
 import { Drawer } from "vaul";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import Button from "@/components/inputs/Button";
+import { urlFor } from "@/sanity/lib/image";
+import type { UpdatedHeader } from "@/sanity/lib/types";
 
 export default function Header(props: UpdatedHeader) {
   const { logo, mainCTA, menuList } = props ?? {};
   const [isOpen, setIsOpen] = React.useState(false);
-  const logoUrl = logo ? urlFor(logo).url() : "/logo.svg";
 
   return (
     <Drawer.Root direction="right" open={isOpen} onOpenChange={setIsOpen}>
       <header className="fixed py-4 w-full top-0 left-0 z-30">
-        <div className="px-4 w-full flex justify-between items-center max-w-[1728px] mx-auto sm:px-6">
-          <Link href="/">
-            <Image
-              src={logoUrl}
-              width={200}
-              height={120}
-              alt="grnd pilates logo"
-              priority
-              className="object-fit h-20 w-auto sm:h-fit"
-            />
-          </Link>
+        <div className={`${logo ? 'justify-between' : 'justify-end'} px-4 w-full flex  items-center max-w-[1728px] mx-auto sm:px-6`}>
+          {logo && (
+            <Link href="/">
+              <Image
+                src={urlFor(logo).url()}
+                width={200}
+                height={120}
+                alt="grnd pilates logo"
+                priority
+                className="object-fit h-16 w-auto sm:h-fit"
+              />
+            </Link>
+          )}
           <div className="flex items-center gap-6">
             {menuList && (
               <nav className="items-center gap-4 hidden xl:flex">

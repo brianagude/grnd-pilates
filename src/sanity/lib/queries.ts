@@ -78,6 +78,21 @@ const momenceFormFragment = `
 
 const reviewsFragment = `
   ...,
+  backgroundImage {
+    alt,
+    asset->{
+      _id,
+      url,
+      metadata {
+        lqip,
+        palette {
+          dominant { background, foreground, population, title },
+        }
+      }
+    },
+    crop { top, bottom, left, right },
+    hotspot { x, y, width, height }
+  },
   button {${linkFragment}},
   reviewsContent[]{
     _key,

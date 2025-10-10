@@ -7,7 +7,7 @@ type BackgroundImageType = NonNullable<HomeType["hero"]>["backgroundImage"];
 
 export default function HeroBackground({
   image,
-  overlayColor = "rgba(0, 0, 0, 0)", // default dark overlay
+  overlayColor
 }: {
   image?: BackgroundImageType;
   overlayColor?: string;
@@ -27,13 +27,10 @@ export default function HeroBackground({
         style={{ objectFit: "cover", objectPosition }}
         priority
       />
-      <div
+      {overlayColor && <div
         className="absolute inset-0"
-        style={{
-          // background: `linear-gradient(to bottom, ${overlayColor} 14%, transparent 60%)`,
-          background: `linear-gradient(126deg, ${overlayColor} 20%, transparent 44%)`,
-        }}
-      />
+        style={{ background: `linear-gradient(160deg, ${overlayColor} 40%, transparent 60%)` }}
+      />}
     </div>
   );
 }

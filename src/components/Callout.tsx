@@ -1,9 +1,9 @@
-import { spacing } from "@/styles/design-tokens";
-import { urlFor } from "@/sanity/lib/image";
-import { BlockContent } from "./inputs/PortableTextComponents";
-import Button from "@/components/inputs/Button";
-import Image from "next/image";
 import type { Callout as CalloutProps } from "@types";
+import Image from "next/image";
+import Button from "@/components/inputs/Button";
+import { urlFor } from "@/sanity/lib/image";
+import { spacing } from "@/styles/design-tokens";
+import { BlockContent } from "./inputs/PortableTextComponents";
 
 type UpdatedCallout = Omit<CalloutProps, "button"> & {
   button?: Omit<CalloutProps["button"], "internalPage"> & {
@@ -32,7 +32,7 @@ export default function Callout({
             alt={photo.alt || "callout image"}
             width={1000}
             height={1000}
-            className={`${imagePosition === "first" ? "order-first" : "order-last"} rounded-4xl lg:rounded-[48px]`}
+            className={`${imagePosition === "first" ? "order-first" : "order-last"} rounded-3xl lg:rounded-3xl`}
           />
         )}
       </div>

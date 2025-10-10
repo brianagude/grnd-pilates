@@ -9,20 +9,12 @@ export default function MidHero({
   textBlock,
   buttons,
 }: UpdatedMidHero) {
-  // Cast asset to any (quick workaround)
-  // biome-ignore lint/suspicious/noExplicitAny: Annoying
-    const asset = backgroundImage?.asset as any;
-
-  // Then safely read palette
+  const asset = backgroundImage?.asset as any;
   const palette = asset?.metadata?.palette;
   const dominantColor = palette?.dominant?.background || "#000";
-
-  // const palette = backgroundImage?.asset?.metadata?.palette;
-  // const dominantColor = palette?.dominant?.background || "#000";
   
   // Simple luminance function to decide if color is light or dark
   const isLight = (color: string) => {
-    // Remove # if present, convert to RGB
     let r = 0, g = 0, b = 0;
     if (color.startsWith("#") && (color.length === 7 || color.length === 4)) {
       if (color.length === 7) {
@@ -35,15 +27,15 @@ export default function MidHero({
         b = parseInt(color[3]+color[3], 16);
       }
     }
-    // Calculate relative luminance
+    
     const luminance = (0.299*r + 0.587*g + 0.114*b) / 255;
-    return luminance > 0.7; // tweak threshold as needed
+    return luminance > 0.7;
   };
 
   const textClass = isLight(dominantColor) ? "text-black" : "text-white";
   const overlayColor = isLight(dominantColor)
-    ? "rgba(255, 255, 255, 0.4)"
-    : "rgba(0, 0, 0, 0.5)";
+    ? "rgba(255, 255, 255, 0.6)"
+    : "rgba(0, 0, 0, 0.6)";
 
   if (!backgroundImage) {
     return (
@@ -67,7 +59,7 @@ export default function MidHero({
   return (
     <section className={`${spacing.section} min-h-[80vh] relative`}>
       <div className={`${spacing.container} !items-start z-20 relative`}>
-        <div className={`${textClass} max-w-2xl`}>
+        <div className={`${textClass}`}>
           {textBlock && <BlockContent value={textBlock} />}
         </div>
         {Array.isArray(buttons) && buttons.length > 0 && (
