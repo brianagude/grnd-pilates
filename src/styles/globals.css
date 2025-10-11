@@ -26,8 +26,14 @@
   --background: #f4e6df;
   --foreground: #261008;
   --momenceColorBackground: #f4e6df;
-  --momenceColorPrimary: 38, 16, 8;
+  --momenceColorPrimary: 83, 28, 12;
   --momenceColorBlack: 38, 16, 8;
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 24px;
+  --spacing-xxl: 32px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -56,20 +62,181 @@ mux-player {
   --media-object-fit: cover;
 }
 
-/* .embla {
-  --slide-height: 19rem;
-  --slide-spacing: 1rem;
-  --slide-size: 50%;
+/* Headings spacing */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: var(--spacing-md);
 }
-.embla__viewport {
-  overflow: hidden;
+
+h1 + p,
+h2 + p,
+h3 + p,
+h4 + p,
+h5 + p,
+h6 + p {
+  margin-top: var(--spacing-sm);
 }
-.embla__container {
-  display: flex;
-  touch-action: pan-y pinch-zoom;
-  scroll-behavior: smooth;
+
+/* Paragraph spacing */
+p + p {
+  margin-top: var(--spacing-sm);
 }
-.embla__slide {
-  transform: translate3d(0, 0, 0);
-  min-width: 0;
-} */
+
+/* Lists spacing */
+ul,
+ol {
+  margin-top: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+  padding-left: 1.5em; /* standard indent */
+}
+
+li + li {
+  margin-top: var(--spacing-xs);
+}
+
+/* Heading to heading spacing (if sequential) */
+h1 + h2,
+h2 + h3,
+h3 + h4,
+h4 + h5,
+h5 + h6 {
+  margin-top: var(--spacing-lg);
+}
+
+/* Paragraph to list spacing */
+p + ul,
+p + ol {
+  margin-top: var(--spacing-sm);
+}
+
+/* List to paragraph spacing */
+ul + p,
+ol + p {
+  margin-top: var(--spacing-sm);
+}
+
+/* Optional: add extra spacing after larger headings */
+h1,
+h2 {
+  margin-bottom: var(--spacing-lg);
+}
+
+.momence-form label {
+  padding: 0px 8px;
+  font-family: var(--font-body), system, sans-serif;
+  font-weight: 500 !important;
+  text-transform: uppercase;
+  font-size: 1rem !important;
+}
+
+.momence-form input[type="text"],
+.momence-form input[type="tel"],
+.momence-form input[type="email"] {
+  margin-top: 0.25rem;
+  font-family: var(--font-body), system, sans-serif;
+  font-size: 1rem !important;
+  border-radius: 8px !important;
+  border: 2px solid black !important;
+  border-color: #000;
+  background-color: #fff;
+  padding: 12px !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  min-height: 48px !important;
+  width: 100% !important;
+  overflow: hidden !important;
+}
+
+.momence-form input[type="text"]:focus,
+.momence-form input[type="tel"]:focus,
+.momence-form input[type="email"]:focus {
+  background-color: #fff;
+  outline: none;
+  box-shadow: 0 0 0 2px #3b82f6;
+  border-color: #facc15;
+  transform: translate(-1px, -1px);
+}
+
+.momence-form input[type="text"]:hover,
+.momence-form input[type="tel"]:hover,
+.momence-form input[type="email"]:hover {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  transform: translate(-1px, -1px);
+}
+
+.momence-form input[type="text"]::placeholder,
+.momence-form input[type="tel"]::placeholder,
+.momence-form input[type="email"]::placeholder {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.momence-form input[type="text"]:disabled,
+.momence-form input[type="tel"]:disabled,
+.momence-form input[type="email"]:disabled {
+  color: rgba(0, 0, 0, 0.2);
+  cursor: not-allowed;
+}
+
+.momence-form input[type="checkbox"] + label {
+  text-transform: none !important;
+}
+
+.momence-form input[name="message"] {
+  min-height: 120px !important;
+}
+
+.momence-form input[type="tel"] {
+  padding-left: 40px !important;
+}
+
+.momence-form .flag-dropdown {
+  background: transparent !important;
+  border: none !important;
+}
+
+.momence-form button {
+  width: 100%;
+  font-family: var(--font-body), system, sans-serif;
+  font-size: 1.25rem !important;
+  padding: 12px 40px !important;
+  height: fit-content;
+  border-radius: 9999px !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.momence-form button:hover {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  transform: translate(-1px, -1px);
+}
+
+@media (min-width: 768px) {
+  .momence-form label {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .momence-form input[type="text"],
+  .momence-form input[type="tel"],
+  .momence-form input[type="email"] {
+    font-size: 1.125rem !important;
+  }
+}
+
+.div-link:hover {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-decoration: underline;
+    font-weight: 600;
+  }
+}

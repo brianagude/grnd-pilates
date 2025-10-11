@@ -1,9 +1,15 @@
-import { typography, spacing } from "@/styles/design-tokens";
+import type {
+  Event,
+  Membership,
+  Product,
+  Teacher,
+  UpdatedMomence,
+} from "@/sanity/lib/types";
+import { spacing, typography } from "@/styles/design-tokens";
+import Classes from "./cards/Classes";
 import MembershipCards from "./cards/Memberships";
-import EventCards from "./cards/Events";
-import TeacherCards from "./cards/Teachers";
 import ProductsCards from "./cards/Products";
-import type { UpdatedMomence, Membership, Event, Teacher, Product } from "@/sanity/lib/types";
+import TeacherCards from "./cards/Teachers";
 
 export default async function Momence({ title, integration }: UpdatedMomence) {
   if (!integration) return null;
@@ -18,7 +24,7 @@ export default async function Momence({ title, integration }: UpdatedMomence) {
 
   const endpoint = `https://api.momence.com/api/v1/${integration}?hostId=${hostId}&token=${token}`;
 
-    let items: Membership[] | Event[] | Teacher[] | Product[] = [];
+  let items: Membership[] | Event[] | Teacher[] | Product[] = [];
 
   try {
     const res = await fetch(endpoint);
@@ -29,9 +35,9 @@ export default async function Momence({ title, integration }: UpdatedMomence) {
       case "Memberships":
         items = data as Membership[];
         break;
-      case "Events":
-        items = data as Event[];
-        break;
+      // case "Events":
+      //   items = data as Event[];
+      //   break;
       case "Teachers":
         items = data as Teacher[];
         break;
@@ -45,12 +51,26 @@ export default async function Momence({ title, integration }: UpdatedMomence) {
 
   return (
     <section className={spacing.section}>
-      <div className={spacing.container}>
-        {title && <h3 className={`${typography.h3} ${integration !== "Memberships" && "w-full text-left"}`}>{title}</h3>}
-        {integration === "Memberships" && <MembershipCards items={items as Membership[]} />}
-        {integration === "Events" && <EventCards items={items as Event[]} />}
-        {integration === "Teachers" && <TeacherCards items={items as Teacher[]} />}
-        {integration === "Products" && <ProductsCards items={items as Product[]} />}
+      <div className={`${spacing.container} !gap-4`}>
+        {title && (
+          <h3
+            className={`${typography.h3} ${integration !== "Memberships" && "w-full text-left"}`}
+          >
+            {title}
+          </h3>
+        )}
+        
+        
+        {integration === "Memberships" && (
+          <MembershipCards items={items as Membership[]} />
+        )}
+        {integration === "Events" && <Classes />}
+        {integration === "Teachers" && (
+          <TeacherCards items={items as Teacher[]} />
+        )}
+        {integration === "Products" && (
+          <ProductsCards items={items as Product[]} />
+        )}
       </div>
     </section>
   );

@@ -26,10 +26,75 @@ export const momenceForm = defineType({
       ],
     }),
     defineField({
-      name: "source",
-      title: "Source ID",
-      type: "string",
+      name: "form",
+      title: "Form Fields",
+      type: "object",
+      description: "To create a new form, go to https://momence.com/dashboard/107640/plugin?tab=lead-form and copy/paste the values for fields and data-field-def. Everything else should auto populate.",
       validation: (Rule) => Rule.required(),
+      fields: [
+        defineField({
+          name: "fields",
+          title: "fields",
+          type: "string",
+          validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+          name: "fieldDefJson",
+          title: "data-field-def",
+          type: "string",
+          validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+          name: "containerId",
+          title: "Div ID",
+          type: "string",
+          placeholder: 'momence-plugin-lead-form',
+        }),
+        defineField({
+          name: "hostID",
+          title: "host_id",
+          type: "string",
+          placeholder: '107640',
+        }),
+        defineField({
+          name: "token",
+          title: "token",
+          type: "string",
+          placeholder: '3mX0LbY9Xk',
+        }),
+        defineField({
+          name: "countryCode",
+          title: "country_code",
+          type: "string",
+          placeholder: 'us',
+        }),
+        defineField({
+          name: "sourceID",
+          title: "source_id",
+          type: "string",
+        }),
+        defineField({
+          name: "dataCollectConsent",
+          title: "data_collect_consent",
+          type: "boolean",
+        }),
+        defineField({
+          name: "dataRedirectAfterSubmitTo",
+          title: "data-redirect-after-submit-to",
+          type: "string",
+        }),
+        defineField({
+          name: "dataOnSuccessMsg",
+          title: "data-on-success-msg",
+          type: "string",
+        }),
+        defineField({
+          name: "src",
+          title: "src",
+          type: "string",
+          placeholder: 'https://momence.com/plugin/lead-form/lead-form.js',
+        }),
+      ]
     }),
   ],
   preview: {

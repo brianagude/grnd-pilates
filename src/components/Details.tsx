@@ -98,6 +98,28 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ item, classes = "" }) => {
   const { data } = item;
   const { photo, mediaType, playbackId, videoAlt, textBlock, link } = data;
 
+  if (link) {
+    return (
+      <a href={link} className={`${classes} space-y-3 group div-link`}>
+        <div className="relative aspect-[4/3] w-full h-auto overflow-hidden rounded-3xl">
+          {mediaType === "image" && photo && (
+            <Image
+              src={urlFor(photo).url()}
+              alt={photo.alt || "image"}
+              fill
+              className="object-cover w-full h-full transition-transform duration-300 ease-in-out transform group-hover:scale-105"
+            />
+          )}
+          {mediaType === "video" && playbackId && (
+            <Video playbackId={playbackId} title={videoAlt} />
+          )}
+        </div>
+
+        {textBlock && <BlockContent value={textBlock} classes="px-2 sm:px-5" />}
+      </a>
+    );
+  }
+
   return (
     <div className={`${classes} space-y-3`}>
       <div className="relative aspect-[4/3] w-full h-auto overflow-hidden rounded-3xl">
@@ -114,19 +136,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ item, classes = "" }) => {
         )}
       </div>
 
-      <div className="px-3 flex flex-col gap-3 md:px-5">
-        {textBlock && <BlockContent value={textBlock} />}
-        {link && (
-          <a
-            href={link}
-            className={`${typography.link} ${typography.caption} w-full mt-2`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn More
-          </a>
-        )}
-      </div>
+      {textBlock && <BlockContent value={textBlock} classes="px-2 sm:px-5" />}
     </div>
   );
 };

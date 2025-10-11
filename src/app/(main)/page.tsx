@@ -1,9 +1,9 @@
-import type { UpdatedHome } from "@/sanity/lib/types";
 import { notFound } from "next/navigation";
+import Hero from "@/components/Hero";
+import Sections from "@/components/Sections";
 import { client } from "@/sanity/lib/client";
 import { HOME_QUERY } from "@/sanity/lib/queries";
-import Sections from "@/components/Sections";
-import Hero from "@/components/Hero";
+import type { UpdatedHome } from "@/sanity/lib/types";
 
 const options = { next: { revalidate: 30 } };
 

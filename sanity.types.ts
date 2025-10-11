@@ -155,7 +155,19 @@ export type MomenceForm = {
     alt?: string;
     _type: "image";
   };
-  source: string;
+  form: {
+    containerId?: string;
+    hostID?: string;
+    fields: string;
+    token?: string;
+    countryCode?: string;
+    dataCollectConsent?: boolean;
+    sourceID: string;
+    fieldDefJson: string;
+    dataRedirectAfterSubmitTo?: string;
+    dataOnSuccessMsg?: string;
+    src?: string;
+  };
 };
 
 export type Momence = {

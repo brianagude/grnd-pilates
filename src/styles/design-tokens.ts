@@ -32,7 +32,7 @@ export const buttons = {
 };
 
 export const forms = {
-  input: `${typography.body} rounded-2xl border-2 border-black bg-white p-4 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-yellow placeholder-black/70 text-base disabled:text-black/20 disabled:cursor-not-allowed hover:shadow-lg transform transition hover:translate-x-[-1px] hover:translate-y-[-1px] focus:shadow-lg focus:translate-x-[-1px] focus:translate-y-[-1px]`,
-  label: `px-4 ${typography.caption}`,
+  input: `mt-1 text-pretty text-balance text-base lg:text-md rounded-2xl border-2 border-black bg-white p-4 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-yellow placeholder-black/70 text-base disabled:text-black/20 disabled:cursor-not-allowed hover:shadow-lg transform transition hover:translate-x-[-1px] hover:translate-y-[-1px] focus:shadow-lg focus:translate-x-[-1px] focus:translate-y-[-1px]`,
+  label: `px-4 text-pretty text-balance font-medium uppercase text-lg md:text-xl`,
   fieldset: "flex flex-col gap-1",
 };

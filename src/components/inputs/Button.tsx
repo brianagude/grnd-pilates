@@ -1,6 +1,5 @@
 "use client";
 import clsx from "clsx";
-import Link from "next/link";
 import type { ReactNode } from "react";
 import { buttons } from "@/styles/design-tokens";
 
@@ -48,18 +47,18 @@ export default function Button({
       internalPage._id === "home" ? "/" : `/${internalPage.slug ?? ""}`;
 
     return (
-      <Link className={className} href={internalLink}>
+      <a className={className} href={internalLink}>
         {content}
-      </Link>
+      </a>
     );
   }
 
   // Otherwise, fall back to URL
   if (url?.startsWith("/")) {
     return (
-      <Link href={url} className={className}>
+      <a href={url} className={className}>
         {content}
-      </Link>
+      </a>
     );
   }
 

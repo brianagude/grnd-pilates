@@ -30,7 +30,7 @@ const blockContentComponents: PortableTextComponentsType = {
   list: {
     bullet: ({ children }) => (
       <ul
-        className={`${typography.body} text-block-list list-disc w-full pl-5 space-y-1 mt-2`}
+        className={`${typography.body} list-disc w-full pl-5 space-y-1 mt-2`}
       >
         <span>{children}</span>
       </ul>
@@ -60,7 +60,7 @@ export const BlockContent = ({
   classes?: string;
 }) => {
   return (
-    <div className={`mt-4 space-y-2 max-w-[55ch] ${classes}`}>
+    <div className={`max-w-[55ch] ${classes}`}>
       <PortableText value={value} components={blockContentComponents} />
     </div>
   );
