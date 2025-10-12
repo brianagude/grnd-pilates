@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { Product } from "@/sanity/lib/types";
-import { buttons, typography } from "@/styles/design-tokens";
+import { buttons, spacing, typography } from "@/styles/design-tokens";
 
 interface ProductsCardProps {
   items: Product[];
@@ -9,7 +9,7 @@ interface ProductsCardProps {
 export default function ProductCards({ items }: ProductsCardProps) {
   if (items.length < 1) {
     return (
-      <div className="text-center space-y-3">
+      <div className={`${spacing.inner} text-center`}>
         <h2 className={typography.h5}>Nothing here… yet!</h2>
         <p className={typography.body}>
           We don’t have any products at the moment. Check back soon!
@@ -23,7 +23,13 @@ export default function ProductCards({ items }: ProductsCardProps) {
       {items
         .filter((item) => !item.isDeleted)
         .map((item) => (
-          <div key={item.id} className="w-full group space-y-4">
+          <a 
+            key={item.id} 
+            href={item.link} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className={`${spacing.block} w-full group`}
+          >
             {item.imageLink && (
               <div className="relative aspect-square w-full rounded-2xl overflow-hidden">
                 <Image
@@ -34,21 +40,14 @@ export default function ProductCards({ items }: ProductsCardProps) {
                 />
               </div>
             )}
-            <div className="space-y-2">
-              <h3 className={`${typography.h6} line-clamp-1`}>{item.name}</h3>
-              <p className={`${typography.bodySmall} line-clamp-3`}>
+            <div className={spacing.inner}>
+              <h3 className={`${typography.h5} line-clamp-1 group-hover:underline group-hover:font-bold`}>{item.name}</h3>
+              <p className={`${typography.body} line-clamp-3`}>
                 {item.description}
               </p>
+              <p className={typography.caption}>{item.price ? `$${item.price}` : "Free"}</p>
             </div>
-            <a
-              href={item.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${buttons.secondary} !w-full`}
-            >
-              Purchase &mdash; {item.price ? `$${item.price}` : "Free"}
-            </a>
-          </div>
+          </a>
         ))}
     </div>
   );

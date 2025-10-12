@@ -13,29 +13,6 @@
  */
 
 // Source: schema.json
-export type TextOnly = {
-  _type: "textOnly";
-  title?: string;
-  copy?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "large" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-    listItem?: "bullet";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  }>;
-};
-
 export type ReviewType = {
   _id: string;
   _type: "reviewType";
@@ -156,24 +133,19 @@ export type MomenceForm = {
     _type: "image";
   };
   form: {
-    containerId?: string;
-    hostID?: string;
     fields: string;
-    token?: string;
-    countryCode?: string;
-    dataCollectConsent?: boolean;
-    sourceID: string;
     fieldDefJson: string;
+    sourceID?: string;
+    dataCollectConsent?: boolean;
     dataRedirectAfterSubmitTo?: string;
     dataOnSuccessMsg?: string;
-    src?: string;
   };
 };
 
 export type Momence = {
   _type: "momence";
   title?: string;
-  integration: "Events" | "Memberships" | "Products" | "Teachers";
+  integration: "Events" | "Memberships" | "Products" | "Reviews" | "Teachers";
 };
 
 export type MidHero = {
@@ -550,9 +522,7 @@ export type Home = {
     _key: string;
   } & MomenceForm | {
     _key: string;
-  } & Reviews | {
-    _key: string;
-  } & TextOnly>;
+  } & Reviews>;
 };
 
 export type PageType = {
@@ -626,9 +596,7 @@ export type PageType = {
     _key: string;
   } & MomenceForm | {
     _key: string;
-  } & Reviews | {
-    _key: string;
-  } & TextOnly>;
+  } & Reviews>;
 };
 
 export type BlockContent = Array<{
@@ -860,5 +828,5 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = TextOnly | ReviewType | Reviews | MomenceForm | Momence | MidHero | Details | Callout | ContentType | Settings | Home | PageType | BlockContent | MuxVideo | MuxVideoAsset | MuxAssetData | MuxStaticRenditions | MuxStaticRenditionFile | MuxPlaybackId | MuxTrack | MediaTag | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = ReviewType | Reviews | MomenceForm | Momence | MidHero | Details | Callout | ContentType | Settings | Home | PageType | BlockContent | MuxVideo | MuxVideoAsset | MuxAssetData | MuxStaticRenditions | MuxStaticRenditionFile | MuxPlaybackId | MuxTrack | MediaTag | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;

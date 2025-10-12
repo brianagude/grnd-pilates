@@ -4,6 +4,7 @@ import {
   ArrowLongLeftIcon,
   ArrowLongRightIcon,
 } from "@heroicons/react/24/outline";
+import Autoplay from "embla-carousel-autoplay";
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
@@ -19,13 +20,16 @@ export default function Reviews({
   title,
   reviewsContent,
   button,
-  backgroundImage
+  backgroundImage,
 }: UpdatedReviews) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    loop: true,
-    align: "start",
-    skipSnaps: false,
-  });
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    {
+      loop: true,
+      align: "start",
+      skipSnaps: false,
+    },
+    [Autoplay({ delay: 10000, stopOnInteraction: false })],
+  );
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   // Update selected index when carousel changes
@@ -71,7 +75,10 @@ export default function Reviews({
           </div>
         </div>
 
-        <div ref={emblaRef} className="overflow-hidden w-full px-4 sm:px-8 lg:px-16">
+        <div
+          ref={emblaRef}
+          className="overflow-hidden w-full px-4 sm:px-8 lg:px-16"
+        >
           <div className="flex gap-4">
             {reviewsContent.map((item) => {
               const { data } = item;
@@ -110,7 +117,7 @@ export default function Reviews({
                     {textBlock && (
                       <BlockContent value={textBlock} classes="!mt-0" />
                     )}
-                    <div className="w-full border ml-auto mt-4"/>
+                    <div className="w-full border ml-auto mt-4" />
                     <Image
                       src="/stars.svg"
                       alt="5 stars"
@@ -130,9 +137,7 @@ export default function Reviews({
           </div>
         </div>
       </div>
-      {backgroundImage && (
-        <HeroBackground image={backgroundImage} />
-      )}
+      {backgroundImage && <HeroBackground image={backgroundImage} />}
     </section>
   );
 }

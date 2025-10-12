@@ -10,7 +10,6 @@ import type {
   Reviews as ReviewsType,
   ReviewType,
   Settings as SettingsType,
-  TextOnly as TextOnlyType,
 } from "@types";
 
 export type ExpandedSanityImage = {
@@ -71,10 +70,6 @@ export type UpdatedMomenceForm = MomenceFormType & {
   _key?: string;
 };
 
-export type UpdatedTextOnly = TextOnlyType & {
-  _key?: string;
-};
-
 export type UpdatedMidHero = Omit<MidHeroType, "buttons"> & {
   buttons?: Array<
     Omit<NonNullable<MidHeroType["buttons"]>[number], "internalPage"> & {
@@ -87,7 +82,6 @@ export type UpdatedMidHero = Omit<MidHeroType, "buttons"> & {
 export type UpdatedHome = Omit<HomeType, "sections"> & {
   sections?: Array<
     | UpdatedMidHero
-    | UpdatedTextOnly
     | UpdatedReviews
     | UpdatedDetails
     | UpdatedCallout
@@ -100,7 +94,6 @@ export type UpdatedHome = Omit<HomeType, "sections"> & {
 export type UpdatedNewPageType = Omit<NewPageType, "sections"> & {
   sections?: Array<
     | UpdatedMidHero
-    | UpdatedTextOnly
     | UpdatedReviews
     | UpdatedDetails
     | UpdatedCallout
@@ -214,7 +207,7 @@ export interface Teacher {
   isDeleted: boolean;
 }
 
-type IntegrationType = "Memberships" | "Events" | "Teachers" | "Products";
+type IntegrationType = "Memberships" | "Events" | "Teachers" | "Products" | "Reviews";
 
 export type UpdatedMomence = Omit<MomenceType, "button" | "integration"> & {
   button?: Omit<DetailsType["button"], "internalPage"> & {

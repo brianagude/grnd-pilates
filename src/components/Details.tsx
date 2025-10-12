@@ -17,7 +17,7 @@ import Video from "./inputs/Video";
 type ItemType = NonNullable<UpdatedDetails["carouselContent"]>[number];
 
 
-type ReviewCardProps = {
+type DetailCardProps = {
   item: ItemType;
   classes?: string;
 };
@@ -46,16 +46,14 @@ export default function Details({
   return (
     <section className={spacing.section}>
       <div className={`${spacing.container} ${isCarousel && "!px-0"}`}>
-        {/* Header */}
         <div
-          className={`flex flex-col w-full gap-4 md:flex-row md:justify-between items-start ${isCarousel && "px-4 sm:px-8 lg:px-16"}`}
+          className={`flex flex-col w-full gap-3 items-start md:items-center md:flex-row md:justify-between ${isCarousel && "px-4 sm:px-8 lg:px-16"}`}
         >
           {title && <h3 className={typography.h3}>{title}</h3>}
 
-          <div className="flex gap-4 items-center">
-            {button && <Button {...button} />}
+          <div className="w-full md:w-fit md:items-center md:gap-5 md:flex">
             {isCarousel && (
-              <div className="hidden gap-2 mt-2 lg:flex lg:mt-0">
+              <div className="hidden md:flex items-center justify-center gap-3">
                 <button onClick={scrollPrev} type="button" className="cursor-pointer">
                   <ArrowLongLeftIcon className="size-16 text-black hover:-translate-y-0.5 transition-all" />
                 </button>
@@ -64,15 +62,15 @@ export default function Details({
                 </button>
               </div>
             )}
+            {button && <Button {...button} />}
           </div>
         </div>
 
-        {/* Carousel */}
         {isCarousel ? (
           <div ref={emblaRef} className="overflow-hidden w-full px-4 sm:px-8 lg:px-16">
             <div className="flex">
               {carouselContent.map((item) => (
-                <ReviewCard
+                <DetailCard
                   key={item._key}
                   item={item}
                   classes="px-2 flex-[0_0_100%] sm:flex-[0_0_90%] md:flex-[0_0_50%] xl:flex-[0_0_33%]"
@@ -81,26 +79,42 @@ export default function Details({
             </div>
           </div>
         ) : (
-          // Grid
           <div className="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-6">
             {carouselContent.map((item) => (
-              <ReviewCard key={item._key} item={item} />
+              <DetailCard key={item._key} item={item} />
             ))}
           </div>
         )}
+
+        {isCarousel && (
+          <div className="flex items-center justify-center gap-3 px-4 w-full sm:px-8 md:hidden">
+            <button onClick={scrollPrev} type="button" className="cursor-pointer">
+              <ArrowLongLeftIcon className="size-16 text-black hover:-translate-y-0.5 transition-all" />
+            </button>
+            <button onClick={scrollNext} type="button" className="cursor-pointer">
+              <ArrowLongRightIcon className="size-16 text-black hover:-translate-y-0.5 transition-all" />
+            </button>
+          </div>
+        )}
+
       </div>
     </section>
   );
 }
 
 
-const ReviewCard: React.FC<ReviewCardProps> = ({ item, classes = "" }) => {
+const DetailCard: React.FC<DetailCardProps> = ({ item, classes = "" }) => {
   const { data } = item;
   const { photo, mediaType, playbackId, videoAlt, textBlock, link } = data;
 
   if (link) {
     return (
-      <a href={link} className={`${classes} space-y-3 group div-link`}>
+      <a 
+        href={link} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className={`${spacing.block} group div-link ${classes}`}
+      >
         <div className="relative aspect-[4/3] w-full h-auto overflow-hidden rounded-3xl">
           {mediaType === "image" && photo && (
             <Image
@@ -121,7 +135,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ item, classes = "" }) => {
   }
 
   return (
-    <div className={`${classes} space-y-3`}>
+    <div className={`${spacing.block} ${classes} `}>
       <div className="relative aspect-[4/3] w-full h-auto overflow-hidden rounded-3xl">
         {mediaType === "image" && photo && (
           <Image

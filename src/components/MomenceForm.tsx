@@ -9,7 +9,7 @@ export default function MomenceForm({ textBlock, photo, form }: FormProps) {
   return (
     <section className={spacing.section}>
       <div
-        className={`${spacing.container} !items-start md:grid lg:grid-cols-2`}
+        className={`${spacing.container} !items-start md:grid md:grid-cols-2`}
       >
         {photo && (
           <Image
@@ -20,7 +20,7 @@ export default function MomenceForm({ textBlock, photo, form }: FormProps) {
             className="rounded-3xl lg:rounded-3xl"
           />
         )}
-        <div className="space-y-6 lg:py-10">
+        <div className={`${spacing.block} order-first md:order-last lg:py-10`}>
           {textBlock && <BlockContent value={textBlock} />}
           <LeadFormMomence {...form} />
         </div>

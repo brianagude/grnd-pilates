@@ -104,10 +104,6 @@ const reviewsFragment = `
   }
 `;
 
-const textOnlyFragment = `
-  ...,
-`;
-
 export const HOME_QUERY = `*[_type == "home"][0]{
   hero {${heroFragment}},
   sections[] {
@@ -120,7 +116,6 @@ export const HOME_QUERY = `*[_type == "home"][0]{
       _type == "momence" => {${momenceFragment}},
       _type == "momenceForm" => {${momenceFormFragment}},
       _type == "reviews" => {${reviewsFragment}},
-      _type == "textOnly" => {${textOnlyFragment}},
     )
   }
 }`;
@@ -137,7 +132,6 @@ export const PAGE_QUERY = `*[_type == "pageType" && slug.current == $slug][0]{
       _type == "momence" => {${momenceFragment}},
       _type == "momenceForm" => {${momenceFormFragment}},
       _type == "reviews" => {${reviewsFragment}},
-      _type == "textOnly" => {${textOnlyFragment}},
     )
   }
 }`;

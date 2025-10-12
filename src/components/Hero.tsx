@@ -35,7 +35,7 @@ export default function Hero({
       className={`${spacing.section} min-h-screen flex flex-col items-center justify-center ${classes}`}
     >
       <div className={`${spacing.container} pb-[200px]`}>
-        <div className="flex flex-col items-center justify-center gap-2">
+        <div className="w-full flex flex-col items-center justify-center gap-2">
           {mainImage && (
             <Image
               src={urlFor(mainImage).quality(100).url()}
@@ -48,7 +48,7 @@ export default function Hero({
             />
           )}
           {textBlock && (
-            <BlockContent value={textBlock} classes="text-center mx-auto" />
+            <BlockContent value={textBlock} classes="!text-center mx-auto" />
           )}
         </div>
         {Array.isArray(buttons) && buttons.length > 0 && (

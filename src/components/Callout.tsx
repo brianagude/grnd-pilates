@@ -19,9 +19,9 @@ export default function Callout({
 }: UpdatedCallout) {
   return (
     <section className={spacing.section}>
-      <div className={`${spacing.container} lg:grid lg:grid-cols-2`}>
+      <div className={`${spacing.container} md:grid md:grid-cols-2`}>
         {(textBlock || button) && (
-          <div className="space-y-10">
+          <div className={`${spacing.block} mr-auto`}>
             {textBlock && <BlockContent value={textBlock} />}
             {button && <Button {...button} />}
           </div>
@@ -32,7 +32,7 @@ export default function Callout({
             alt={photo.alt || "callout image"}
             width={1000}
             height={1000}
-            className={`${imagePosition === "first" ? "order-first" : "order-last"} rounded-3xl lg:rounded-3xl`}
+            className={`${imagePosition === "first" ? "md:order-first" : "md:order-last"} rounded-3xl lg:rounded-3xl`}
           />
         )}
       </div>

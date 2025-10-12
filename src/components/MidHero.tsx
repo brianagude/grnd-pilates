@@ -39,9 +39,9 @@ export default function MidHero({
 
   if (!backgroundImage) {
     return (
-      <section className={`${spacing.section} min-h-[80vh]`}>
+      <section className={`${spacing.section} min-h-[80svh]`}>
         <div className={`${spacing.container} !items-start`}>
-          <div className={`${textClass} max-w-2xl`}>
+          <div className={`${textClass} w-full`}>
             {textBlock && <BlockContent value={textBlock} />}
           </div>
           {Array.isArray(buttons) && buttons.length > 0 && (
@@ -57,7 +57,7 @@ export default function MidHero({
   }
 
   return (
-    <section className={`${spacing.section} min-h-[80vh] relative`}>
+    <section className={`${spacing.section} min-h-[90svh] relative`}>
       <div className={`${spacing.container} !items-start z-20 relative`}>
         <div className={`${textClass}`}>
           {textBlock && <BlockContent value={textBlock} />}

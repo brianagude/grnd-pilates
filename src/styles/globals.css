@@ -79,12 +79,12 @@ h3 + p,
 h4 + p,
 h5 + p,
 h6 + p {
-  margin-top: var(--spacing-sm);
+  margin-top: var(--spacing-lg);
 }
 
 /* Paragraph spacing */
 p + p {
-  margin-top: var(--spacing-sm);
+  margin-top: var(--spacing-md);
 }
 
 /* Lists spacing */
@@ -186,7 +186,8 @@ h2 {
 }
 
 .momence-form input[name="message"] {
-  min-height: 120px !important;
+  /* min-height: 120px !important; */
+  padding-bottom: 100px !important;
 }
 
 .momence-form input[type="tel"] {
@@ -238,5 +239,19 @@ h2 {
   h6 {
     text-decoration: underline;
     font-weight: 600;
+  }
+}
+
+@media (max-width: 1024px) {
+  .div-link {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      text-decoration: underline;
+      font-weight: 600;
+    }
   }
 }

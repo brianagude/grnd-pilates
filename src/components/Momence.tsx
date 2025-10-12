@@ -1,5 +1,5 @@
+import Reviews from "@/components/cards/Reviews";
 import type {
-  Event,
   Membership,
   Product,
   Teacher,
@@ -24,7 +24,7 @@ export default async function Momence({ title, integration }: UpdatedMomence) {
 
   const endpoint = `https://api.momence.com/api/v1/${integration}?hostId=${hostId}&token=${token}`;
 
-  let items: Membership[] | Event[] | Teacher[] | Product[] = [];
+  let items: Membership[] | Teacher[] | Product[] = [];
 
   try {
     const res = await fetch(endpoint);
@@ -35,9 +35,6 @@ export default async function Momence({ title, integration }: UpdatedMomence) {
       case "Memberships":
         items = data as Membership[];
         break;
-      // case "Events":
-      //   items = data as Event[];
-      //   break;
       case "Teachers":
         items = data as Teacher[];
         break;
@@ -59,11 +56,11 @@ export default async function Momence({ title, integration }: UpdatedMomence) {
             {title}
           </h3>
         )}
-        
-        
+
         {integration === "Memberships" && (
           <MembershipCards items={items as Membership[]} />
         )}
+        {integration === "Reviews" && <Reviews />}
         {integration === "Events" && <Classes />}
         {integration === "Teachers" && (
           <TeacherCards items={items as Teacher[]} />

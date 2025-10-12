@@ -1,15 +1,20 @@
 "use client";
 
-import type { UpdatedFooter } from "@/sanity/lib/types";
 import Image from "next/image";
 import Link from "next/link";
-import { urlFor } from "@/sanity/lib/image";
-import { typography } from "@/styles/design-tokens";
 import Button from "@/components/inputs/Button";
+import { urlFor } from "@/sanity/lib/image";
+import type { UpdatedFooter } from "@/sanity/lib/types";
+import { spacing, typography } from "@/styles/design-tokens";
 import { BlockContent } from "./inputs/PortableTextComponents";
 
-
-export default function Footer({ logo, copyrightText, footerLinks, supportText, socialMedia }: UpdatedFooter) {
+export default function Footer({
+  logo,
+  copyrightText,
+  footerLinks,
+  supportText,
+  socialMedia,
+}: UpdatedFooter) {
   const year = new Date().getFullYear();
   // const { copyrightText, footerLinks, logo, supportText } = footer;
 
@@ -29,7 +34,7 @@ export default function Footer({ logo, copyrightText, footerLinks, supportText, 
 
         <div className="flex flex-col gap-10 md:mx-auto md:flex-row lg:mr-0">
           {footerLinks && (
-            <div className="space-y-3 md:min-w-xs">
+            <div className={`${spacing.inner} md:min-w-xs`}>
               <h6 className={`${typography.caption} mb-4 pb-4 border-b-2`}>
                 Navigation
               </h6>
@@ -44,109 +49,106 @@ export default function Footer({ logo, copyrightText, footerLinks, supportText, 
               </nav>
             </div>
           )}
-          {supportText && (
             <div className="md:min-w-xs">
               <h6 className={`${typography.caption} mb-4 pb-4 border-b-2`}>
                 Support
               </h6>
-              <BlockContent value={supportText} />
+              {supportText && <BlockContent value={supportText} classes="mb-4" />}
+              {socialMedia && (
+                <div className="flex flex-wrap gap-4 items-center">
+                  {socialMedia.instagram && (
+                    <a
+                      href={socialMedia.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Image
+                        src="/instagram.svg"
+                        width={40}
+                        height={40}
+                        alt="Instagram icon"
+                      />
+                    </a>
+                  )}
+                  {socialMedia.youtube && (
+                    <a
+                      href={socialMedia.youtube}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Image
+                        src="/youtube.svg"
+                        width={40}
+                        height={40}
+                        alt="Youtube icon"
+                      />
+                    </a>
+                  )}
+                  {socialMedia.twitter && (
+                    <a
+                      href={socialMedia.twitter}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Image
+                        src="/twitter.svg"
+                        width={40}
+                        height={40}
+                        alt="Twitter icon"
+                      />
+                    </a>
+                  )}
+                  {socialMedia.tiktok && (
+                    <a
+                      href={socialMedia.tiktok}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Image
+                        src="/tiktok.svg"
+                        width={40}
+                        height={40}
+                        alt="Tiktok icon"
+                      />
+                    </a>
+                  )}
+                  {socialMedia.facebook && (
+                    <a
+                      href={socialMedia.facebook}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Image
+                        src="/facebook.svg"
+                        width={40}
+                        height={40}
+                        alt="Facebook icon"
+                      />
+                    </a>
+                  )}
+                  {socialMedia.linkedin && (
+                    <a
+                      href={socialMedia.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Image
+                        src="/linkedin.svg"
+                        width={40}
+                        height={40}
+                        alt="Linkedin icon"
+                      />
+                    </a>
+                  )}
+                </div>
+              )}
             </div>
-          )}
         </div>
       </div>
-      <div className="w-full p-4 flex flex-col-reverse items-center justify-center gap-4 border-t-2 md:flex-row sm:justify-between md:px-12">
-        <p className={typography.body}>
+      <div className="w-full p-4 border-t-2 md:px-12">
+        <p className={`${typography.body} w-full md:text-center lg:text-start`}>
           &copy; {year} {copyrightText}
         </p>
-
-        {socialMedia && (
-          <div className="flex flex-wrap gap-4 items-center">
-            {socialMedia.instagram && (
-              <a
-                href={socialMedia.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image
-                  src="/instagram.svg"
-                  width={40}
-                  height={40}
-                  alt="Instagram icon"
-                />
-              </a>
-            )}
-            {socialMedia.youtube && (
-              <a
-                href={socialMedia.youtube}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image
-                  src="/youtube.svg"
-                  width={40}
-                  height={40}
-                  alt="Youtube icon"
-                />
-              </a>
-            )}
-            {socialMedia.twitter && (
-              <a
-                href={socialMedia.twitter}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image
-                  src="/twitter.svg"
-                  width={40}
-                  height={40}
-                  alt="Twitter icon"
-                />
-              </a>
-            )}
-            {socialMedia.tiktok && (
-              <a
-                href={socialMedia.tiktok}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image
-                  src="/tiktok.svg"
-                  width={40}
-                  height={40}
-                  alt="Tiktok icon"
-                />
-              </a>
-            )}
-            {socialMedia.facebook && (
-              <a
-                href={socialMedia.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image
-                  src="/facebook.svg"
-                  width={40}
-                  height={40}
-                  alt="Facebook icon"
-                />
-              </a>
-            )}
-            {socialMedia.linkedin && (
-              <a
-                href={socialMedia.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image
-                  src="/linkedin.svg"
-                  width={40}
-                  height={40}
-                  alt="Linkedin icon"
-                />
-              </a>
-            )}
-          </div>
-        )}
       </div>
     </footer>
   );

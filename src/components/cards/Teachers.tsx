@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { Teacher } from "@/sanity/lib/types";
-import { typography } from "@/styles/design-tokens";
+import { spacing, typography } from "@/styles/design-tokens";
 
 interface TeacherCardProps {
   items: Teacher[];
@@ -9,7 +9,7 @@ interface TeacherCardProps {
 export default function TeacherCards({ items }: TeacherCardProps) {
   if (items.length < 1) {
     return (
-      <div className="text-center space-y-3">
+      <div className={`${spacing.inner} text-center`}>
         <h2 className={typography.h5}>Nothing here… yet!</h2>
         <p className={typography.body}>
           We don’t have any instructors at the moment. Check back soon!

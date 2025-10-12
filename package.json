@@ -23,6 +23,7 @@
     "@vercel/analytics": "^1.5.0",
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.6.0",
+    "embla-carousel-autoplay": "^8.6.0",
     "next": "15.4.6",
     "next-sanity": "^10.0.10",
     "next-sanity-image": "^6.2.0",

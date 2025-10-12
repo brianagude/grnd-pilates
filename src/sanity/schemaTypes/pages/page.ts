@@ -1,6 +1,6 @@
+import { DocumentsIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
 import { buttonFields } from "../inputs/button";
-import { DocumentsIcon } from "@sanity/icons";
 
 export const pageType = defineType({
   name: "pageType",
@@ -86,7 +86,6 @@ export const pageType = defineType({
         { type: "momence" },
         { type: "momenceForm" },
         { type: "reviews" },
-        { type: "textOnly" },
       ],
     }),
   ],

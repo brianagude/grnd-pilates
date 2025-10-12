@@ -4,16 +4,14 @@ import MidHero from "@/components/MidHero";
 import Momence from "@/components/Momence";
 import MomenceForm from "@/components/MomenceForm";
 import Reviews from "@/components/Reviews";
-import TextOnly from "@/components/TextOnly";
 
 import type {
-  UpdatedReviews,
   UpdatedCallout,
+  UpdatedDetails,
+  UpdatedMidHero,
   UpdatedMomence,
   UpdatedMomenceForm,
-  UpdatedTextOnly,
-  UpdatedMidHero,
-  UpdatedDetails,
+  UpdatedReviews,
 } from "@/sanity/lib/types";
 
 type SectionModule =
@@ -22,8 +20,7 @@ type SectionModule =
   | UpdatedMidHero
   | UpdatedMomence
   | UpdatedMomenceForm
-  | UpdatedReviews
-  | UpdatedTextOnly;
+  | UpdatedReviews;
 
 type SectionsProps = {
   sections: SectionModule[];
@@ -48,8 +45,6 @@ export default function Sections({ sections }: SectionsProps) {
             return <MomenceForm {...module} key={module._key} />;
           case "reviews":
             return <Reviews {...module} key={module._key} />;
-          case "textOnly":
-            return <TextOnly {...module} key={module._key} />;
           default:
             return null;
         }

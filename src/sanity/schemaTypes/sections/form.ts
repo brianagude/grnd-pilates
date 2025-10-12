@@ -29,7 +29,7 @@ export const momenceForm = defineType({
       name: "form",
       title: "Form Fields",
       type: "object",
-      description: "To create a new form, go to https://momence.com/dashboard/107640/plugin?tab=lead-form and copy/paste the values for fields and data-field-def. Everything else should auto populate.",
+      description: "To create a new form, go to https://momence.com/dashboard/107640/plugin?tab=lead-form, build your form, click Show Code, and then copy and paste the values where needed.",
       validation: (Rule) => Rule.required(),
       fields: [
         defineField({
@@ -44,30 +44,12 @@ export const momenceForm = defineType({
           type: "string",
           validation: (Rule) => Rule.required(),
         }),
-        defineField({
-          name: "containerId",
-          title: "Div ID",
-          type: "string",
-          placeholder: 'momence-plugin-lead-form',
-        }),
-        defineField({
-          name: "hostID",
-          title: "host_id",
-          type: "string",
-          placeholder: '107640',
-        }),
-        defineField({
-          name: "token",
-          title: "token",
-          type: "string",
-          placeholder: '3mX0LbY9Xk',
-        }),
-        defineField({
-          name: "countryCode",
-          title: "country_code",
-          type: "string",
-          placeholder: 'us',
-        }),
+        // defineField({
+        //   name: "containerId",
+        //   title: "Div ID",
+        //   type: "string",
+        //   placeholder: 'momence-plugin-lead-form',
+        // }),
         defineField({
           name: "sourceID",
           title: "source_id",
@@ -83,17 +65,35 @@ export const momenceForm = defineType({
           title: "data-redirect-after-submit-to",
           type: "string",
         }),
+        // defineField({
+        //   name: "hostID",
+        //   title: "host_id",
+        //   type: "string",
+        //   placeholder: '107640',
+        // }),
+        // defineField({
+        //   name: "token",
+        //   title: "token",
+        //   type: "string",
+        //   placeholder: '3mX0LbY9Xk',
+        // }),
+        // defineField({
+        //   name: "countryCode",
+        //   title: "country_code",
+        //   type: "string",
+        //   placeholder: 'us',
+        // }),
         defineField({
           name: "dataOnSuccessMsg",
           title: "data-on-success-msg",
           type: "string",
         }),
-        defineField({
-          name: "src",
-          title: "src",
-          type: "string",
-          placeholder: 'https://momence.com/plugin/lead-form/lead-form.js',
-        }),
+        // defineField({
+        //   name: "src",
+        //   title: "src",
+        //   type: "string",
+        //   placeholder: 'https://momence.com/plugin/lead-form/lead-form.js',
+        // }),
       ]
     }),
   ],

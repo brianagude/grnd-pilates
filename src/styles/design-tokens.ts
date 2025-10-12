@@ -1,15 +1,17 @@
 export const spacing = {
-  section: "relative scroll-mt-2 py-10 md:py-12 lg:py-20",
-  container: "relative z-20 w-full max-w-[1720px] mx-auto px-4 gap-10 flex flex-col items-center sm:gap-12 sm:px-8 lg:px-16",
+  section: "relative scroll-mt-2 py-12 lg:py-20",
+  container: "relative z-20 w-full max-w-[1720px] mx-auto px-4 gap-10 flex flex-col items-center sm:px-8 sm:gap-10 lg:px-16",
+  block: "space-y-5 gap-5",
+  inner: "space-y-2 gap-2"
 };
 
-const baseHeading = `text-pretty text-balance font-display leading-tight`;
+const baseHeading = `text-pretty font-display leading-tight break-words hyphens-auto`;
 const baseBody = `text-pretty text-balance`;
 
 export const typography = {
-  h1: `${baseHeading} font-light text-4xl sm:text-5xl lg:text-6xl`,
-  h2: `${baseHeading} font-light text-3xl sm:text-4xl lg:text-5xl`,
-  h3: `${baseHeading} font-light text-2xl sm:text-3xl lg:text-4xl`,
+  h1: `${baseHeading} font-light text-5xl xl:text-7xl`,
+  h2: `${baseHeading} font-light text-4xl xl:text-6xl`,
+  h3: `${baseHeading} font-light text-3xl xl:text-5xl`,
   h4: `${baseHeading} text-2xl sm:text-3xl`,
   h5: `${baseHeading} text-xl sm:text-2xl`,
   h6: `${baseHeading} text-lg sm:text-xl`,
@@ -23,12 +25,11 @@ export const typography = {
 };
 
 const buttonBase =
-  "text-xl block w-full text-center py-3 px-10 h-fit rounded-full border border-black font-medium transition-all cursor-pointer hover:shadow-lg transform hover:translate-x-[-1px] hover:translate-y-[-1px] sm:w-fit";
+  "text-xl block w-full text-center py-3 px-10 h-fit rounded-full border border-black font-medium transition-all cursor-pointer transform hover:shadow-lg  hover:translate-x-[-1px] hover:translate-y-[-1px] sm:w-fit";
 
 export const buttons = {
   primary: `${buttonBase} bg-black text-white hover:bg-brown-800`,
   secondary: `${buttonBase} bg-white text-black hover:bg-brown-100`,
-  // link: `${baseBody} uppercase font-bold text-lg hover:underline`,
 };
 
 export const forms = {

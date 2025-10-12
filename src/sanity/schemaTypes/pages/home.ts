@@ -79,7 +79,6 @@ export const home = defineType({
         { type: "momence" },
         { type: "momenceForm" },
         { type: "reviews" },
-        { type: "textOnly" },
       ],
     }),
   ],

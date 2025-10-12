@@ -1,5 +1,6 @@
 import { ImageIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
+// import { buttonFields } from "../inputs/button";
 
 export const contentType = defineType({
   name: "contentType",
@@ -69,6 +70,12 @@ export const contentType = defineType({
       title: "Text Block",
       type: "blockContent",
     }),
+    // defineField({
+    //   name: "button",
+    //   title: "Button",
+    //   type: "object",
+    //   fields: [...buttonFields],
+    // }),
   ],
   preview: {
     select: {

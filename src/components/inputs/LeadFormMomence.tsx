@@ -18,15 +18,15 @@ type LeadFormMomenceProps = {
 export const LeadFormMomence = ({
   containerId = "momence-plugin-lead-form",
   hostId = "107640",
-  fields,
   token = "3mX0LbY9Xk",
   countryCode = "us",
+  src = "https://momence.com/plugin/lead-form/lead-form.js",
+  fields,
   dataCollectConsent,
   sourceId,
   fieldDefJson,
   dataRedirectAfterSubmitTo,
   dataOnSuccessMsg,
-  src = "https://momence.com/plugin/lead-form/lead-form.js",
 }: LeadFormMomenceProps) => {
   useEffect(() => {
     const existingScript = document.getElementById("momence-plugin-lead-form-src");
