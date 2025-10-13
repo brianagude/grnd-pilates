@@ -1,13 +1,13 @@
 import Image from "next/image";
 import type { Product } from "@/sanity/lib/types";
-import { buttons, spacing, typography } from "@/styles/design-tokens";
+import { spacing, typography } from "@/styles/design-tokens";
 
 interface ProductsCardProps {
   items: Product[];
 }
 
 export default function ProductCards({ items }: ProductsCardProps) {
-  if (items.length < 1) {
+  if (items.filter((item) => !item.isDeleted).length < 1) {
     return (
       <div className={`${spacing.inner} text-center`}>
         <h2 className={typography.h5}>Nothing here… yet!</h2>
