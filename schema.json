@@ -569,6 +569,27 @@
                 },
                 "optional": true
               },
+              "overlay": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "union",
+                  "of": [
+                    {
+                      "type": "string",
+                      "value": "dark"
+                    },
+                    {
+                      "type": "string",
+                      "value": "light"
+                    },
+                    {
+                      "type": "string",
+                      "value": "none"
+                    }
+                  ]
+                },
+                "optional": true
+              },
               "_type": {
                 "type": "objectAttribute",
                 "value": {
@@ -1028,6 +1049,27 @@
                 "type": "objectAttribute",
                 "value": {
                   "type": "string"
+                },
+                "optional": true
+              },
+              "overlay": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "union",
+                  "of": [
+                    {
+                      "type": "string",
+                      "value": "dark"
+                    },
+                    {
+                      "type": "string",
+                      "value": "light"
+                    },
+                    {
+                      "type": "string",
+                      "value": "none"
+                    }
+                  ]
                 },
                 "optional": true
               },
@@ -3084,6 +3126,27 @@
                     },
                     "optional": true
                   },
+                  "overlay": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "union",
+                      "of": [
+                        {
+                          "type": "string",
+                          "value": "dark"
+                        },
+                        {
+                          "type": "string",
+                          "value": "light"
+                        },
+                        {
+                          "type": "string",
+                          "value": "none"
+                        }
+                      ]
+                    },
+                    "optional": true
+                  },
                   "_type": {
                     "type": "objectAttribute",
                     "value": {
@@ -3693,6 +3756,27 @@
                     "type": "objectAttribute",
                     "value": {
                       "type": "string"
+                    },
+                    "optional": true
+                  },
+                  "overlay": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "union",
+                      "of": [
+                        {
+                          "type": "string",
+                          "value": "dark"
+                        },
+                        {
+                          "type": "string",
+                          "value": "light"
+                        },
+                        {
+                          "type": "string",
+                          "value": "none"
+                        }
+                      ]
                     },
                     "optional": true
                   },

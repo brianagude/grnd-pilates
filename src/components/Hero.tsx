@@ -1,27 +1,22 @@
-import type { BlockContent as BlockContentType } from "@types";
+import type { Home as HomeType, MidHero as MidHeroType } from "@types";
 import Image from "next/image";
 import Button from "@/components/inputs/Button";
 import { urlFor } from "@/sanity/lib/image";
-import type { ExpandedSanityImage } from "@/sanity/lib/types";
 import { spacing } from "@/styles/design-tokens";
 import HeroBackground from "./inputs/HeroBackground";
 import { BlockContent } from "./inputs/PortableTextComponents";
 
-interface ButtonType {
-  _key: string;
-  _type: "button";
-  text?: string;
-  url?: string;
-  style?: "primary" | "secondary";
-}
+type ButtonsType = Array<
+  Omit<NonNullable<MidHeroType["buttons"]>[number], "internalPage"> & {
+    internalPage?: { _id?: string; slug?: string | null };
+  }
+>;
 
-interface HeroProps {
-  backgroundImage?: ExpandedSanityImage;
-  mainImage?: ExpandedSanityImage;
-  textBlock?: BlockContentType;
-  buttons?: ButtonType[];
+export type HeroType = Omit<NonNullable<HomeType["hero"]>, "buttons"> & {
   classes?: string;
-}
+  buttons?: ButtonsType;
+};
+
 
 export default function Hero({
   backgroundImage,
@@ -29,10 +24,19 @@ export default function Hero({
   textBlock,
   buttons,
   classes,
-}: HeroProps) {
+}: HeroType) {
+  const overlay = backgroundImage?.overlay;
+
+  const textClass =
+    overlay === "light"
+      ? "!text-black"
+      : overlay === "dark"
+        ? "!text-white"
+        : "";
+
   return (
     <section
-      className={`${spacing.section} min-h-screen flex flex-col items-center justify-center ${classes}`}
+      className={`${spacing.section} ${textClass} min-h-screen flex flex-col items-center justify-center ${classes}`}
     >
       <div className={`${spacing.container} pb-[200px]`}>
         <div className="w-full flex flex-col items-center justify-center gap-2">
@@ -60,7 +64,9 @@ export default function Hero({
         )}
       </div>
 
-      {backgroundImage && <HeroBackground image={backgroundImage} />}
+      {backgroundImage && (
+        <HeroBackground image={backgroundImage} noOverlay={true} />
+      )}
     </section>
   );
 }

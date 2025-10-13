@@ -13,6 +13,7 @@ const heroFragment = `
   },
   backgroundImage {
     alt,
+    overlay,
     asset->{
       _id,
       url,
@@ -35,6 +36,7 @@ const midHeroFragment = `
   },
   backgroundImage {
     alt,
+    overlay,
     asset->{
       _id,
       url,
@@ -80,6 +82,7 @@ const reviewsFragment = `
   ...,
   backgroundImage {
     alt,
+    overlay,
     asset->{
       _id,
       url,

@@ -31,6 +31,21 @@ export const home = defineType({
               title: "Alt Text",
               type: "string",
             }),
+            defineField({
+              name: "overlay",
+              title: "Overlay",
+              type: "string",
+              initialValue: 'none',
+              options: {
+                list: [
+                  {title: 'Dark', value: 'dark'},
+                  {title: 'Light', value: 'light'},
+                  {title: 'None', value: 'none'}
+                ],
+                layout: 'radio',
+                direction: 'horizontal'
+              }
+            }),
           ],
         }),
         defineField({

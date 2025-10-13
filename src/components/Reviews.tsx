@@ -49,9 +49,18 @@ export default function Reviews({
 
   if (!reviewsContent || reviewsContent.length === 0) return null;
 
+  const overlay = backgroundImage?.overlay;
+
+  const textClass =
+    overlay === 'light'
+      ? '!text-black'
+      : overlay === 'dark'
+      ? '!text-white'
+      : '';
+
   return (
-    <section className={`${spacing.section} min-h-[80vh] relative`}>
-      <div className={`${spacing.container} !px-0`}>
+    <section className={`${spacing.section} min-h-[90vh] relative`}>
+      <div className={`${spacing.container} ${textClass} !px-0`}>
         <div className="flex flex-col w-full gap-4 px-4 sm:px-8  md:flex-row md:justify-between items-start lg:px-16">
           {title && <h3 className={typography.h3}>{title}</h3>}
           <div>
@@ -81,7 +90,7 @@ export default function Reviews({
         >
           <div className="flex gap-4">
             {reviewsContent.map((item) => {
-              const { data } = item;
+              const { data } = item ?? {};
               const {
                 photo,
                 mediaType,
@@ -89,7 +98,11 @@ export default function Reviews({
                 videoAlt,
                 textBlock,
                 attribution,
-              } = data;
+              } = data ?? {};
+
+              if (!textBlock) return null;
+
+            
 
               return (
                 <div
@@ -114,9 +127,7 @@ export default function Reviews({
                   )}
 
                   <div>
-                    {textBlock && (
-                      <BlockContent value={textBlock} classes="!mt-0" />
-                    )}
+                    <BlockContent value={textBlock} classes="!mt-0" />
                     <div className="w-full border ml-auto mt-4" />
                     <Image
                       src="/stars.svg"

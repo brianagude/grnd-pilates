@@ -95,6 +95,7 @@ export type Reviews = {
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
+    overlay?: "dark" | "light" | "none";
     _type: "image";
   };
 };
@@ -161,6 +162,7 @@ export type MidHero = {
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
+    overlay?: "dark" | "light" | "none";
     _type: "image";
   };
   textBlock?: Array<{
@@ -458,6 +460,7 @@ export type Home = {
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
       alt?: string;
+      overlay?: "dark" | "light" | "none";
       _type: "image";
     };
     mainImage?: {
@@ -545,6 +548,7 @@ export type PageType = {
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
       alt?: string;
+      overlay?: "dark" | "light" | "none";
       _type: "image";
     };
     textBlock?: Array<{

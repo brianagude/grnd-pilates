@@ -60,7 +60,7 @@ export const BlockContent = ({
   classes?: string;
 }) => {
   return (
-    <div className={`w-full max-w-[55ch] ${classes}`}>
+    <div className={`w-full max-w-[60ch] ${classes}`}>
       <PortableText value={value} components={blockContentComponents} />
     </div>
   );

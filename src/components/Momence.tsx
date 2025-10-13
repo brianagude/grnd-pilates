@@ -26,24 +26,26 @@ export default async function Momence({ title, integration }: UpdatedMomence) {
 
   let items: Membership[] | Teacher[] | Product[] = [];
 
-  try {
-    const res = await fetch(endpoint);
-    if (!res.ok) throw new Error("Network response was not ok");
-    const data = await res.json();
-
-    switch (integration) {
-      case "Memberships":
-        items = data as Membership[];
-        break;
-      case "Teachers":
-        items = data as Teacher[];
-        break;
-      case "Products":
-        items = data as Product[];
-        break;
+  if (integration === "Teachers" || integration === "Memberships" || integration === "Products"){
+    try {
+      const res = await fetch(endpoint);
+      if (!res.ok) throw new Error("Network response was not ok");
+      const data = await res.json();
+  
+      switch (integration) {
+        case "Memberships":
+          items = data as Membership[];
+          break;
+        case "Teachers":
+          items = data as Teacher[];
+          break;
+        case "Products":
+          items = data as Product[];
+          break;
+      }
+    } catch (err) {
+      console.error(err);
     }
-  } catch (err) {
-    console.error(err);
   }
 
   return (

@@ -9,33 +9,14 @@ export default function MidHero({
   textBlock,
   buttons,
 }: UpdatedMidHero) {
-  const asset = backgroundImage?.asset as any;
-  const palette = asset?.metadata?.palette;
-  const dominantColor = palette?.dominant?.background || "#000";
-  
-  // Simple luminance function to decide if color is light or dark
-  const isLight = (color: string) => {
-    let r = 0, g = 0, b = 0;
-    if (color.startsWith("#") && (color.length === 7 || color.length === 4)) {
-      if (color.length === 7) {
-        r = parseInt(color.substring(1,3), 16);
-        g = parseInt(color.substring(3,5), 16);
-        b = parseInt(color.substring(5,7), 16);
-      } else if (color.length === 4) {
-        r = parseInt(color[1]+color[1], 16);
-        g = parseInt(color[2]+color[2], 16);
-        b = parseInt(color[3]+color[3], 16);
-      }
-    }
-    
-    const luminance = (0.299*r + 0.587*g + 0.114*b) / 255;
-    return luminance > 0.7;
-  };
+  const overlay = backgroundImage?.overlay;
 
-  const textClass = isLight(dominantColor) ? "text-black" : "text-white";
-  const overlayColor = isLight(dominantColor)
-    ? "rgba(255, 255, 255, 0.6)"
-    : "rgba(0, 0, 0, 0.6)";
+  const textClass =
+    overlay === 'light'
+      ? '!text-black'
+      : overlay === 'dark'
+      ? '!text-white'
+      : '';
 
   if (!backgroundImage) {
     return (
@@ -72,7 +53,7 @@ export default function MidHero({
       </div>
 
       {backgroundImage && (
-        <HeroBackground image={backgroundImage} overlayColor={overlayColor} />
+        <HeroBackground image={backgroundImage} />
       )}
     </section>
   );

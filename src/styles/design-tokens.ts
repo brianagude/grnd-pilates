@@ -5,11 +5,11 @@ export const spacing = {
   inner: "space-y-2 gap-2"
 };
 
-const baseHeading = `text-pretty font-display leading-tight break-words hyphens-auto`;
+const baseHeading = `font-display leading-tight`;
 const baseBody = `text-pretty text-balance`;
 
 export const typography = {
-  h1: `${baseHeading} font-light text-5xl xl:text-7xl`,
+  h1: `${baseHeading} font-light text-4xl sm:text-5xl xl:text-7xl`,
   h2: `${baseHeading} font-light text-4xl xl:text-6xl`,
   h3: `${baseHeading} font-light text-3xl xl:text-5xl`,
   h4: `${baseHeading} text-2xl sm:text-3xl`,
