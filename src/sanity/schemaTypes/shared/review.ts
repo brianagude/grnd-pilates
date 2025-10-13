@@ -1,15 +1,18 @@
 import { ImageIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
+import { GROUPS } from '@/sanity/lib/constants'
 
 export const reviewType = defineType({
   name: "reviewType",
   title: "Reviews",
   type: "document",
+  groups: GROUPS,
   fields: [
     defineField({
       name: "mediaType",
       title: "Media Type",
       type: "string",
+      group: 'media',
       validation: (Rule) => Rule.required(),
       options: {
         list: [
@@ -25,6 +28,7 @@ export const reviewType = defineType({
       name: "photo",
       title: "Image",
       type: "image",
+      group: 'media',
       options: { hotspot: true },
       description:
         "This image will automatically be cropped to 16:9 aspect ratio.",
@@ -41,6 +45,7 @@ export const reviewType = defineType({
       title: "Video",
       name: "muxInput",
       type: "document",
+      group: 'media',
       hidden: ({ document }) => document?.mediaType !== "video",
       fields: [
         defineField({
@@ -59,11 +64,13 @@ export const reviewType = defineType({
       name: "textBlock",
       title: "Text Block",
       type: "blockContent",
+      group: 'content',
     }),
     defineField({
       name: "attribution",
       title: "Attribution",
       type: "string",
+      group: 'content',
     }),
   ],
   preview: {

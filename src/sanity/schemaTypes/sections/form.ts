@@ -1,19 +1,23 @@
 import { defineField, defineType } from "sanity";
+import { GROUPS } from "@/sanity/lib/constants";
 
 export const momenceForm = defineType({
   name: "momenceForm",
   title: "Form",
   type: "object",
+  groups: GROUPS,
   fields: [
     defineField({
       name: "textBlock",
       title: "Text Block",
       type: "blockContent",
+      group: 'content',
     }),
     defineField({
       name: "photo",
       title: "Image",
       type: "image",
+      group: 'media',
       options: {
         hotspot: true,
       },
@@ -29,6 +33,7 @@ export const momenceForm = defineType({
       name: "form",
       title: "Form Fields",
       type: "object",
+      group: 'content',
       description: "To create a new form, go to https://momence.com/dashboard/107640/plugin?tab=lead-form, build your form, click Show Code, and then copy and paste the values where needed.",
       validation: (Rule) => Rule.required(),
       fields: [

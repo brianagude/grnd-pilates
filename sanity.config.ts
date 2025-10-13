@@ -2,7 +2,7 @@
 
 import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
-import { presentationTool } from "sanity/presentation";
+// import { presentationTool } from "sanity/presentation";
 import { structureTool } from "sanity/structure";
 import { media } from "sanity-plugin-media";
 import { muxInput } from "sanity-plugin-mux-input";
@@ -17,15 +17,15 @@ export default defineConfig({
   schema,
   plugins: [
     structureTool({ structure }),
-    presentationTool({
-      previewUrl: {
-        origin: process.env.SANITY_STUDIO_PREVIEW_ORIGIN,
-        preview: "/",
-        previewMode: {
-          enable: "/api/draft-mode/enable",
-        },
-      },
-    }),
+    // presentationTool({
+    //   previewUrl: {
+    //     origin: process.env.SANITY_STUDIO_PREVIEW_ORIGIN,
+    //     preview: "/",
+    //     previewMode: {
+    //       enable: "/api/draft-mode/enable",
+    //     },
+    //   },
+    // }),
     media({
       creditLine: {
         enabled: true,

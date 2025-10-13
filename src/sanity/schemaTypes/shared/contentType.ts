@@ -1,16 +1,19 @@
 import { ImageIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
 // import { buttonFields } from "../inputs/button";
+import { GROUPS } from '@/sanity/lib/constants'
 
 export const contentType = defineType({
   name: "contentType",
   title: "Featured Content",
   type: "document",
+  groups: GROUPS,
   fields: [
     defineField({
       name: "link",
       title: "Link to Content",
       type: "url",
+      group: 'content',
       validation: (Rule) =>
         Rule.uri({
           scheme: ["http", "https"],
@@ -20,6 +23,7 @@ export const contentType = defineType({
       name: "mediaType",
       title: "Media Type",
       type: "string",
+      group: 'media',
       validation: (Rule) => Rule.required(),
       options: {
         list: [
@@ -35,6 +39,7 @@ export const contentType = defineType({
       name: "photo",
       title: "Image",
       type: "image",
+      group: 'media',
       options: { hotspot: true },
       description:
         "This image will automatically be cropped to 4:3 aspect ratio.",
@@ -51,6 +56,7 @@ export const contentType = defineType({
       title: "Video",
       name: "muxInput",
       type: "document",
+      group: 'media',
       hidden: ({ document }) => document?.mediaType !== "video",
       fields: [
         defineField({
@@ -69,6 +75,7 @@ export const contentType = defineType({
       name: "textBlock",
       title: "Text Block",
       type: "blockContent",
+      group: 'content',
     }),
     // defineField({
     //   name: "button",

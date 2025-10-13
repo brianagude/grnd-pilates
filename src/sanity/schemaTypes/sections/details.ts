@@ -1,11 +1,13 @@
-import { defineField, defineType, defineArrayMember } from "sanity";
-import { buttonFields } from "../inputs/button";
 import { InlineElementIcon } from "@sanity/icons";
+import { defineArrayMember, defineField, defineType } from "sanity";
+import { GROUPS } from "@/sanity/lib/constants";
+import { buttonFields } from "../inputs/button";
 
 export const details = defineType({
   name: "details",
   title: "Cards",
   type: "object",
+  groups: GROUPS,
   fields: [
     defineField({
       name: "isCarousel",

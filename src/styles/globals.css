@@ -70,7 +70,7 @@ h4,
 h5,
 h6 {
   margin-top: 0;
-  margin-bottom: var(--spacing-md);
+  /* margin-bottom: var(--spacing-md); */
 }
 
 h1 + p,

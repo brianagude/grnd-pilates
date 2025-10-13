@@ -6,12 +6,28 @@ export const settings = defineType({
   name: "settings",
   title: "Settings",
   type: "document",
+  groups: [
+    {
+      default: true,
+      name: "header",
+      title: "Header",
+    },
+    {
+      name: "footer",
+      title: "Footer",
+    },
+    {
+      name: "social",
+      title: "Social Media",
+    },
+  ],
   fields: [
     // Header Settings
     defineField({
       name: "header",
       title: "Header",
       type: "object",
+      group: "header",
       fields: [
         defineField({
           name: "logo",
@@ -47,6 +63,7 @@ export const settings = defineType({
       name: "socialMedia",
       title: "Social Media Links",
       type: "object",
+      group: "social",
       fields: [
         defineField({
           name: "instagram",
@@ -86,6 +103,7 @@ export const settings = defineType({
       name: "footer",
       title: "Footer",
       type: "object",
+      group: "footer",
       fields: [
         defineField({
           name: "logo",

@@ -19,7 +19,7 @@ export default function MembershipCards({ items }: MembershipCardProps) {
   }
   return (
     <div className={`${spacing.block} w-full max-w-5xl mx-auto`}>
-      {items.map((item) => (
+      {items.filter((item) => !item.isDeleted || !item.isDisabled).map((item) => (
         <a
           key={item.id}
           className={`${spacing.block} group flex flex-col sm:justify-between sm:flex-row sm:items-center bg-white py-4 px-6 rounded-2xl border border-black transition-all cursor-pointer hover:shadow-lg transform hover:translate-x-[-1px] hover:translate-y-[-1px]"`}

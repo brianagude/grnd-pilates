@@ -1,15 +1,18 @@
 import { defineField, defineType } from "sanity";
+import { GROUPS } from "@/sanity/lib/constants";
 import { buttonFields } from "../inputs/button";
 
 export const midHero = defineType({
   name: "midHero",
   title: "Mid Hero",
   type: "object",
+  groups: GROUPS,
   fields: [
     defineField({
       name: "backgroundImage",
       title: "Background Image",
       type: "image",
+      group: "media",
       options: {
         hotspot: true,
       },
@@ -25,13 +28,13 @@ export const midHero = defineType({
           type: "string",
           options: {
             list: [
-              {title: 'Dark', value: 'dark'},
-              {title: 'Light', value: 'light'},
-              {title: 'None', value: 'none'}
+              { title: "Dark", value: "dark" },
+              { title: "Light", value: "light" },
+              { title: "None", value: "none" },
             ],
-            layout: 'radio',
-            direction: 'horizontal'
-          }
+            layout: "radio",
+            direction: "horizontal",
+          },
         }),
       ],
     }),
@@ -39,11 +42,13 @@ export const midHero = defineType({
       name: "textBlock",
       title: "Text Block",
       type: "blockContent",
+      group: "content",
     }),
     defineField({
       name: "buttons",
       title: "Buttons",
       type: "array",
+      group: "content",
       validation: (rule) => rule.max(2),
       of: [
         defineField({

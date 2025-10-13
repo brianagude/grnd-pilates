@@ -1,21 +1,25 @@
 import { ImageIcon } from "@sanity/icons";
 import { defineArrayMember, defineField, defineType } from "sanity";
+import { GROUPS } from "@/sanity/lib/constants";
 import { buttonFields } from "../inputs/button";
 
 export const reviews = defineType({
   name: "reviews",
   title: "Reviews",
   type: "object",
+  groups: GROUPS,
   fields: [
     defineField({
       name: "title",
       title: "Title",
       type: "string",
+      group: "content",
     }),
     defineField({
       name: "reviewsContent",
       title: "Content",
       type: "array",
+      group: "content",
       of: [
         defineArrayMember({
           name: "item",
@@ -30,12 +34,14 @@ export const reviews = defineType({
       name: "button",
       title: "Buttons",
       type: "object",
+      group: "content",
       fields: [...buttonFields],
     }),
     defineField({
       name: "backgroundImage",
       title: "Background Image",
       type: "image",
+      group: "media",
       options: {
         hotspot: true,
       },
@@ -49,16 +55,16 @@ export const reviews = defineType({
           name: "overlay",
           title: "Overlay",
           type: "string",
-          initialValue: 'none',
+          initialValue: "none",
           options: {
             list: [
-              {title: 'Dark', value: 'dark'},
-              {title: 'Light', value: 'light'},
-              {title: 'None', value: 'none'}
+              { title: "Dark", value: "dark" },
+              { title: "Light", value: "light" },
+              { title: "None", value: "none" },
             ],
-            layout: 'radio',
-            direction: 'horizontal'
-          }
+            layout: "radio",
+            direction: "horizontal",
+          },
         }),
       ],
     }),

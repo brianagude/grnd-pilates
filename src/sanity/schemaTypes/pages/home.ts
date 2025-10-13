@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { GROUPS } from "@/sanity/lib/constants";
 import { buttonFields } from "../inputs/button";
 
 export const home = defineType({
@@ -11,6 +12,7 @@ export const home = defineType({
       name: "hero",
       title: "Hero Section",
       type: "object",
+      groups: GROUPS,
       options: {
         collapsible: true,
         collapsed: false,
@@ -20,6 +22,7 @@ export const home = defineType({
           name: "backgroundImage",
           title: "Background Image",
           type: "image",
+          group: "media",
           options: {
             hotspot: true,
             metadata: ["lqip", "palette"],
@@ -35,16 +38,16 @@ export const home = defineType({
               name: "overlay",
               title: "Overlay",
               type: "string",
-              initialValue: 'none',
+              initialValue: "none",
               options: {
                 list: [
-                  {title: 'Dark', value: 'dark'},
-                  {title: 'Light', value: 'light'},
-                  {title: 'None', value: 'none'}
+                  { title: "Dark", value: "dark" },
+                  { title: "Light", value: "light" },
+                  { title: "None", value: "none" },
                 ],
-                layout: 'radio',
-                direction: 'horizontal'
-              }
+                layout: "radio",
+                direction: "horizontal",
+              },
             }),
           ],
         }),
@@ -52,6 +55,7 @@ export const home = defineType({
           name: "mainImage",
           title: "Logo",
           type: "image",
+          group: "media",
           fields: [
             defineField({
               name: "alt",
@@ -64,11 +68,13 @@ export const home = defineType({
           name: "textBlock",
           title: "Text Block",
           type: "blockContent",
+          group: "content",
         }),
         defineField({
           name: "buttons",
           title: "Buttons",
           type: "array",
+          group: "content",
           validation: (rule) => rule.max(2),
           of: [
             defineField({

@@ -1,6 +1,6 @@
 export const spacing = {
   section: "relative scroll-mt-2 py-12 lg:py-20",
-  container: "relative z-20 w-full max-w-[1720px] mx-auto px-4 gap-10 flex flex-col items-center sm:px-8 sm:gap-10 lg:px-16",
+  container: "relative z-20 w-full max-w-[1720px] mx-auto px-4 gap-8 flex flex-col items-center sm:px-8 sm:gap-10 lg:px-16",
   block: "space-y-5 gap-5",
   inner: "space-y-2 gap-2"
 };

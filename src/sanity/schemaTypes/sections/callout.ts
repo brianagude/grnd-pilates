@@ -1,15 +1,18 @@
 import { defineField, defineType } from "sanity";
 import { buttonFields } from "../inputs/button";
+import { GROUPS } from '@/sanity/lib/constants'
 
 export const callout = defineType({
   name: "callout",
   title: "Callout",
   type: "object",
+  groups: GROUPS,
   fields: [
     defineField({
       name: "photo",
       title: "Image",
       type: "image",
+      group: 'media',
       options: {
         hotspot: true,
       },
@@ -25,6 +28,7 @@ export const callout = defineType({
       name: "imagePosition",
       title: "Content Position",
       type: "string",
+      group: 'settings',
       validation: (Rule) => Rule.required(),
       options: {
         list: [
@@ -39,11 +43,13 @@ export const callout = defineType({
       name: "textBlock",
       title: "Text Block",
       type: "blockContent",
+      group: 'content',
     }),
     defineField({
       name: "button",
       title: "Button",
       type: "object",
+      group: 'content',
       fields: [...buttonFields],
     }),
   ],
