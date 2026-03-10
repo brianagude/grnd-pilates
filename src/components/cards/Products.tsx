@@ -45,7 +45,7 @@ export default function ProductCards({ items }: ProductsCardProps) {
               <p className={`${typography.body} line-clamp-3`}>
                 {item.description}
               </p>
-              <p className={typography.caption}>{item.price ? `$${item.price}` : "Free"}</p>
+              <p className={typography.caption}>{item.price ? `$${item.price}` : "Free"}{item.leftInStock === 0 && " | Sold Out"}</p>
             </div>
           </a>
         ))}

@@ -21,10 +21,7 @@ export const pageType = defineType({
       type: "slug",
       validation: (Rule) => Rule.required(),
       options: {
-        source: "title",
-        maxLength: 200,
-        slugify: (input) =>
-          input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
+        source: "pageTitle"
       },
     }),
     // Hero Section
