@@ -44,7 +44,7 @@ export default function MidHero({
           {textBlock && <BlockContent value={textBlock} />}
         </div>
         {Array.isArray(buttons) && buttons.length > 0 && (
-          <div className="flex flex-col gap-4 items-center justify-center w-full md:flex-row md:flex-wrap">
+          <div className="flex flex-col gap-4 items-center justify-center w-full md:flex-row md:flex-wrap md:items-start md:justify-start">
             {buttons.map((btn) => (
               <Button key={btn._key} {...btn} />
             ))}
