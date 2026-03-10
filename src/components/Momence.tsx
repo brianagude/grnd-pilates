@@ -6,6 +6,7 @@ import type {
   UpdatedMomence,
 } from "@/sanity/lib/types";
 import { spacing, typography } from "@/styles/design-tokens";
+import AppointmentCard from "./cards/Appointments";
 import Classes from "./cards/Classes";
 import MembershipCards from "./cards/Memberships";
 import ProductsCards from "./cards/Products";
@@ -70,6 +71,7 @@ export default async function Momence({ title, integration }: UpdatedMomence) {
         {integration === "Products" && (
           <ProductsCards items={items as Product[]} />
         )}
+        {integration === "Appointments" && <AppointmentCard />}
       </div>
     </section>
   );

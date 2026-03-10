@@ -207,7 +207,7 @@ export interface Teacher {
   isDeleted: boolean;
 }
 
-type IntegrationType = "Memberships" | "Events" | "Teachers" | "Products" | "Reviews";
+type IntegrationType = "Memberships" | "Events" | "Teachers" | "Products" | "Reviews" | "Appointments";
 
 export type UpdatedMomence = Omit<MomenceType, "button" | "integration"> & {
   button?: Omit<DetailsType["button"], "internalPage"> & {
