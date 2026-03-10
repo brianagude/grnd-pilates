@@ -54,10 +54,10 @@ export default function Details({
           <div className="w-full md:w-fit md:items-center md:gap-5 md:flex">
             {isCarousel && (
               <div className="hidden md:flex items-center justify-center gap-3">
-                <button onClick={scrollPrev} type="button" className="cursor-pointer">
+                <button onClick={scrollPrev} type="button" className="cursor-pointer" aria-label="Previous slide">
                   <ArrowLongLeftIcon className="size-16 text-black hover:-translate-y-0.5 transition-all" />
                 </button>
-                <button onClick={scrollNext} type="button" className="cursor-pointer">
+                <button onClick={scrollNext} type="button" className="cursor-pointer" aria-label="Next slide">
                   <ArrowLongRightIcon className="size-16 text-black hover:-translate-y-0.5 transition-all" />
                 </button>
               </div>
@@ -88,10 +88,10 @@ export default function Details({
 
         {isCarousel && (
           <div className="flex items-center justify-center gap-3 px-4 w-full sm:px-8 md:hidden">
-            <button onClick={scrollPrev} type="button" className="cursor-pointer">
+            <button onClick={scrollPrev} type="button" className="cursor-pointer" aria-label="Previous slide">
               <ArrowLongLeftIcon className="size-16 text-black hover:-translate-y-0.5 transition-all" />
             </button>
-            <button onClick={scrollNext} type="button" className="cursor-pointer">
+            <button onClick={scrollNext} type="button" className="cursor-pointer" aria-label="Next slide">
               <ArrowLongRightIcon className="size-16 text-black hover:-translate-y-0.5 transition-all" />
             </button>
           </div>

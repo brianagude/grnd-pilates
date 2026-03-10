@@ -42,7 +42,7 @@ export default function Header(props: UpdatedHeader) {
               </nav>
             )}
             {mainCTA && <Button {...mainCTA} classes="hidden sm:block" />}
-            <Drawer.Trigger className="xl:hidden">
+            <Drawer.Trigger className="xl:hidden" aria-label="Open navigation menu">
               <Bars3Icon className="size-16 text-black cursor-pointer hover:text-brown-700 transition-colors" />
             </Drawer.Trigger>
           </div>
@@ -61,6 +61,7 @@ export default function Header(props: UpdatedHeader) {
             <button
               type="button"
               className="ml-auto"
+              aria-label="Close navigation menu"
               onClick={() => setIsOpen(false)}
             >
               <XMarkIcon className="size-10 text-black cursor-pointer hover:text-brown-700 transition-colors" />

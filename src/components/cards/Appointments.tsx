@@ -24,7 +24,7 @@ export default function AppointmentCard() {
 
   return (
     <iframe
-      title="momence-appointments-widget"
+      title="Book an appointment"
       id={IFRAME_ID}
       src="https://momence.com/appointments/107640"
       style={{ width: "100%", border: 0, borderRadius: "40px" }}

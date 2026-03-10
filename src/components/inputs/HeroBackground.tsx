@@ -2,32 +2,36 @@ import type { Home as HomeType } from "@types";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 
-type BackgroundImageType = NonNullable<HomeType["hero"]>["backgroundImage"]
+type BackgroundImageType = Omit<NonNullable<NonNullable<HomeType["hero"]>["backgroundImage"]>, "asset"> & {
+  asset?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    metadata?: { lqip?: string };
+  };
+}
 
 export default function HeroBackground({
   image,
   noOverlay = false
 }: {
   image?: BackgroundImageType;
+  noOverlay?: boolean;
 }) {
   if (!image) return null;
   const overlay = image?.overlay;
 
   const overlayColor =
     overlay === 'light'
-      ? 'rgba(255, 255, 255, 0.6)'
+      ? 'var(--overlay-light)'
       : overlay === 'dark'
-      ? 'rgba(0, 0, 0, 0.6)'
+      ? 'var(--overlay-dark)'
       : null;
 
   const hotspot = image.hotspot || { x: 0.5, y: 0.5 };
   const objectPosition = `${hotspot.x * 100}% ${hotspot.y * 100}%`;
 
-  const imageUrl = urlFor(image)
-    .width(1920)
-    .dpr(2)
-    .quality(100)
-    .url();
+  const imageUrl = urlFor(image).auto('format').url();
 
   const blurDataURL = image.asset?.metadata?.lqip ? image.asset?.metadata?.lqip : undefined
 
@@ -35,12 +39,12 @@ export default function HeroBackground({
     <div className="absolute inset-0 -z-10">
       <Image
         src={imageUrl}
-        alt={image.alt || "Missing alt"}
+        alt={image.alt || ""}
         fill
         sizes="100vw"
         style={{ objectFit: "cover", objectPosition }}
         priority
-        quality={100}
+        quality={85}
         {...(blurDataURL ? { placeholder: "blur", blurDataURL } : {})}
       />
       {overlayColor && !noOverlay && (

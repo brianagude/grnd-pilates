@@ -5,7 +5,7 @@ import { client } from "@/sanity/lib/client";
 import { PAGE_QUERY } from "@/sanity/lib/queries";
 import type { UpdatedNewPageType } from "@/sanity/lib/types";
 
-const options = { next: { revalidate: 30 } };
+const options = { next: { revalidate: 3600 } };
 
 export default async function Page({
   params,

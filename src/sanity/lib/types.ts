@@ -79,7 +79,22 @@ export type UpdatedMidHero = Omit<MidHeroType, "buttons"> & {
   _key?: string;
 };
 
-export type UpdatedHome = Omit<HomeType, "sections"> & {
+type UpdatedHeroButtons = Array<
+  Omit<NonNullable<NonNullable<HomeType["hero"]>["buttons"]>[number], "internalPage"> & {
+    internalPage?: { _id?: string; slug?: string | null };
+  }
+>;
+
+type UpdatedHomeHero = Omit<NonNullable<HomeType["hero"]>, "buttons"> & {
+  buttons?: UpdatedHeroButtons;
+};
+
+type UpdatedPageHero = Omit<NonNullable<NewPageType["hero"]>, "buttons"> & {
+  buttons?: UpdatedHeroButtons;
+};
+
+export type UpdatedHome = Omit<HomeType, "sections" | "hero"> & {
+  hero?: UpdatedHomeHero;
   sections?: Array<
     | UpdatedMidHero
     | UpdatedReviews
@@ -91,7 +106,8 @@ export type UpdatedHome = Omit<HomeType, "sections"> & {
   _key?: string;
 };
 
-export type UpdatedNewPageType = Omit<NewPageType, "sections"> & {
+export type UpdatedNewPageType = Omit<NewPageType, "sections" | "hero"> & {
+  hero?: UpdatedPageHero;
   sections?: Array<
     | UpdatedMidHero
     | UpdatedReviews

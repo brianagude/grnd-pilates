@@ -34,6 +34,8 @@
   --spacing-lg: 16px;
   --spacing-xl: 24px;
   --spacing-xxl: 32px;
+  --overlay-light: rgba(255, 255, 255, 0.6);
+  --overlay-dark: rgba(0, 0, 0, 0.6);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -141,9 +143,9 @@ h2 {
   font-family: var(--font-body), system, sans-serif;
   font-size: 1rem !important;
   border-radius: 8px !important;
-  border: 2px solid black !important;
-  border-color: #000;
-  background-color: #fff;
+  border: 2px solid var(--color-black) !important;
+  border-color: var(--color-black);
+  background-color: var(--color-white);
   padding: 12px !important;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   min-height: 48px !important;
@@ -154,30 +156,30 @@ h2 {
 .momence-form input[type="text"]:focus,
 .momence-form input[type="tel"]:focus,
 .momence-form input[type="email"]:focus {
-  background-color: #fff;
+  background-color: var(--color-white);
   outline: none;
-  box-shadow: 0 0 0 2px #3b82f6;
-  border-color: #facc15;
+  box-shadow: 0 0 0 2px var(--color-brown-800);
+  border-color: var(--color-brown-400);
   transform: translate(-1px, -1px);
 }
 
 .momence-form input[type="text"]:hover,
 .momence-form input[type="tel"]:hover,
 .momence-form input[type="email"]:hover {
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 15px color-mix(in srgb, var(--color-black) 10%, transparent);
   transform: translate(-1px, -1px);
 }
 
 .momence-form input[type="text"]::placeholder,
 .momence-form input[type="tel"]::placeholder,
 .momence-form input[type="email"]::placeholder {
-  color: rgba(0, 0, 0, 0.7);
+  color: color-mix(in srgb, var(--color-black) 70%, transparent);
 }
 
 .momence-form input[type="text"]:disabled,
 .momence-form input[type="tel"]:disabled,
 .momence-form input[type="email"]:disabled {
-  color: rgba(0, 0, 0, 0.2);
+  color: color-mix(in srgb, var(--color-black) 20%, transparent);
   cursor: not-allowed;
 }
 
@@ -212,7 +214,7 @@ h2 {
 }
 
 .momence-form button:hover {
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 15px color-mix(in srgb, var(--color-black) 10%, transparent);
   transform: translate(-1px, -1px);
 }
 

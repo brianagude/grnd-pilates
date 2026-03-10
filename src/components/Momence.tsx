@@ -29,7 +29,7 @@ export default async function Momence({ title, integration }: UpdatedMomence) {
 
   if (integration === "Teachers" || integration === "Memberships" || integration === "Products"){
     try {
-      const res = await fetch(endpoint);
+      const res = await fetch(endpoint, { next: { revalidate: 3600 } });
       if (!res.ok) throw new Error("Network response was not ok");
       const data = await res.json();
   

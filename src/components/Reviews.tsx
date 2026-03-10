@@ -69,6 +69,7 @@ export default function Reviews({
                 type="button"
                 onClick={scrollPrev}
                 className="cursor-pointer"
+                aria-label="Previous review"
               >
                 <ArrowLongLeftIcon className="size-16 text-black hover:-translate-y-0.5 transition-all" />
               </button>
@@ -76,6 +77,7 @@ export default function Reviews({
                 type="button"
                 onClick={scrollNext}
                 className="cursor-pointer"
+                aria-label="Next review"
               >
                 <ArrowLongRightIcon className="size-16 text-black hover:-translate-y-0.5 transition-all" />
               </button>

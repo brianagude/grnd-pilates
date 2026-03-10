@@ -58,6 +58,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${fontDisplay.variable} ${fontBody.variable}`}>
+      <head>
+        <link rel="preconnect" href="https://cdn.sanity.io" />
+        <link rel="preconnect" href="https://image.mux.com" />
+      </head>
       <body className="antialiased min-h-screen">{children}</body>
     </html>
   );

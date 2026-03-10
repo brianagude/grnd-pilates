@@ -61,12 +61,13 @@ export default function Footer({
                       href={socialMedia.instagram}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label="Visit our Instagram (opens in new tab)"
                     >
                       <Image
                         src="/instagram.svg"
                         width={40}
                         height={40}
-                        alt="Instagram icon"
+                        alt=""
                       />
                     </a>
                   )}
@@ -75,12 +76,13 @@ export default function Footer({
                       href={socialMedia.youtube}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label="Visit our YouTube (opens in new tab)"
                     >
                       <Image
                         src="/youtube.svg"
                         width={40}
                         height={40}
-                        alt="Youtube icon"
+                        alt=""
                       />
                     </a>
                   )}
@@ -89,12 +91,13 @@ export default function Footer({
                       href={socialMedia.twitter}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label="Visit our Twitter (opens in new tab)"
                     >
                       <Image
                         src="/twitter.svg"
                         width={40}
                         height={40}
-                        alt="Twitter icon"
+                        alt=""
                       />
                     </a>
                   )}
@@ -103,12 +106,13 @@ export default function Footer({
                       href={socialMedia.tiktok}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label="Visit our TikTok (opens in new tab)"
                     >
                       <Image
                         src="/tiktok.svg"
                         width={40}
                         height={40}
-                        alt="Tiktok icon"
+                        alt=""
                       />
                     </a>
                   )}
@@ -117,12 +121,13 @@ export default function Footer({
                       href={socialMedia.facebook}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label="Visit our Facebook (opens in new tab)"
                     >
                       <Image
                         src="/facebook.svg"
                         width={40}
                         height={40}
-                        alt="Facebook icon"
+                        alt=""
                       />
                     </a>
                   )}
@@ -131,12 +136,13 @@ export default function Footer({
                       href={socialMedia.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label="Visit our LinkedIn (opens in new tab)"
                     >
                       <Image
                         src="/linkedin.svg"
                         width={40}
                         height={40}
-                        alt="Linkedin icon"
+                        alt=""
                       />
                     </a>
                   )}
