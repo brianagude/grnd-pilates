@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Comfortaa, Be_Vietnam_Pro } from "next/font/google";
+import { Be_Vietnam_Pro, Comfortaa } from "next/font/google";
 import "@/styles/globals.css";
 
 const fontDisplay = Comfortaa({

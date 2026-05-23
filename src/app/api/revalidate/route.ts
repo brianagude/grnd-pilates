@@ -1,14 +1,18 @@
-import { revalidateTag, revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { type NextRequest, NextResponse } from "next/server";
 import { parseBody } from "next-sanity/webhook";
 import { getPagesToRevalidate } from "@/lib/cache-tags";
 
 export async function POST(req: NextRequest) {
   try {
+    if (!process.env.SANITY_REVALIDATE_SECRET) {
+      return new Response("Missing SANITY_REVALIDATE_SECRET", { status: 500 });
+    }
+
     const { body, isValidSignature } = await parseBody<{
       _type: string;
       slug?: string | { current: string };
-    }>(req);
+    }>(req, process.env.SANITY_REVALIDATE_SECRET, true);
 
     if (!isValidSignature) {
       return new Response("Invalid signature", { status: 401 });

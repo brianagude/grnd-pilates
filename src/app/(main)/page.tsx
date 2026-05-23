@@ -1,11 +1,12 @@
 import { notFound } from "next/navigation";
 import Hero from "@/components/Hero";
 import Sections from "@/components/Sections";
+import { getCacheOptions, getPageCacheTags } from "@/lib/cache-tags";
 import { client } from "@/sanity/lib/client";
 import { HOME_QUERY } from "@/sanity/lib/queries";
 import type { UpdatedHome } from "@/sanity/lib/types";
 
-const options = { next: { revalidate: 3600 } };
+const options = getCacheOptions(getPageCacheTags("home"), 3600);
 
 export default async function HomePage() {
   const data = await client.fetch<UpdatedHome>(HOME_QUERY, {}, options);
