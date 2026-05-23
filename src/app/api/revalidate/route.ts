@@ -1,7 +1,6 @@
 import { revalidatePath, revalidateTag } from "next/cache";
 import { type NextRequest, NextResponse } from "next/server";
 import { parseBody } from "next-sanity/webhook";
-import { getPagesToRevalidate } from "@/lib/cache-tags";
 
 export async function POST(req: NextRequest) {
   try {
@@ -21,33 +20,25 @@ export async function POST(req: NextRequest) {
       return new Response("Missing document type", { status: 400 });
     }
 
-    // Get specific pages that need revalidation based on document type
-    const pagesToRevalidate = getPagesToRevalidate(body._type);
+    const slug =
+      typeof body.slug === "string" ? body.slug : body.slug?.current;
 
-    // Revalidate specific pages instead of all pages
-    const revalidationPromises = pagesToRevalidate.map((path) =>
-      revalidatePath(path),
-    );
-
-    // Also revalidate the document type tag for any components that might use it
-    revalidationPromises.push(revalidateTag(body._type));
-
-    // Add slug-specific tag if available
-    const slug = typeof body.slug === "string" ? body.slug : body.slug?.current;
-    if (slug) {
-      revalidationPromises.push(revalidateTag(`${body._type}:${slug}`));
+    if (body._type === "home") {
+      revalidatePath("/");
+    } else if (body._type === "pageType" && slug) {
+      revalidatePath(`/${slug}`);
+    } else {
+      // settings, contentType, reviewType, or unknown — bust all pages
+      revalidatePath("/", "layout");
     }
 
-    await Promise.all(revalidationPromises);
+    // Tag-based bust as a secondary mechanism
+    revalidateTag(body._type);
+    if (slug) revalidateTag(`${body._type}:${slug}`);
 
-    return NextResponse.json({
-      revalidated: true,
-      pages: pagesToRevalidate,
-      tags: [body._type, ...(slug ? [`${body._type}:${slug}`] : [])],
-    });
+    return NextResponse.json({ revalidated: true, type: body._type, slug });
   } catch (error: unknown) {
-    let message = "Unknown error";
-    if (error instanceof Error) message = error.message;
+    const message = error instanceof Error ? error.message : "Unknown error";
     return new Response(message, { status: 500 });
   }
 }

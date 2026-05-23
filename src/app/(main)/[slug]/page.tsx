@@ -1,12 +1,10 @@
 import { notFound } from "next/navigation";
 import Hero from "@/components/Hero";
 import Sections from "@/components/Sections";
-import { CACHE_TAGS, getCacheOptions } from "@/lib/cache-tags";
 import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/live";
 import { PAGE_QUERY, PAGE_SLUGS_QUERY } from "@/sanity/lib/queries";
 import type { UpdatedNewPageType } from "@/sanity/lib/types";
-
-const options = getCacheOptions([CACHE_TAGS.SETTINGS], 3600);
 
 export async function generateStaticParams() {
   const pages = await client.fetch<{ slug: string }[]>(PAGE_SLUGS_QUERY);
@@ -18,13 +16,12 @@ export default async function Page({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const data = await client.fetch<UpdatedNewPageType>(
-    PAGE_QUERY,
-    await params,
-    options,
-  );
+  const { data } = await sanityFetch<UpdatedNewPageType>({
+    query: PAGE_QUERY,
+    params: await params,
+  });
   if (!data) return notFound();
-  const { hero, sections } = data || {};
+  const { hero, sections } = data;
 
   return (
     <>

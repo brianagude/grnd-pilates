@@ -1,17 +1,14 @@
 import { notFound } from "next/navigation";
 import Hero from "@/components/Hero";
 import Sections from "@/components/Sections";
-import { getCacheOptions, getPageCacheTags } from "@/lib/cache-tags";
-import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/live";
 import { HOME_QUERY } from "@/sanity/lib/queries";
 import type { UpdatedHome } from "@/sanity/lib/types";
 
-const options = getCacheOptions(getPageCacheTags("home"), 3600);
-
 export default async function HomePage() {
-  const data = await client.fetch<UpdatedHome>(HOME_QUERY, {}, options);
+  const { data } = await sanityFetch<UpdatedHome>({ query: HOME_QUERY });
   if (!data) return notFound();
-  const { hero, sections } = data || {};
+  const { hero, sections } = data;
 
   return (
     <>
