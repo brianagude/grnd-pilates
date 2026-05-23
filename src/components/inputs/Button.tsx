@@ -1,7 +1,7 @@
 "use client";
 import clsx from "clsx";
-import type { ReactNode } from "react";
 import { usePathname } from "next/navigation";
+import type { ReactNode } from "react";
 import { buttons } from "@/styles/design-tokens";
 
 interface InternalPage {
@@ -39,12 +39,18 @@ export default function Button({
   };
 
   const resolvedHref = internalPage?._id
-    ? internalPage._id === "home" ? "/" : `/${internalPage.slug ?? ""}`
-    : url ?? "";
+    ? internalPage._id === "home"
+      ? "/"
+      : `/${internalPage.slug ?? ""}`
+    : (url ?? "");
 
   const isActive = !style && resolvedHref === pathname;
 
-  const className = clsx(style && styles[style], isActive && "border-b-2", classes);
+  const className = clsx(
+    style && styles[style],
+    isActive && "border-b-2",
+    classes,
+  );
   const isGlimmer = style === "primary" || style === "secondary";
   const content = (
     <span className={clsx(isGlimmer && "glimmer")}>{children ?? text}</span>
