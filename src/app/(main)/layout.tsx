@@ -19,7 +19,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const settings = await client.fetch(SETTINGS_QUERY, {}, options);
-  const { footer, header, socialMedia } = settings;
+  const { footer, header, socialMedia } = settings ?? {};
 
   return (
     <>

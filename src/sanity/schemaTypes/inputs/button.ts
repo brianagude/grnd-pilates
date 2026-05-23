@@ -3,9 +3,8 @@ import { defineField } from "sanity";
 export const buttonFields = [
   defineField({
     name: "text",
-    title: "Text",
-    description:
-      "You must provide text and a link for it to show up on the page",
+    title: "Button Text",
+    description: "The label shown on the button, e.g. 'Book a Class' or 'Learn More'. Both text and a link are required for the button to appear.",
     type: "string",
   }),
   defineField({
@@ -13,24 +12,25 @@ export const buttonFields = [
     title: "URL",
     type: "string",
     description:
-      "Can be a URL (https://...), email (mailto:...), or phone (tel:...)",
+      "Can be a full URL (https://...), email (mailto:you@example.com), or phone (tel:+1...). Leave blank if linking to an internal page below.",
   }),
   defineField({
     name: "internalPage",
-    title: "Internal Page Reference",
+    title: "Internal Page",
     type: "reference",
     description:
-      "If you want to link to an internal page, select the page here. This will overrite any URL that is already set.",
+      "Link to a page on this site. If set, this overrides the URL above.",
     to: [{ type: "pageType" }, { type: "home" }],
   }),
   defineField({
     title: "Button Style",
     name: "style",
     type: "string",
+    description: "Primary is filled and more prominent. Secondary is outlined and more subtle.",
     options: {
       list: [
-        { title: "Primary", value: "primary" },
-        { title: "Secondary", value: "secondary" },
+        { title: "Primary (filled)", value: "primary" },
+        { title: "Secondary (outlined)", value: "secondary" },
       ],
       layout: "radio",
       direction: "horizontal",

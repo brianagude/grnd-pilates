@@ -1,6 +1,5 @@
 import { ImageIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
-// import { buttonFields } from "../inputs/button";
 import { GROUPS } from '@/sanity/lib/constants'
 
 export const contentType = defineType({
@@ -12,6 +11,7 @@ export const contentType = defineType({
     defineField({
       name: "link",
       title: "Link to Content",
+      description: "Optional URL this item links to, e.g. a blog post or article (https://...).",
       type: "url",
       group: 'content',
       validation: (Rule) =>
@@ -22,6 +22,7 @@ export const contentType = defineType({
     defineField({
       name: "mediaType",
       title: "Media Type",
+      description: "Choose what type of media to show. The corresponding image or video field will appear below based on your selection.",
       type: "string",
       group: 'media',
       validation: (Rule) => Rule.required(),
@@ -29,7 +30,7 @@ export const contentType = defineType({
         list: [
           { title: "Image", value: "image" },
           { title: "Video", value: "video" },
-          { title: "None", value: "none" },
+          { title: "No Media", value: "none" },
         ],
         layout: "radio",
         direction: "horizontal",
@@ -42,11 +43,12 @@ export const contentType = defineType({
       group: 'media',
       options: { hotspot: true },
       description:
-        "This image will automatically be cropped to 4:3 aspect ratio.",
+        "This image will automatically be cropped to a 4:3 aspect ratio.",
       fields: [
         defineField({
           name: "alt",
           title: "Alt Text",
+          description: "Describe the image for accessibility and SEO.",
           type: "string",
         }),
       ],
@@ -60,29 +62,26 @@ export const contentType = defineType({
       hidden: ({ document }) => document?.mediaType !== "video",
       fields: [
         defineField({
-          title: "Title",
+          title: "Video Title",
           name: "title",
+          description: "Internal label for this video. Not displayed on the site.",
           type: "string",
         }),
         defineField({
-          title: "Video file",
+          title: "Video File",
           name: "muxVideo",
+          description: "Upload your video file. Supported formats: MP4, MOV, and more. Large files may take a moment to process.",
           type: "mux.video",
         }),
       ],
     }),
     defineField({
       name: "textBlock",
-      title: "Text Block",
+      title: "Text",
+      description: "Optional caption or description displayed with this content item.",
       type: "blockContent",
       group: 'content',
     }),
-    // defineField({
-    //   name: "button",
-    //   title: "Button",
-    //   type: "object",
-    //   fields: [...buttonFields],
-    // }),
   ],
   preview: {
     select: {
