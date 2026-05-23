@@ -6,9 +6,10 @@ import { HOME_QUERY } from "@/sanity/lib/queries";
 import type { UpdatedHome } from "@/sanity/lib/types";
 
 export default async function HomePage() {
-  const { data } = await sanityFetch<UpdatedHome>({ query: HOME_QUERY });
-  if (!data) return notFound();
-  const { hero, sections } = data;
+  const { data } = await sanityFetch({ query: HOME_QUERY });
+  const page = data as UpdatedHome | null;
+  if (!page) return notFound();
+  const { hero, sections } = page;
 
   return (
     <>

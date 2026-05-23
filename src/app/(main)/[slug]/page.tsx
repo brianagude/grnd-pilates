@@ -16,12 +16,10 @@ export default async function Page({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const { data } = await sanityFetch<UpdatedNewPageType>({
-    query: PAGE_QUERY,
-    params: await params,
-  });
-  if (!data) return notFound();
-  const { hero, sections } = data;
+  const { data } = await sanityFetch({ query: PAGE_QUERY, params: await params });
+  const page = data as UpdatedNewPageType | null;
+  if (!page) return notFound();
+  const { hero, sections } = page;
 
   return (
     <>
