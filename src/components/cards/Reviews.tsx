@@ -18,7 +18,7 @@ export default function Reviews() {
     script.setAttribute("is_profile_picture_enabled", "true");
     script.setAttribute("is_text_only_enabled", "true");
     script.setAttribute("is_session_and_teacher_info_enabled", "true");
-    script.setAttribute("layout", "horizontal");
+    script.setAttribute("layout", "vertical");
     script.setAttribute(
       "signature",
       "76d8aca8ddb080f46b6291697b4e5ec14f33fbf78892065df8cd0b602f8ba6ef"
@@ -35,5 +35,17 @@ export default function Reviews() {
     };
   }, []);
 
-  return <div id="momence-plugin-reviews" ref={pluginRef} />;
+  return (
+    <>
+      <style>{`
+        :root {
+          --momenceReviewColorBackground: #fff;
+          --momenceBorder: 0px solid #261008;
+          --momenceBorderRadius: 24px;
+          --momenceBoxShadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.08);
+        }
+      `}</style>
+      <div id="momence-plugin-reviews" ref={pluginRef} />
+    </>
+  );
 }

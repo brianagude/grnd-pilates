@@ -12,7 +12,7 @@ export default function ProductCards({ items }: ProductsCardProps) {
       <div className={`${spacing.inner} text-center`}>
         <h2 className={typography.h5}>Nothing here… yet!</h2>
         <p className={typography.body}>
-          We don’t have any products at the moment. Check back soon!
+          We don&apos;t have any products at the moment. Check back soon!
         </p>
       </div>
     );

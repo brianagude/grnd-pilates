@@ -19,7 +19,10 @@ export const momence = defineType({
         list: [
           { title: "Appointments", value: "Appointments" },
           { title: "Classes", value: "Events" },
+          { title: "Community Posts", value: "CommunityPosts" },
+          { title: "Gift Cards", value: "GiftCards" },
           { title: "Memberships", value: "Memberships" },
+          { title: "On Demand Videos", value: "OnDemand" },
           { title: "Products", value: "Products" },
           { title: "Reviews", value: "Reviews" },
           { title: "Teachers", value: "Teachers" },

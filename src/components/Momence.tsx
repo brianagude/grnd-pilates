@@ -8,7 +8,10 @@ import type {
 import { spacing, typography } from "@/styles/design-tokens";
 import AppointmentCard from "./cards/Appointments";
 import Classes from "./cards/Classes";
+import CommunityPostsCard from "./cards/CommunityPosts";
+import GiftCardsCard from "./cards/GiftCards";
 import MembershipCards from "./cards/Memberships";
+import OnDemandCard from "./cards/OnDemand";
 import ProductsCards from "./cards/Products";
 import TeacherCards from "./cards/Teachers";
 
@@ -27,7 +30,7 @@ export default async function Momence({ title, integration }: UpdatedMomence) {
 
   let items: Membership[] | Teacher[] | Product[] = [];
 
-  if (integration === "Teachers" || integration === "Memberships" || integration === "Products"){
+  if (integration === "Teachers" || integration === "Memberships" || integration === "Products") {
     try {
       const res = await fetch(endpoint, { next: { revalidate: 3600 } });
       if (!res.ok) throw new Error("Network response was not ok");
@@ -72,6 +75,9 @@ export default async function Momence({ title, integration }: UpdatedMomence) {
           <ProductsCards items={items as Product[]} />
         )}
         {integration === "Appointments" && <AppointmentCard />}
+        {integration === "CommunityPosts" && <CommunityPostsCard />}
+        {integration === "GiftCards" && <GiftCardsCard />}
+        {integration === "OnDemand" && <OnDemandCard />}
       </div>
     </section>
   );

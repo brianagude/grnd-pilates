@@ -961,6 +961,10 @@
               },
               {
                 "type": "string",
+                "value": "OnDemand"
+              },
+              {
+                "type": "string",
                 "value": "Products"
               },
               {

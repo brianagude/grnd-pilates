@@ -223,7 +223,17 @@ export interface Teacher {
   isDeleted: boolean;
 }
 
-type IntegrationType = "Memberships" | "Events" | "Teachers" | "Products" | "Reviews" | "Appointments";
+export interface Video {
+  id: number;
+  title: string;
+  description: string;
+  thumbnailUrl: string;
+  duration: number;
+  isDeleted: boolean;
+  isPublished: boolean;
+}
+
+type IntegrationType = "Memberships" | "Events" | "Teachers" | "Products" | "Reviews" | "Appointments" | "CommunityPosts" | "GiftCards" | "OnDemand";
 
 export type UpdatedMomence = Omit<MomenceType, "button" | "integration"> & {
   button?: Omit<DetailsType["button"], "internalPage"> & {

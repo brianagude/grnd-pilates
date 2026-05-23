@@ -146,7 +146,7 @@ export type MomenceForm = {
 export type Momence = {
   _type: "momence";
   title?: string;
-  integration: "Appointments" | "Events" | "Memberships" | "Products" | "Reviews" | "Teachers";
+  integration: "Appointments" | "Events" | "Memberships" | "OnDemand" | "Products" | "Reviews" | "Teachers";
 };
 
 export type MidHero = {
