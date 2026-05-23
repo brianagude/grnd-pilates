@@ -38,7 +38,7 @@ const blockContentComponents: PortableTextComponentsType = {
   },
   marks: {
     link: ({ children, value }) => (
-      <a href={value?.href} className={typography.link} target="_blank">
+      <a href={value?.href} className={typography.link} target="_blank" rel="noopener noreferrer">
         {children}
       </a>
     ),

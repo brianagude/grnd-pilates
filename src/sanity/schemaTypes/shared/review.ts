@@ -11,6 +11,7 @@ export const reviewType = defineType({
     defineField({
       name: "mediaType",
       title: "Media Type",
+      description: "Choose what type of media to show alongside this review. The image or video field below will appear based on your selection.",
       type: "string",
       group: 'media',
       validation: (Rule) => Rule.required(),
@@ -18,7 +19,7 @@ export const reviewType = defineType({
         list: [
           { title: "Image", value: "image" },
           { title: "Video", value: "video" },
-          { title: "None", value: "none" },
+          { title: "No Media", value: "none" },
         ],
         layout: "radio",
         direction: "horizontal",
@@ -31,11 +32,12 @@ export const reviewType = defineType({
       group: 'media',
       options: { hotspot: true },
       description:
-        "This image will automatically be cropped to 16:9 aspect ratio.",
+        "This image will automatically be cropped to a 16:9 aspect ratio.",
       fields: [
         defineField({
           name: "alt",
           title: "Alt Text",
+          description: "Describe the image for accessibility and SEO.",
           type: "string",
         }),
       ],
@@ -49,26 +51,30 @@ export const reviewType = defineType({
       hidden: ({ document }) => document?.mediaType !== "video",
       fields: [
         defineField({
-          title: "Title",
+          title: "Video Title",
           name: "title",
+          description: "Internal label for this video. Not displayed on the site.",
           type: "string",
         }),
         defineField({
-          title: "Video file",
+          title: "Video File",
           name: "muxVideo",
+          description: "Upload your video file. Supported formats: MP4, MOV, and more. Large files may take a moment to process.",
           type: "mux.video",
         }),
       ],
     }),
     defineField({
       name: "textBlock",
-      title: "Text Block",
+      title: "Review Text",
+      description: "The review content — what the customer said.",
       type: "blockContent",
       group: 'content',
     }),
     defineField({
       name: "attribution",
-      title: "Attribution",
+      title: "Reviewer Name",
+      description: "Name or description of the reviewer shown below the quote, e.g. 'Jane D.' or 'Sarah M., Member since 2023'.",
       type: "string",
       group: 'content',
     }),

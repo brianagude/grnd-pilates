@@ -12,12 +12,14 @@ export const pageType = defineType({
     defineField({
       name: "pageTitle",
       title: "Page Title",
+      description: "The name of this page, shown in the browser tab. Also used to auto-generate the URL slug below.",
       type: "string",
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      title: "Slug",
+      title: "URL Slug",
       name: "slug",
+      description: "The URL path for this page, auto-generated from the title. E.g. a slug of 'about-us' makes the page available at /about-us. Click 'Generate' to update after changing the title.",
       type: "slug",
       validation: (Rule) => Rule.required(),
       options: {
@@ -94,6 +96,7 @@ export const pageType = defineType({
     defineField({
       name: "sections",
       title: "Page Sections",
+      description: "Add, remove, or reorder sections on this page. Click the section type to expand and edit its content.",
       type: "array",
       of: [
         { type: "callout" },

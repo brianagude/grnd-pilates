@@ -30,6 +30,7 @@ export default function TeacherCards({ items }: TeacherCardProps) {
                   src={item.profileImage}
                   alt={`${item.firstName} ${item.lastName}`}
                   fill
+                  sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
                   className="object-cover"
                 />
               </div>

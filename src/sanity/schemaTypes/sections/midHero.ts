@@ -11,6 +11,7 @@ export const midHero = defineType({
     defineField({
       name: "backgroundImage",
       title: "Background Image",
+      description: "Full-width background image for this section. Use the hotspot tool to control the focal point.",
       type: "image",
       group: "media",
       options: {
@@ -20,16 +21,18 @@ export const midHero = defineType({
         defineField({
           name: "alt",
           title: "Alt Text",
+          description: "Describe the background image for accessibility and SEO.",
           type: "string",
         }),
         defineField({
           name: "overlay",
-          title: "Overlay",
+          title: "Image Overlay",
+          description: "A tint applied over the image to improve text readability. Use Dark or Light depending on your text color.",
           type: "string",
           options: {
             list: [
-              { title: "Dark", value: "dark" },
-              { title: "Light", value: "light" },
+              { title: "Dark (for light text)", value: "dark" },
+              { title: "Light (for dark text)", value: "light" },
               { title: "None", value: "none" },
             ],
             layout: "radio",
@@ -40,13 +43,15 @@ export const midHero = defineType({
     }),
     defineField({
       name: "textBlock",
-      title: "Text Block",
+      title: "Text",
+      description: "Heading or body text displayed over the background image.",
       type: "blockContent",
       group: "content",
     }),
     defineField({
       name: "buttons",
       title: "Buttons",
+      description: "Up to 2 buttons shown below the text. Leave empty to show no buttons.",
       type: "array",
       group: "content",
       validation: (rule) => rule.max(2),

@@ -11,19 +11,25 @@ export const details = defineType({
   fields: [
     defineField({
       name: "isCarousel",
-      title: "Should this be a caorousel?",
+      title: "Display as Carousel?",
+      description: "When on, content items scroll horizontally as a carousel. When off, they display in a grid of cards.",
       type: "boolean",
+      group: "settings",
       validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "title",
-      title: "Title",
+      title: "Section Title",
+      description: "Optional heading shown above the cards. Leave blank to hide.",
       type: "string",
+      group: "content",
     }),
     defineField({
       name: "carouselContent",
-      title: "Content",
+      title: "Content Items",
+      description: "Select Featured Content items to display. Drag to reorder. These are managed under the 'Featured Content' document type.",
       type: "array",
+      group: "content",
       of: [
         defineArrayMember({
           name: "item",
@@ -37,7 +43,9 @@ export const details = defineType({
     defineField({
       name: "button",
       title: "Button",
+      description: "Optional call-to-action button shown below the cards.",
       type: "object",
+      group: "content",
       fields: [...buttonFields],
     }),
   ],

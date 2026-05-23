@@ -123,6 +123,8 @@ export const HOME_QUERY = `*[_type == "home"][0]{
   }
 }`;
 
+export const PAGE_SLUGS_QUERY = `*[_type == "pageType" && defined(slug.current)]{ "slug": slug.current }`;
+
 export const PAGE_QUERY = `*[_type == "pageType" && slug.current == $slug][0]{
   hero {${heroFragment}},
   sections[] {

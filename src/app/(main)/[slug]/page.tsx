@@ -3,10 +3,15 @@ import Hero from "@/components/Hero";
 import Sections from "@/components/Sections";
 import { CACHE_TAGS, getCacheOptions } from "@/lib/cache-tags";
 import { client } from "@/sanity/lib/client";
-import { PAGE_QUERY } from "@/sanity/lib/queries";
+import { PAGE_QUERY, PAGE_SLUGS_QUERY } from "@/sanity/lib/queries";
 import type { UpdatedNewPageType } from "@/sanity/lib/types";
 
 const options = getCacheOptions([CACHE_TAGS.SETTINGS], 3600);
+
+export async function generateStaticParams() {
+  const pages = await client.fetch<{ slug: string }[]>(PAGE_SLUGS_QUERY);
+  return pages.map(({ slug }) => ({ slug }));
+}
 
 export default async function Page({
   params,

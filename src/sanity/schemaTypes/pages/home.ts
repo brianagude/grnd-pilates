@@ -54,19 +54,22 @@ export const home = defineType({
         defineField({
           name: "mainImage",
           title: "Logo",
+          description: "Logo image displayed in the center of the hero section, overlaid on the background image.",
           type: "image",
           group: "media",
           fields: [
             defineField({
               name: "alt",
               title: "Alt Text",
+              description: "Describe the logo for accessibility, e.g. 'GRND Pilates logo'.",
               type: "string",
             }),
           ],
         }),
         defineField({
           name: "textBlock",
-          title: "Text Block",
+          title: "Text",
+          description: "Heading or body text displayed in the hero area.",
           type: "blockContent",
           group: "content",
         }),
@@ -92,6 +95,7 @@ export const home = defineType({
     defineField({
       name: "sections",
       title: "Page Sections",
+      description: "Add, remove, or reorder sections on the home page. Click the section type to expand and edit its content.",
       type: "array",
       of: [
         { type: "callout" },

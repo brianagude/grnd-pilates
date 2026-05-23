@@ -11,13 +11,15 @@ export const reviews = defineType({
   fields: [
     defineField({
       name: "title",
-      title: "Title",
+      title: "Section Title",
+      description: "Heading shown above the reviews, e.g. 'What Our Members Say'.",
       type: "string",
       group: "content",
     }),
     defineField({
       name: "reviewsContent",
-      title: "Content",
+      title: "Reviews",
+      description: "Select review items to display in this section. Drag to reorder. Reviews are managed under the 'Reviews' document type.",
       type: "array",
       group: "content",
       of: [
@@ -32,7 +34,8 @@ export const reviews = defineType({
     }),
     defineField({
       name: "button",
-      title: "Buttons",
+      title: "Button",
+      description: "Optional call-to-action button shown below the reviews.",
       type: "object",
       group: "content",
       fields: [...buttonFields],
@@ -40,6 +43,7 @@ export const reviews = defineType({
     defineField({
       name: "backgroundImage",
       title: "Background Image",
+      description: "Optional background image behind the reviews section.",
       type: "image",
       group: "media",
       options: {
@@ -49,17 +53,19 @@ export const reviews = defineType({
         defineField({
           name: "alt",
           title: "Alt Text",
+          description: "Describe the background image for accessibility.",
           type: "string",
         }),
         defineField({
           name: "overlay",
-          title: "Overlay",
+          title: "Image Overlay",
+          description: "A tint over the image to improve text readability.",
           type: "string",
           initialValue: "none",
           options: {
             list: [
-              { title: "Dark", value: "dark" },
-              { title: "Light", value: "light" },
+              { title: "Dark (for light text)", value: "dark" },
+              { title: "Light (for dark text)", value: "light" },
               { title: "None", value: "none" },
             ],
             layout: "radio",

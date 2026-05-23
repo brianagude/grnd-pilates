@@ -19,8 +19,8 @@ export default function MomenceWebchat() {
       script.src = "https://momence.com/plugin/webchat/webchat.js";
       script.async = true;
       script.type = "module";
-      script.setAttribute("host-id", "107640");
-      script.setAttribute("token", "3mX0LbY9Xk");
+      script.setAttribute("host-id", process.env.NEXT_PUBLIC_MOMENCE_HOST_ID ?? "");
+      script.setAttribute("token", process.env.NEXT_PUBLIC_MOMENCE_WEBCHAT_TOKEN ?? "");
       script.setAttribute("position", "bottom-right");
       script.crossOrigin = "anonymous";
 

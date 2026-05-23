@@ -43,7 +43,7 @@ export default function Footer({
                   <Button
                     key={item._key}
                     {...item}
-                    classes="text-lg font-medium"
+                    classes="text-lg font-medium w-fit"
                   />
                 ))}
               </nav>
